@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^4.0.2",
     "@angular/router": "^4.0.2",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "normalize.css": "^6.0.0",
     "rxjs": "^5.3.0",
     "zone.js": "^0.8.5"
@@ -64,6 +65,7 @@
     "webpack-bundle-analyzer": "^2.4.0",
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^2.4.2",
+    "webpack-manifest-plugin": "^1.1.0",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

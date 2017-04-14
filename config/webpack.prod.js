@@ -8,36 +8,71 @@ var helpers = require('./helpers');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'source-map',
 
-  output: {
-    path: helpers.root('dist'),
-    publicPath: '/',
-    filename: '[name].[hash].js',
-    chunkFilename: '[id].[hash].chunk.js'
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [{
+          loader: 'css-loader'
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: function() {
+              return [
+                require('precss'),
+                require('autoprefixer')
+              ];
+            }
+          }
+        }, {
+          loader: 'sass-loader'
+        }],
+        publicPath: '/' // url路径处理
+      }),
+    }, {
+      test: /\.css$/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [{
+          loader: 'css-loader'
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: function() {
+              return [
+                require('precss'),
+                require('autoprefixer')
+              ];
+            }
+          }
+        }],
+        publicPath: '/' // url 路径处理
+      })
+    }]
   },
 
   plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
-      mangle: {
-        keep_fnames: true
-      }
+    // new webpack.NoEmitOnErrorsPlugin(),
+
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css',
+      allChunks: true
     }),
-    new ExtractTextPlugin('[name].[hash].css'),
     new webpack.DefinePlugin({
       'process.env': {
         'ENV': JSON.stringify(ENV)
       }
     }),
-    new webpack.LoaderOptionsPlugin({
-      htmlLoader: {
-        minimize: false // workaround for ng2
-      }
-    }),
+    // new webpack.LoaderOptionsPlugin({
+    //   htmlLoader: {
+    //     minimize: false // workaround for ng2
+    //   }
+    // }),
 
     // 本地进行webpack-bundle-analyzer
-      // new BundleAnalyzerPlugin({
+    // new BundleAnalyzerPlugin({
     //   // Can be `server`, `static` or `disabled`. 
     //   // In `server` mode analyzer will start HTTP server to show bundle report. 
     //   // In `static` mode single HTML file with bundle report will be generated. 

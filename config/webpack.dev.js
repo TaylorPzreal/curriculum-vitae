@@ -1,24 +1,60 @@
 var webpackMerge = require('webpack-merge');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
 
-module.exports = webpackMerge(commonConfig, {
-  devtool: 'cheap-module-eval-source-map',
+const SERVER = {
+  host: 'localhost',
+  port: '9000'
+};
 
-  output: {
-    path: helpers.root('dist'),
-    publicPath: 'http://localhost:8080/',
-    filename: '[name].js',
-    chunkFilename: '[id].chunk.js'
+module.exports = webpackMerge(commonConfig, {
+
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      use: [
+        'raw-loader',
+        'sass-loader'
+      ]
+    }, {
+      test: /\.scss$/,
+      include: /node_modules/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+      ]
+    }, {
+      test: /\.css$/,
+      exclude: helpers.root('src', 'app'),
+      use: [
+        'style-loader',
+        'css-loader'
+      ]
+    }, {
+      test: /\.css$/,
+      include: helpers.root('src', 'app'),
+      use: [
+        'raw-loader'
+      ]
+    }]
   },
 
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    // new ExtractTextPlugin('[name].css')
   ],
 
   devServer: {
     historyApiFallback: true,
-    stats: 'minimal'
+    stats: 'minimal',
+    compress: true,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    },
+    host: SERVER.host,
+    port: SERVER.port
   }
 });
