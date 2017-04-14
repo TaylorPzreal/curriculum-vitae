@@ -30,7 +30,7 @@
 ### 4. 框架
 * 基于Angular4.x + MaterialDesign(OR Bootstrap4.x)
 * Webpack2.x + Rollup
-* d3.js, three.js, 可拖拽插件
+* d3.js, three.js, lodash, moment, font-awesome, 可拖拽插件(Dragula)
 * Koa2.x(OR Express) + Mongodb + Redis
 
 ### 5. 开发规划 2017-04-13
