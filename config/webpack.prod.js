@@ -30,7 +30,7 @@ module.exports = webpackMerge(commonConfig, {
           loader: 'sass-loader'
         }],
         publicPath: '/' // url路径处理
-      }),
+      })
     }, {
       test: /\.css$/,
       use: ExtractTextPlugin.extract({
@@ -60,16 +60,12 @@ module.exports = webpackMerge(commonConfig, {
       filename: '[name].[contenthash].css',
       allChunks: true
     }),
+    
     new webpack.DefinePlugin({
       'process.env': {
         'ENV': JSON.stringify(ENV)
       }
-    }),
-    // new webpack.LoaderOptionsPlugin({
-    //   htmlLoader: {
-    //     minimize: false // workaround for ng2
-    //   }
-    // }),
+    })
 
     // 本地进行webpack-bundle-analyzer
     // new BundleAnalyzerPlugin({

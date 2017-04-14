@@ -22,8 +22,10 @@
     "@angular/platform-browser": "^4.0.2",
     "@angular/platform-browser-dynamic": "^4.0.2",
     "@angular/router": "^4.0.2",
+    "animate.css": "^3.5.2",
     "core-js": "^2.4.1",
     "d3": "^4.7.4",
+    "dragula": "^3.7.2",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
@@ -34,6 +36,7 @@
   },
   "devDependencies": {
     "@types/d3": "^4.7.0",
+    "@types/dragula": "^2.1.30",
     "@types/jasmine": "^2.5.47",
     "@types/lodash": "^4.14.62",
     "@types/moment": "^2.13.0",

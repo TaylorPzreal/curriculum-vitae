@@ -14,3 +14,4 @@ import 'rxjs';
 
 // normalize.css
 import 'normalize.css';
+import 'animate.css';

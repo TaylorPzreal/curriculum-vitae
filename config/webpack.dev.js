@@ -16,15 +16,30 @@ module.exports = webpackMerge(commonConfig, {
       exclude: /node_modules/,
       use: [
         'raw-loader',
-        'sass-loader'
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }
       ]
     }, {
       test: /\.scss$/,
       include: /node_modules/,
       use: [
         'style-loader',
-        'css-loader',
-        'sass-loader'
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }
       ]
     }, {
       test: /\.css$/,

@@ -42,7 +42,7 @@ module.exports = {
       use: [{
         loader: 'tslint-loader',
         options: {
-          tscConfigFile: helpers.root('src/tsconfig.json')
+          tsConfigFile: helpers.root('src/tsconfig.json')
         }
       }]
     }, {
