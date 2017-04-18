@@ -1,6 +1,26 @@
 # [curriculum-vitae](http://www.honeymorning.com)
-    个人简历(Curriculum Vitae) :100:
+    个人简历(Curriculum Vitae)
     使用最新技术(Angular4.x + Bootstrap4.x + Sass + Webpack2.x)构建完美产品, 应用亮点技术有e2e, unit-testing.
+
+## 使用指南
+```
+git clone git@github.com:TaylorPzreal/curriculum-vitae.git -b master
+
+cd curriculum-vitae
+
+yarn install // My development is node@^7.9.0 npm@^4.2.0
+
+yarn start // 启动本地开发项目
+
+yarn start:browser // 启动本地开发项目, 并自动打开浏览器
+
+yarn build // 打包生产项目
+
+yarn test // 进行单元测试
+
+yarn run e2e // 进行端到端测试
+
+```
 
 ## 一. 目的
 - 追求唯美，可视化，简洁，大方的主题
