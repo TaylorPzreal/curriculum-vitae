@@ -1,5 +1,6 @@
 # [curriculum-vitae](http://www.honeymorning.com)
-个人简历(Curriculum Vitae)
+    个人简历(Curriculum Vitae) :100:
+    使用最新技术(Angular4.x + Bootstrap4.x + Sass + Webpack2.x)构建完美产品, 应用亮点技术有e2e, unit-testing.
 
 ## 一. 目的
 - 追求唯美，可视化，简洁，大方的主题
