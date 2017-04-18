@@ -4,7 +4,15 @@ $fa-font-path: '/node_modules/font-awesome/fonts';
 
 @import 'color';
 
+html {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #253B6E;
-  color: #FFF;
+  background-color: $themecolor;
+  color: $white;
+  font-family: 'Josefin Sans', sans-serif, 'Abel', 'Pacifico', cursive;
+  font-size: 65%;
+  line-height: 1.6;
+  margin: 0;
 }
