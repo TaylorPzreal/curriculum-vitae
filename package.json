@@ -1,6 +1,6 @@
 {
   "name": "curriculum-vitae",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "个人简历最佳实践",
   "main": "index.js",
   "repository": "git@github.com:TaylorPzreal/curriculum-vitae.git",
