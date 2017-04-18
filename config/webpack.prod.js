@@ -9,50 +9,6 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 module.exports = webpackMerge(commonConfig, {
 
-  module: {
-    rules: [{
-      test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-          loader: 'css-loader'
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            plugins: function() {
-              return [
-                require('precss'),
-                require('autoprefixer')
-              ];
-            }
-          }
-        }, {
-          loader: 'sass-loader'
-        }],
-        publicPath: '/' // url路径处理
-      })
-    }, {
-      test: /\.css$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-          loader: 'css-loader'
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            plugins: function() {
-              return [
-                require('precss'),
-                require('autoprefixer')
-              ];
-            }
-          }
-        }],
-        publicPath: '/' // url 路径处理
-      })
-    }]
-  },
-
   plugins: [
     // new webpack.NoEmitOnErrorsPlugin(),
 

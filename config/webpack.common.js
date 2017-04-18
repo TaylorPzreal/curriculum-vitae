@@ -73,20 +73,74 @@ module.exports = {
         helpers.root('node_modules/font-awesome/fonts'),
         // helpers.root('node_modules/bootstrap/dist/fonts')
       ]
-    }
-    // , {
-    //   test: /\.css$/,
-    //   exclude: helpers.root('src', 'app'),
-    //   loader: ExtractTextPlugin.extract({
-    //     fallbackLoader: 'style-loader',
-    //     loader: 'css-loader?sourceMap'
-    //   })
-    // }, {
-    //   test: /\.css$/,
-    //   include: helpers.root('src', 'app'),
-    //   loader: 'raw-loader'
-    // }
-    ]
+    }, {
+      test: /\.scss$/,
+      include: helpers.root('src', 'app'),
+      use: [
+        'raw-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }
+      ]
+    }, {
+      test: /\.scss$/,
+      exclude: helpers.root('src', 'app'),
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [{
+          loader: 'css-loader',
+          options: {
+            sourceMap: true
+          }
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: function () {
+              return [
+                require('precss'),
+                require('autoprefixer')
+              ];
+            }
+          }
+        }, {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }]
+      })
+    }, {
+      test: /\.css$/,
+      exclude: helpers.root('src', 'app'),
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [{
+          loader: 'css-loader',
+          options: {
+            sourceMap: true
+          }
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: function () {
+              return [
+                require('precss'),
+                require('autoprefixer')
+              ];
+            }
+          }
+        }]
+      })
+    }, {
+      test: /\.css$/,
+      include: helpers.root('src', 'app'),
+      use: [
+        'raw-loader'
+      ]
+    }]
   },
 
   plugins: [
