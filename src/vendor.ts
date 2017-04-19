@@ -12,7 +12,9 @@ import 'rxjs';
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
 
+import 'hammerjs';
+
 // normalize.css
 import 'normalize.css';
 import 'animate.css';
-import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+import '@angular/material/prebuilt-themes/indigo-pink.css';

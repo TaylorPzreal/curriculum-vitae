@@ -1,4 +1,46 @@
+<header class="cv-header">
+  <nav>
+    <a href="" md-button>Home</a>
+    <a href="" md-button>Blog</a>
+    <a href="" md-button>About</a>
+
+    <a class="pull-right" md-button [mdMenuTriggerFor]="theme">Theme</a>
+    <md-menu #theme="mdMenu">
+      <button md-menu-item>
+        <md-icon class="text-dark">dashboard</md-icon>
+        <span>Material Dark</span>
+       </button>
+       <button md-menu-item>
+         <md-icon class="text-orange">dashboard</md-icon>
+         <span>Brief Coffee</span>
+       </button>
+      <button md-menu-item>
+        <md-icon class="text-blue">dashboard</md-icon>
+        <span>Blue Ocean</span>
+      </button>
+    </md-menu>
+
+    <button class="pull-right" md-button [mdMenuTriggerFor]="account">TaylorPzreal</button>
+    <md-menu #account="mdMenu">
+      <button md-menu-item>
+        <md-icon>account_box</md-icon>
+        <span>My Profile</span>
+       </button>
+       <button md-menu-item>
+         <md-icon>message</md-icon>
+         <span>My Message</span>
+       </button>
+      <button md-menu-item>
+        <md-icon>power_settings_new</md-icon>
+        <span>Log Out</span>
+      </button>
+    </md-menu>
+  </nav>
+</header>
+
 <main>
+
+
   <h1>Curriculum Vitae Show</h1>
   <!--<img src="../assets/images/angular.png">-->
 </main>

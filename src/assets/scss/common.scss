@@ -1,7 +1,6 @@
 // 在这里引入Font Awesome文件
 $fa-font-path: '/node_modules/font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
-
 @import 'color';
 
 html {
@@ -16,3 +15,22 @@ body {
   line-height: 1.6;
   margin: 0;
 }
+
+header.cv-header {
+  box-shadow: 0 .3rem .3rem $shadowcolor;
+  color: $text-light;
+  padding: .8rem 1.6rem;
+
+  .mat-button span {
+    font-family: 'Dancing Script ', cursive;
+  }
+}
+
+@each $color, $var in (dark, $dark), (blue, $blue) , (orange, $orange),  (white, $lightgray) {
+  .text-#{$color}, .mat-menu-item .mat-icon.text-#{$color} {
+    color: $var;
+  }
+}
+
+
+
