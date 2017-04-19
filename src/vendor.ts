@@ -15,3 +15,4 @@ import 'rxjs';
 // normalize.css
 import 'normalize.css';
 import 'animate.css';
+import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
