@@ -1,6 +1,6 @@
 # [curriculum-vitae](http://www.honeymorning.com)
     个人简历(Curriculum Vitae)
-    使用最新技术(Angular4.x + Bootstrap4.x + Sass + Webpack2.x)构建完美产品, 应用亮点技术有e2e, unit-testing.
+    使用最新技术(Angular4.x + @angular/material2 + Sass + Webpack2.x)构建完美产品, 应用亮点技术有e2e, unit-testing, code coverage, 回归测试
 
 ## 使用指南
 ```
@@ -59,7 +59,7 @@ protractor protractor.conf.js // 启动e2e testing
 7. 可拖拽自定义布局
 
 ### 4. 框架
-* 基于Angular4.x + MaterialDesign(OR Bootstrap4.x)
+* 基于Angular4.x + @angular/material2
 * Webpack2.x + Rollup
 * d3.js, three.js, lodash, moment, font-awesome, 可拖拽插件(Dragula)
 * Koa2.x(OR Express) + Mongodb + Redis
