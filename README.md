@@ -23,7 +23,7 @@ yarn test // 进行单元测试
 ```
 yarn global add protractor OR npm i -g protractor
 ```
-添加配置文件 [protracotr.conf.js](./protractor.conf.js)
+添加配置文件 [protractor.conf.js](./protractor.conf.js)
 添加e2e文件夹 [e2e](./e2e)
 
 ```

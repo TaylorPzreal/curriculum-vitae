@@ -55,7 +55,7 @@ module.exports = {
       }, 'angular2-template-loader']
     }, {
       test: /\.html$/,
-      loader: 'html-loader',
+      loader: 'raw-loader',
       include: [
         helpers.root('src')
       ]

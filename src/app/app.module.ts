@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdMenuModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   imports: [
     BrowserModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     MdButtonModule,
     MdCheckboxModule,
     MdToolbarModule,
