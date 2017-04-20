@@ -11,7 +11,8 @@
     "start:browser": "yarn run start -- --open",
     "start:dash": "webpack-dashboard -- cross-env NODE_ENV=development  webpack-dev-server --config webpack.config.js --profile --colors --hot",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config webpack.config.js --profile --colors --json > stats.json",
-    "test": "karma start"
+    "test": "karma start",
+    "e2e": "protractor start"
   },
   "dependencies": {
     "@angular/animations": "^4.0.2",
@@ -58,7 +59,10 @@
     "jasmine-spec-reporter": "^4.0.0",
     "karma": "^1.6.0",
     "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.2.0",
     "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.3",
     "node-sass": "^4.5.2",
@@ -71,6 +75,7 @@
     "sass-lint": "^1.10.2",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
+    "ts-node": "^3.0.2",
     "tslint": "^5.1.0",
     "tslint-loader": "^3.5.2",
     "typescript": "^2.2.2",
