@@ -55,7 +55,7 @@ module.exports = {
       }, 'angular2-template-loader']
     }, {
       test: /\.html$/,
-      loader: 'raw-loader',
+      loader: 'html-loader',
       include: [
         helpers.root('src')
       ]
@@ -170,7 +170,7 @@ module.exports = {
       htmlLoader: {
         minimize: DEVELOPMENT // workaround for ng2
       },
-      minimize: PRODUCTION,
+      // minimize: PRODUCTION,
       debug: DEVELOPMENT,
       options: {
         context: __dirname
