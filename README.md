@@ -18,9 +18,19 @@ yarn build // 打包生产项目
 
 yarn test // 进行单元测试
 
-yarn run e2e // 进行端到端测试
+```
+> 端到端测试(End To End Testing) 插件[Protractor](http://www.protractortest.org)
+```
+yarn global add protractor OR npm i -g protractor
+```
+添加配置文件 [protracotr.conf.js](./protractor.conf.js)
+添加e2e文件夹 [e2e](./e2e)
 
 ```
+yarn start //启动项目服务
+protractor protractor.conf.js // 启动e2e testing
+```
+
 
 ## 一. 目的
 - 追求唯美，可视化，简洁，大方的主题

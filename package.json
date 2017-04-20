@@ -11,8 +11,7 @@
     "start:browser": "yarn run start -- --open",
     "start:dash": "webpack-dashboard -- cross-env NODE_ENV=development  webpack-dev-server --config webpack.config.js --profile --colors --hot",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config webpack.config.js --profile --colors --json > stats.json",
-    "test": "karma start",
-    "e2e": "protractor start"
+    "test": "karma start"
   },
   "dependencies": {
     "@angular/animations": "^4.0.2",
@@ -39,6 +38,8 @@
     "zone.js": "^0.8.5"
   },
   "devDependencies": {
+    "@angular/cli": "^1.0.0",
+    "@angular/compiler-cli": "^4.0.2",
     "@types/d3": "^4.7.0",
     "@types/dragula": "^2.1.30",
     "@types/jasmine": "^2.5.47",

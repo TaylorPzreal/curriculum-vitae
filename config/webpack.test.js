@@ -28,6 +28,31 @@ module.exports = {
         loader: 'null-loader'
       },
       {
+        test: /\.scss$/,
+        exclude: helpers.root('src', 'app'),
+        use: [
+          'null-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        include: helpers.root('src', 'app'),
+        use: [{
+          loader: 'raw-loader'
+        }, {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }]
+      },
+      {
         test: /\.css$/,
         exclude: helpers.root('src', 'app'),
         loader: 'null-loader'
