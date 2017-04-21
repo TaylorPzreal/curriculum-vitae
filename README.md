@@ -1,6 +1,7 @@
 # [curriculum-vitae](http://www.honeymorning.com)
     个人简历(Curriculum Vitae)
-    使用最新技术(Angular4.x + @angular/material2 + Sass + Webpack2.x)构建完美产品, 应用亮点技术有e2e, unit-testing, code coverage, 回归测试
+    使用最新技术(Angular4.x + @angular/material2 + Sass + Webpack2.x)构建完美产品; 
+    应用亮点技术有e2e, unit-testing, code coverage, 回归测试
 
 ## 使用指南
 ```
@@ -19,7 +20,7 @@ yarn build // 打包生产项目
 yarn test // 进行单元测试
 
 ```
-> 端到端测试(End To End Testing) 插件[Protractor](http://www.protractortest.org)
+### 端到端测试(End To End Testing) 插件[Protractor](http://www.protractortest.org)
 ```
 yarn global add protractor OR npm i -g protractor
 ```
@@ -60,12 +61,13 @@ protractor protractor.conf.js // 启动e2e testing
 
 ### 4. 框架
 * 基于Angular4.x + @angular/material2
+* Karma + jasmine + coverage + protractor + Google Font
 * Webpack2.x + Rollup
 * d3.js, three.js, lodash, moment, font-awesome, 可拖拽插件(Dragula)
 * Koa2.x(OR Express) + Mongodb + Redis
 
 ### 5. 开发规划 2017-04-13
-- 第一周: 实现前端基本框架的搭建 至2017-04-22
+- 第一周: 实现前端框架的搭建并做好布局 至2017-04-22
 - 第二周: 实现前端基本页面的功能开发 至2017-04-29
 - 第三周: 接入Github登录 至2017-05-06
 - 第四周: 实现基本后端框架的搭建 至2017-05-13

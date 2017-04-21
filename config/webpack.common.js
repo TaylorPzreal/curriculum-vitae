@@ -170,7 +170,7 @@ module.exports = {
       htmlLoader: {
         minimize: DEVELOPMENT // workaround for ng2
       },
-      // minimize: PRODUCTION,
+      // minimize: PRODUCTION, // 注释掉这行, 会导致 Build PROD, html tag can't found.
       debug: DEVELOPMENT,
       options: {
         context: __dirname

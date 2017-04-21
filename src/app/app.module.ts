@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdMenuModule } from '@angular/material';
+import {
+  MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdMenuModule, MdProgressSpinnerModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -14,7 +16,8 @@ import { AppComponent } from './app.component';
     MdCheckboxModule,
     MdToolbarModule,
     MdIconModule,
-    MdMenuModule
+    MdMenuModule,
+    MdProgressSpinnerModule
   ],
   declarations: [
     AppComponent

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import '../assets/scss/common.scss';
 
 @Component({
-  selector: 'my-app',
+  selector: 'cv-app',
   templateUrl: './app.component.html',
   styleUrls: ['app.component.scss']
 })
