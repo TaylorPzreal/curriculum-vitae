@@ -2211,25 +2211,53 @@
   clip: auto; }
 
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  height: 100%; }
 
 body {
   background-color: #393e46;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   font-family: 'Josefin Sans', sans-serif, 'Abel', 'Pacifico', cursive;
   font-size: 65%;
   line-height: 1.6;
-  margin: 0; }
+  margin: 0;
+  min-height: 100%; }
 
-header.cv-header {
+cv-app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%; }
+
+.cv-header {
   box-shadow: 0 0.3rem 0.3rem #222831;
   color: #eee;
   padding: .8rem 1.6rem; }
-  header.cv-header .mat-button span {
+  .cv-header .mat-button span {
     font-family: 'Dancing Script ', cursive; }
 
+.cv-footer > p {
+  box-shadow: 0 -0.2rem 0.1rem #222831;
+  line-height: 3;
+  margin: auto;
+  text-align: center; }
+
 .text-dark, .mat-menu-item .mat-icon.text-dark {
-  color: #393e46; }
+  color: #222831; }
 
 .text-blue, .mat-menu-item .mat-icon.text-blue {
   color: #00adb5; }
@@ -2240,4 +2268,7 @@ header.cv-header {
 .text-white, .mat-menu-item .mat-icon.text-white {
   color: #eee; }
 
-/*# sourceMappingURL=app.b8226f5bf2ca2e6941ee67f9450c44d7.css.map*/
+.text-shadow-dark-2 {
+  text-shadow: 0.2rem 0.2rem 0.2rem #222831; }
+
+/*# sourceMappingURL=app.563c463dd25fee70931a41e01467006c.css.map*/
