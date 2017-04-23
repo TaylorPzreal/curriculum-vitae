@@ -18,7 +18,6 @@ import 'rxjs';
 
 import 'hammerjs';
 
-// normalize.css
 import 'normalize.css';
 import 'animate.css';
 import '@angular/material/prebuilt-themes/indigo-pink.css';

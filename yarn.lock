@@ -6151,7 +6151,7 @@ webpack-dashboard@^0.3.0:
     socket.io "^1.4.8"
     socket.io-client "^1.4.8"
 
-webpack-dev-middleware@^1.0.11, webpack-dev-middleware@^1.9.0:
+webpack-dev-middleware@^1.0.11:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.10.1.tgz#c6b4cf428139cf1aefbe06a0c00fdb4f8da2f893"
   dependencies:
@@ -6160,7 +6160,7 @@ webpack-dev-middleware@^1.0.11, webpack-dev-middleware@^1.9.0:
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
 
-webpack-dev-middleware@^1.10.2:
+webpack-dev-middleware@^1.10.2, webpack-dev-middleware@^1.9.0:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.10.2.tgz#2e252ce1dfb020dbda1ccb37df26f30ab014dbd1"
   dependencies:
@@ -6494,10 +6494,10 @@ yn@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-1.2.0.tgz#d237a4c533f279b2b89d3acac2db4b8c795e4a63"
 
+zone.js@0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.5.tgz#7906e017482cbff4c3f079c5c34305ce941f5ba2"
+
 zone.js@^0.7.2:
   version "0.7.8"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.7.8.tgz#4f3fe8834d44597f2639053a0fa438df34fffded"
-
-zone.js@^0.8.8:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.8.tgz#354f02bb7241af834bb83b310308a89ad012d3af"

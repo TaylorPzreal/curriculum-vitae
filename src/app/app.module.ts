@@ -27,7 +27,6 @@ import { HomeComponent } from './home';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     MdButtonModule,
     MdCheckboxModule,
     MdToolbarModule,
@@ -35,7 +34,8 @@ import { HomeComponent } from './home';
     MdMenuModule,
     MdProgressSpinnerModule,
     MdCardModule,
-    MdInputModule
+    MdInputModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,

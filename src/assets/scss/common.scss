@@ -47,7 +47,8 @@ cv-app {
 }
 
 @each $color, $var in (dark, $dark), (blue, $blue) , (orange, $orange),  (white, $lightgray) {
-  .text-#{$color}, .mat-menu-item .mat-icon.text-#{$color} {
+  .text-#{$color},
+  .mat-menu-item .mat-icon.text-#{$color} {
     color: $var;
   }
 }
@@ -56,3 +57,11 @@ cv-app {
   text-shadow: .2rem .2rem .2rem $dark;
 }
 
+.cv-label {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 36px;  
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: .2rem .2rem .2rem $dark;
+}
