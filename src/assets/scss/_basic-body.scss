@@ -1,0 +1,18 @@
+// 设置页面Html的基本样式
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  background-color: $themecolor;
+  color: $white;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Josefin Sans', sans-serif, 'Abel', 'Pacifico', cursive;
+  font-size: 65%;
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100%;
+}

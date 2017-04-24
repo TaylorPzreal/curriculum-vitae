@@ -1,0 +1,31 @@
+// 这里只包含 width, height, padding, margin的设置
+
+.full-width {
+  width: 100%;
+}
+
+// Padding
+.no-padding {
+  padding: 0;
+}
+
+.no-padding-l {
+  padding-left: 0;
+}
+
+.no-padding-r {
+  padding-right: 0;
+}
+
+// Margin
+.no-margin {
+  margin: auto;
+}
+
+.no-margin-l {
+  margin-left: auto;
+}
+
+.no-margin-r {
+  margin-right: auto;
+}
