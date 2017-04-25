@@ -1,4 +1,6 @@
 // 这里只包含 width, height, padding, margin的设置
+$numlist: 4, 6, 8, 10, 16, 20, 24, 32, 40, 48, 60;
+$directions: 'top', 'right', 'bottom', 'left';
 
 .full-width {
   width: 100%;
@@ -28,4 +30,12 @@
 
 .no-margin-r {
   margin-right: auto;
+}
+
+@each $direction in $directions {
+  @each $num in $numlist {
+    .margin-#{$direction}-#{$num} {
+      margin-#{$direction}: #{$num / 10}rem;
+    }
+  }
 }

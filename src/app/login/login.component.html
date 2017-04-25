@@ -1,33 +1,39 @@
 <section class="containerX">
   <div class="container">
-    <div fxFlex fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="">
-      <md-card fxFlex>
-        <md-card-header>
-          <md-card-title>Welcome Login CV</md-card-title>
-        </md-card-header>
+    <div class="margin-top-40 margin-bottom-40" fxFlex fxLayoutAlign="center center">
+      <div fxFlex="60%" fxFlex.lt-sm="100%" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+        <md-card fxFlex="50%">
+          <md-card-header>
+            <md-card-title>Welcome Login CV</md-card-title>
+          </md-card-header>
 
-        <md-card-content>
-          <form>
-            <p>
-              <md-input-container>
-                <input type="" name="" value="" mdInput placeholder="Name">
-              </md-input-container>
-            </p>
-          </form>
-        </md-card-content>
+          <md-card-content>
+            <form>
+              <div fxLayout="column">
+                <md-input-container fxFlex="100%">
+                  <input type="text" name="" value="" mdInput placeholder="Name">
+                </md-input-container>
+                <md-input-container fxFlex="100%">
+                  <input type="text" mdInput placeholder="Password">
+                </md-input-container>
+              </div>
+            </form>
+          </md-card-content>
 
-        <md-card-actions>
-          <button type="" md-button>Log In</button>
-        </md-card-actions>
+          <md-card-actions fxLayoutAlign="center center">
+            <button type="" md-raised-button>Log In</button>
+          </md-card-actions>
 
-        <md-card-footer>
-          <button md-button>Sign Up</button>
-          <button md-button>Forget Password?</button>
-        </md-card-footer>
-      </md-card>
-      <md-card fxFlex>
-        right content.
-      </md-card>
+          <md-card-footer>
+            <button md-button fxFlex fxFlexAlign="start">Sign Up</button>
+            <button md-button fxFlex fxFlexAlign="end">Forget Password?</button>
+          </md-card-footer>
+        </md-card>
+        <md-card fxFlex="50%">
+          right content.
+        </md-card>
+      </div>
+
     </div>
   </div>
 
