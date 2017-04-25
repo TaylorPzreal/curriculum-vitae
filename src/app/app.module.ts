@@ -13,8 +13,12 @@ import {
   MdMenuModule,
   MdProgressSpinnerModule,
   MdCardModule,
-  MdInputModule
+  MdInputModule,
+  MdGridListModule
 } from '@angular/material';
+
+// flex layout
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -35,6 +39,8 @@ import { HomeComponent } from './home';
     MdProgressSpinnerModule,
     MdCardModule,
     MdInputModule,
+    MdGridListModule,
+    FlexLayoutModule,
     AppRoutingModule
   ],
   declarations: [

@@ -9,6 +9,7 @@ import '@angular/forms';
 import '@angular/router';
 import '@angular/compiler';
 import '@angular/animations';
+import '@angular/flex-layout';
 
 // RxJS
 import 'rxjs';
