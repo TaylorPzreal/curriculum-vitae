@@ -1,1 +1,14 @@
+@import '../../assets/scss/color';
 
+.login-bg {
+  background-color: $dark;
+  background-image: url('src/assets/images/usercenter/login_bg_2.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.mat-card-header .mat-card-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.8rem;
+}

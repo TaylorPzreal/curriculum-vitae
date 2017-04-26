@@ -4,6 +4,7 @@ $fa-font-path: '/node_modules/font-awesome/fonts';
 @import 'color';
 @import 'basic-body';
 @import 'basic-style';
+@import 'basic-layout';
 
 cv-app {
   display: flex;
@@ -38,6 +39,10 @@ cv-app {
   }
 }
 
+.box-shadow-dark-3 {
+  box-shadow: .3rem .3rem .3rem $dark;
+}
+
 .text-shadow-dark-2 {
   text-shadow: .2rem .2rem .2rem $dark;
 }
@@ -45,7 +50,7 @@ cv-app {
 .cv-label {
   font-size: 1rem;
   font-weight: 500;
-  line-height: 36px;  
+  line-height: 36px;
   padding: 0 1.6rem;
   text-align: center;
   text-shadow: .2rem .2rem .2rem $dark;

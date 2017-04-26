@@ -1,0 +1,17 @@
+// 定义基本的布局样式 包括 position, display, float, ...
+
+.static {
+  position: static;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.flex {
+  display: flex;
+}
