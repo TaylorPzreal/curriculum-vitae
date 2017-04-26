@@ -36,7 +36,7 @@
     "normalize.css": "^6.0.0",
     "rxjs": "^5.3.0",
     "three": "^0.85.0",
-    "zone.js": "0.8.7"
+    "zone.js": "^0.8.9"
   },
   "devDependencies": {
     "@angular/cli": "^1.0.0",
