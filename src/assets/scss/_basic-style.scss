@@ -1,19 +1,7 @@
 // 这里只包含 width, height, padding, margin的设置
-$numlist: 4,
-6,
-8,
-10,
-16,
-20,
-24,
-32,
-40,
-48,
-60;
-$directions: 'top',
-'right',
-'bottom',
-'left';
+$numlist: 4, 6, 8, 10, 16, 20, 24, 32, 40, 48, 60;
+$directions: 'top', 'right', 'bottom', 'left';
+
 .full-width {
     width: 100%;
 }
@@ -44,11 +32,16 @@ $directions: 'top',
     margin-right: auto;
 }
 
+// 定义Margin, Padding class
 @mixin container($name) {
     @each $direction in $directions {
         @each $num in $numlist {
             .#{$name}-#{$direction}-#{$num} {
                 #{$name}-#{$direction}: #{$num / 10}rem;
+            }
+
+            .#{$name}-#{$num} {
+                #{$name}: #{$num / 10}rem;
             }
         }
     }

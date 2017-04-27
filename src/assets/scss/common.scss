@@ -56,3 +56,9 @@ cv-app {
   text-align: center;
   text-shadow: .2rem .2rem .2rem $dark;
 }
+
+// 定义font-awesome基准
+.fa {
+  transform-origin: bottom;
+  transform: scale(1.2);
+}

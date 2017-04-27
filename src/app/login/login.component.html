@@ -2,9 +2,17 @@
   <div class="container">
     <div class="margin-top-40 margin-bottom-40" fxFlex fxLayoutAlign="center center">
       <md-card class="box-shadow-dark-3" fxFlex="60%" fxFlex.lt-sm="100%" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
-        <div class="relative padding-bottom-24" fxFlex="50%">
+
+        <div class="login-bg" fxFlex="50%">
+          <!--<img src="/src/assets/images/usercenter/login_bg_2.jpg" alt="">-->
+          <div class="starme">
+            <a href="https://github.com/TaylorPzreal/curriculum-vitae" target="_blank" rel="noopener noreferrer" md-button>Star CV</a>
+          </div>
+        </div>
+
+        <div class="relative padding-bottom-24 padding-16" fxFlex="50%">
           <md-card-header>
-            <md-card-title>Welcome Login CV</md-card-title>
+            <md-card-title>Welcome To CV</md-card-title>
           </md-card-header>
 
           <md-card-content>
@@ -21,7 +29,8 @@
           </md-card-content>
 
           <md-card-actions fxLayoutAlign="center center">
-            <button type="" md-raised-button>Log In</button>
+            <button md-raised-button class="mat-default"><i class="fa fa-github mat-primary"></i> Log in with Github</button>
+            <button type="" class="mat-primary" md-raised-button><md-icon>arrow_forward</md-icon>Log In</button>
           </md-card-actions>
 
           <md-card-footer>
@@ -30,11 +39,6 @@
           </md-card-footer>
 
         </div>
-
-        <div class="login-bg" fxFlex="50%">
-          <!--<img src="/src/assets/images/usercenter/login_bg_2.jpg" alt="">-->
-        </div>
-
       </md-card>
     </div>
   </div>
