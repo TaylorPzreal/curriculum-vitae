@@ -10,7 +10,7 @@ body {
   color: $white;
   display: flex;
   flex-direction: row;
-  font-family: 'Josefin Sans', sans-serif, 'Abel', 'Pacifico', cursive;
+  font-family: $body-family;
   font-size: 65%;
   line-height: 1.6;
   margin: 0;
