@@ -65,12 +65,12 @@ module.exports = {
         'url-loader?limit=50000&name=src/assets/images/[name].[hash].[ext]' : 'url-loader?limit=50000&name=src/assets/images/[name].[hash].[ext]&publicPath=/dist/',
       include: [helpers.root('src/assets/images')]
     }, {
-      test: /\.(ttf|eot|woff|woff2|svg)([\w\?\=\.]*)?$/,
+      test: /\.(ttf|eot|woff|woff2|svg)([\w\?=\.]*)?$/,
       use: DEVELOPMENT ?
         'file-loader?name=fonts/[name].[hash].[ext]' : 'file-loader?name=fonts/[name].[hash].[ext]&publicPath=/dist/',
       include: [
         // helpers.root('fonts'),
-        helpers.root('node_modules/font-awesome/fonts'),
+        helpers.root('node_modules/font-awesome/fonts')
         // helpers.root('node_modules/bootstrap/dist/fonts')
       ]
     }, {
@@ -98,7 +98,7 @@ module.exports = {
         }, {
           loader: 'postcss-loader',
           options: {
-            plugins: function () {
+            plugins: () => {
               return [
                 require('precss'),
                 require('autoprefixer')
@@ -125,7 +125,7 @@ module.exports = {
         }, {
           loader: 'postcss-loader',
           options: {
-            plugins: function () {
+            plugins: () => {
               return [
                 require('precss'),
                 require('autoprefixer')

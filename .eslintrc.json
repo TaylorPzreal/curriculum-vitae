@@ -4,6 +4,7 @@
     "node": true,
     "es6": true
   },
+  "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -25,6 +26,44 @@
     "object-curly-spacing": ["error", "never"],
     "array-bracket-spacing": ["error", "never"],
     "computed-property-spacing": ["error", "never"],
-    "space-infix-ops": 2
+    "space-infix-ops": 2,
+    "prefer-const": ["error", {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": false
+    }],
+    "no-alert": "error",
+    "no-var": "error",
+    "no-new-object": "error",
+    "object-shorthand": ["error", "always"],
+    "no-array-constructor": "error",
+    "prefer-template": "error",
+    "template-curly-spacing": ["error", "never"],
+    "no-useless-escape": "error",
+    "no-loop-func": "error",
+    "prefer-rest-params": "error",
+    "no-new-func": "error",
+    "space-before-function-paren": ["error", "never"],
+    "space-before-blocks": ["error", "always"],
+    "no-param-reassign": ["error", {
+      "props": true
+    }],
+    "prefer-arrow-callback": ["error", {
+      "allowNamedFunctions": true,
+      "allowUnboundThis": true
+    }],
+    "arrow-spacing": ["error", {
+      "before": true,
+      "after": true
+    }],
+    "arrow-parens": ["error", "as-needed", {
+      "requireForBlockBody": true
+    }],
+    "arrow-body-style": ["error", "as-needed", {
+      "requireReturnForObjectLiteral": false
+    }],
+    "no-confusing-arrow": ["error", {
+      "allowParens": true
+    }]
+    // "prefer-spread":"error"
   }
 }
