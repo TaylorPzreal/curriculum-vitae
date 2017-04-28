@@ -64,6 +64,5 @@
     "no-confusing-arrow": ["error", {
       "allowParens": true
     }]
-    // "prefer-spread":"error"
   }
 }
