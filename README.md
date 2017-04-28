@@ -58,6 +58,8 @@ protractor protractor.conf.js // 启动e2e testing
 5. PWA实践
 6. 后期可以翻译成双语(英汉)
 7. 可拖拽自定义布局
+8. 自定义一个下雨的基于angular4的插件(用上[rollup.js](https://rollupjs.org/))
+9. 主题可选择甚至自定义
 
 ### 4. 框架
 * 基于Angular4.x + @angular/material2

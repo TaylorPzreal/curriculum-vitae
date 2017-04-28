@@ -26,6 +26,7 @@ import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
+import { DatavComponent } from './datav';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { HomeComponent } from './home';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DatavComponent
   ],
   bootstrap: [ AppComponent ]
 })

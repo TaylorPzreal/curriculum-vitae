@@ -3,6 +3,7 @@
   <nav>
     <a routerLink="/" routerLinkActive="active" class="text-shadow-dark-2" md-button>Home</a>
     <a href="" class="text-shadow-dark-2" md-button>Blog</a>
+    <a routerLink="/datav" routerLinkActive="active" class="text-shadow-dark-2" md-button>DataV</a>
     <a href="" class="text-shadow-dark-2" md-button>About</a>
 
     <a class="pull-right text-shadow-dark-2" md-button [mdMenuTriggerFor]="theme">Theme</a>
@@ -37,7 +38,7 @@
       </button>
     </md-menu>
 
-    <span class="pull-right text-orange cv-label">2017-04-22</span>
+    <span class="pull-right text-orange cv-label">{{currentTime}}</span>
   </nav>
 </header>
 
