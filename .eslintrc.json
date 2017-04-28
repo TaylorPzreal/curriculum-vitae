@@ -63,6 +63,7 @@
     }],
     "no-confusing-arrow": ["error", {
       "allowParens": true
-    }]
+    }],
+    "no-useless-constructor":"error"
   }
 }
