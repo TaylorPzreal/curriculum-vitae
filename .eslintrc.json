@@ -64,6 +64,15 @@
     "no-confusing-arrow": ["error", {
       "allowParens": true
     }],
-    "no-useless-constructor":"error"
+    "no-useless-constructor": "error",
+    "no-duplicate-imports": "error",
+    "no-iterator": "error",
+    "no-restricted-syntax": ["error", "WithStatement", "BinaryExpression[operator='in']"],
+    "dot-notation": "error",
+    "no-undef": "error",
+    "one-var": ["error", "never"],
+    "no-plusplus": ["error", {
+      "allowForLoopAfterthoughts": true
+    }]
   }
 }
