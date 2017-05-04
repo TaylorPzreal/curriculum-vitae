@@ -18,15 +18,15 @@
     "angular": true
   },
   "rules": {
-    "camelcase": 2,
-    "curly": 2,
+    "camelcase": "error",
+    "curly": ["error", "all"],
     "brace-style": ["error", "1tbs"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "object-curly-spacing": ["error", "never"],
     "array-bracket-spacing": ["error", "never"],
     "computed-property-spacing": ["error", "never"],
-    "space-infix-ops": 2,
+    "space-infix-ops": "error",
     "prefer-const": ["error", {
       "destructuring": "any",
       "ignoreReadBeforeAssign": false
@@ -42,7 +42,7 @@
     "no-loop-func": "error",
     "prefer-rest-params": "error",
     "no-new-func": "error",
-    "space-before-function-paren": ["error", "never"],
+    "space-before-function-paren": ["error", {"anonymous": "always", "named": "never", "asyncArrow": "always"}],
     "space-before-blocks": ["error", "always"],
     "no-param-reassign": ["error", {
       "props": true
@@ -73,6 +73,7 @@
     "one-var": ["error", "never"],
     "no-plusplus": ["error", {
       "allowForLoopAfterthoughts": true
-    }]
+    }],
+    "eqeqeq": ["error", "always"]
   }
 }
