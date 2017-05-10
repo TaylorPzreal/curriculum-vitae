@@ -1,0 +1,9 @@
+@import '../../assets/scss/color';
+.cv-editor {
+  background-color: $white;
+  color: $shadowcolor;
+
+  .ql-container {
+    min-height: 28rem;
+  }
+}

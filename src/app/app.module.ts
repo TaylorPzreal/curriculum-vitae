@@ -27,6 +27,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 import { DatavComponent } from './datav';
+import { BlogListComponent } from './blog-list';
+import { BlogEditComponent } from './blog-edit';
 
 @NgModule({
   imports: [
@@ -48,7 +50,9 @@ import { DatavComponent } from './datav';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    DatavComponent
+    DatavComponent,
+    BlogListComponent,
+    BlogEditComponent
   ],
   bootstrap: [ AppComponent ]
 })

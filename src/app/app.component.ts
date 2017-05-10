@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.goToLogin();
+    // this.goToLogin();
     this.currentTime = moment().format('ddd MMM Do YYYY');
   }
 
