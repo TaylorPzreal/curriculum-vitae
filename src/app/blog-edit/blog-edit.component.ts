@@ -56,17 +56,17 @@ export class BlogEditComponent implements OnInit {
         header: [1, 2, 3, 4, 5, 6, false]
       }],
 
-      [{
-        color: []
-      }, {
-        background: []
-      }], // dropdown with defaults from theme
-      [{
-        font: []
-      }],
-      [{
-        align: []
-      }],
+      // [{
+      //   color: []
+      // }, {
+      //   background: []
+      // }], // dropdown with defaults from theme
+      // [{
+      //   font: []
+      // }],
+      // [{
+      //   align: []
+      // }],
 
       ['clean'] // remove formatting button
     ];

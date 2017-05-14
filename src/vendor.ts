@@ -18,6 +18,10 @@ import 'rxjs';
 // You can import js, ts, css, sass, ...
 
 import 'hammerjs';
+import 'three';
+import 'pixi.js';
+import 'quill';
+import 'moment';
 
 import 'normalize.css';
 import 'animate.css';
