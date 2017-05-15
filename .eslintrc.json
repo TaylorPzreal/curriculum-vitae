@@ -42,7 +42,7 @@
     "no-loop-func": "error",
     "prefer-rest-params": "error",
     "no-new-func": "error",
-    "space-before-function-paren": ["error", {"anonymous": "always", "named": "never", "asyncArrow": "always"}],
+    "space-before-function-paren": ["error", "always"],
     "space-before-blocks": ["error", "always"],
     "no-param-reassign": ["error", {
       "props": true
@@ -74,6 +74,21 @@
     "no-plusplus": ["error", {
       "allowForLoopAfterthoughts": true
     }],
-    "eqeqeq": ["error", "always"]
+    "eqeqeq": ["error", "always"],
+    "spaced-comment": ["error", "always", {
+      "exceptions": ["-", "+"]
+    }],
+    "indent": ["error", 2],
+    "keyword-spacing": "error",
+    "eol-last": ["error", "always"],
+    "no-whitespace-before-property": "error",
+    "newline-per-chained-call": ["error", {
+      "ignoreChainWithDepth": 2
+    }],
+    "padded-blocks": ["error", "always"],
+    "space-in-parens": "error",
+    "max-len": ["error", 100],
+    "comma-style": ["error", "last"],
+    "comma-dangle": ["error", "always-multiline"]
   }
 }
