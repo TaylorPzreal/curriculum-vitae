@@ -103,7 +103,8 @@ module.exports = {
                 require('precss'),
                 require('autoprefixer')
               ];
-            }
+            },
+            sourceMap: true
           }
         }, {
           loader: 'sass-loader',
@@ -130,7 +131,8 @@ module.exports = {
                 require('precss'),
                 require('autoprefixer')
               ];
-            }
+            },
+            sourceMap: true
           }
         }]
       })
