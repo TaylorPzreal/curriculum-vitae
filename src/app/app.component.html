@@ -22,7 +22,9 @@
       </button>
     </md-menu>
 
-    <button class="pull-right text-shadow-dark-2" md-button [mdMenuTriggerFor]="account">TaylorPzreal</button>
+    <a routerLink="/login" routerLinkActive="active" class="pull-right text-shadow-dark-2" md-button>Login</a>
+
+    <!--<button class="pull-right text-shadow-dark-2"  md-button [mdMenuTriggerFor]="account">TaylorPzreal</button>
     <md-menu #account="mdMenu">
       <button md-menu-item>
         <md-icon>account_box</md-icon>
@@ -36,7 +38,7 @@
         <md-icon>power_settings_new</md-icon>
         <span>Log Out</span>
       </button>
-    </md-menu>
+    </md-menu>-->
 
     <span class="pull-right text-orange cv-label">{{currentTime}}</span>
   </nav>

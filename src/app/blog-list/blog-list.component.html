@@ -1,9 +1,60 @@
-<section>
-  <header>
+<section fxFlex="100%" fxLayout="column" fxLayoutAlign="start center">
+  <header class="container margin-top-20">
     <a routerLink="/blogedit" routerLinkActive="active" class="text-shadow-dark-2" md-button>
-    <md-icon class="text-dark">add</md-icon> Add Blog
+      <md-icon class="text-dark">add</md-icon> Add Blog
     </a>
   </header>
 
+  <div class="containerX" fxFlex="100%" fxLayoutAlign="center center">
+    <div class="container">
+      <div class="margin-top-20 margin-bottom-20" fxFlex="100%" fxLayoutAlign="space-around stretch">
+
+        <md-card class="box-shadow-dark-3 overflow-auto" fxFlex="32%" fxFlex.lt-sm="100%" fxLayout="column">
+          <md-card-header>
+            <md-card-title>CSS动画</md-card-title>2017-05-19 07:35:11
+          </md-card-header>
+
+          <md-card-content>
+            <code>
+              Transform, Transtion, Animation
+              <pre>
+              <code class="javascript">
+let a = 2;
+              </code>
+            </pre>
+            </code>
+          </md-card-content>
+        </md-card>
+
+        <md-card class="box-shadow-dark-3 css-gradient overflow-auto" fxFlex="32%" fxFlex.lt-sm="100%" fxlayout="column">
+          <md-card-header>
+            <md-card-title>CSS渐变</md-card-title>2017-05-19 07:35:21
+          </md-card-header>
+
+          <md-card-content class="css-gradienst">
+            <pre>
+              <code class="css">
+                {{cssGradienst}}
+              </code>
+            </pre>
+          </md-card-content>
+        </md-card>
+
+        <md-card class="box-shadow-dark-3 overflow-auto" fxFlex="32%" fxFlex.lt-sm="100%" fxLayout="column">
+          <md-card-header>
+            <md-card-title>Card布局</md-card-title>2017-05-19 07:35:24
+          </md-card-header>
+
+          <md-card-content>
+            <pre>
+              <code class="html">
+                {{cardhtml}}
+              </code>
+            </pre>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </div>
 
 </section>

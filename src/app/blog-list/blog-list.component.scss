@@ -1,0 +1,14 @@
+$color1: rgba(142, 246, 228, .9);
+$color2: rgba(51, 204, 204, .9);
+
+.css-gradient {
+  background: linear-gradient(to bottom left, $color1, $color2);
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
