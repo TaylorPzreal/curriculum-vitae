@@ -1,0 +1,31 @@
+body {
+    color: #61443e;
+    font-family: monospace;
+    font-size: 13px;
+    text-align: center;
+
+    background-color: #fff;
+    margin: auto;
+    overflow: hidden;
+}
+
+a {
+    color: #a06851;
+}
+
+#info {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 5px;
+}
+
+#oldie {
+    background: rgb(100, 0, 0);
+    color: #fff;
+    margin-top: 10em;
+}
+
+#oldie a {
+    color: #fff;
+}
