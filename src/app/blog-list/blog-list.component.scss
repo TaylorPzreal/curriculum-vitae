@@ -12,3 +12,41 @@ $color2: rgba(51, 204, 204, .9);
 .overflow-auto {
   overflow: auto;
 }
+
+.css-animation {
+  background: linear-gradient(to bottom left, $color1, $color2);
+  width: 100px;
+  height: 100px;
+  animation: cv-css-rotate 1s linear 3s infinite alternate;
+}
+
+@keyframes cv-css-rotate {
+  0% {
+    background: linear-gradient(to bottom right, $color1, $color2);
+    transform: rotate(0);
+  }
+  25% {
+    background: linear-gradient(to bottom left, $color1, $color2);
+    // width: 120px;
+    // height: 120px;
+    transform: rotate(90deg);
+  }
+  50% {
+    background: linear-gradient(to top left, $color1, $color2);
+    // width: 130px;
+    // height: 130px;
+    transform: rotate(180deg);
+  }
+  75% {
+    // width: 120px;
+    // height: 120px;
+    transform: rotate(90deg);
+    background: linear-gradient(to top right, $color1, $color2);
+  }
+  100% {
+    // width: 100px;
+    // height: 100px;
+    transform: rotate(0deg);
+    background: linear-gradient(to bottom right, $color1, $color2)
+  }
+}
