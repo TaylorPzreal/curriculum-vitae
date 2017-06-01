@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const os = require('os');
+
 const helpers = require('./helpers');
 
 // 定义环境变量
@@ -197,21 +200,41 @@ module.exports = {
     }),
 
     // JS打包压缩
-    new UglifyJSPlugin({
-      sourceMap: DEVELOPMENT,
-      beautify: DEVELOPMENT, // 最紧凑的输出
-      compress: {
-        warnings: DEVELOPMENT,
-        drop_debugger: DEVELOPMENT,
-        screw_ie8: true
-      },
-      mangle: {
+    // new UglifyJSPlugin({
+    //   sourceMap: DEVELOPMENT,
+    //   beautify: DEVELOPMENT, // 最紧凑的输出
+    //   compress: {
+    //     warnings: DEVELOPMENT,
+    //     drop_debugger: DEVELOPMENT,
+    //     screw_ie8: true
+    //   },
+    //   mangle: {
+    //     // Skip mangling these
+    //     except: ['$super', '$', 'exports', 'require'],
+    //     screw_ie8: true,
+    //     keep_fnames: true
+    //   },
+    //   comments: DEVELOPMENT
+    // }),
+
+    new ParallelUglifyPlugin({
+      workerCount: os.cpus().length,
+      cacheDir: '.cache/',
+      uglifyJS: {
+        compress: {
+          warnings: DEVELOPMENT,
+          drop_debugger: true,
+          drop_console: true
+        },
+        comments: DEVELOPMENT,
+        sourceMap: true,
+        mangle: {
         // Skip mangling these
         except: ['$super', '$', 'exports', 'require'],
         screw_ie8: true,
         keep_fnames: true
-      },
-      comments: DEVELOPMENT
+        }
+      }
     }),
 
     // 定义环境变量

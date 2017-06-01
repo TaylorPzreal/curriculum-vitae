@@ -22,6 +22,7 @@ import 'three';
 import 'pixi.js';
 import 'quill';
 import 'moment';
+import 'highlight.js';
 
 import 'normalize.css';
 import 'animate.css';
