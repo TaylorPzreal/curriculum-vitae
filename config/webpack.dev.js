@@ -7,25 +7,28 @@ const SERVER = {
   port: '9000'
 };
 
-module.exports = webpackMerge(commonConfig, {
+module.exports = function(options) {
 
-  // module: {
-  //   rules: []
-  // },
+  return webpackMerge(commonConfig, {
 
-  plugins: [
-    new ExtractTextPlugin('[name].css')
-  ],
+    // module: {
+    //   rules: []
+    // },
 
-  devServer: {
-    historyApiFallback: true,
-    stats: 'minimal',
-    compress: true,
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000
-    },
-    host: SERVER.host,
-    port: SERVER.port
-  }
-});
+    plugins: [
+      new ExtractTextPlugin('[name].css')
+    ],
+
+    devServer: {
+      historyApiFallback: true,
+      stats: 'minimal',
+      compress: true,
+      watchOptions: {
+        aggregateTimeout: 300,
+        poll: 1000
+      },
+      host: SERVER.host,
+      port: SERVER.port
+    }
+  });
+}
