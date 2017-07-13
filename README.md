@@ -1,6 +1,6 @@
-# [curriculum-vitae](http://www.honeymorning.com)  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![TravisTest](https://travis-ci.org/TaylorPzreal/curriculum-vitae.svg?branch=master)](https://travis-ci.org/TaylorPzreal/curriculum-vitae.svg?branch=master)
+# [curriculum-vitae](http://www.honeymorning.com)  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![TravisTest](https://travis-ci.org/TaylorPzreal/curriculum-vitae.svg?branch=master)](https://travis-ci.org/TaylorPzreal/curriculum-vitae.svg?branch=master) [![GitHub version](https://badge.fury.io/gh/TaylorPzreal%2Fcurriculum-vitae.svg)](https://badge.fury.io/gh/TaylorPzreal%2Fcurriculum-vitae) [![dependencies](https://david-dm.org/TaylorPzreal%2Fcurriculum-vitae/status.svg)](https://david-dm.org/TaylorPzreal%2Fcurriculum-vitae) 
     个人简历(Curriculum Vitae)
-    使用最新技术(Angular4.x + @angular/material2 + Sass + Webpack2.x)构建完美产品; 
+    使用最新技术(Angular4.x + @angular/material2 + Sass + Webpack3.x)构建完美产品; 
     应用亮点技术有e2e, unit-testing, code coverage, 回归测试
 
 ## 使用指南
