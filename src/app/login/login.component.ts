@@ -3,23 +3,24 @@ import {
   OnInit
 } from '@angular/core';
 
-// import {
-//   LoginService
-// } from './login.service';
+import {
+  LoginService
+} from './login.service';
 
 @Component({
   selector: 'cv-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss'],
-  // providers: [LoginService]
+  providers: [LoginService]
 })
 
 export class LoginComponent implements OnInit {
 
-  // constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService) {}
 
   public ngOnInit() {
     // this.getData();
+    this.loginWithGithub();
   }
 
   // private getData() {
@@ -32,4 +33,12 @@ export class LoginComponent implements OnInit {
   //     }
   //   );
   // }
+
+  private loginWithGithub() {
+    this.loginService.loginWithGithub().subscribe((result: any) => {
+      console.warn(result);
+    }, (error: any) => {
+      console.warn(error);
+    });
+  }
 }
