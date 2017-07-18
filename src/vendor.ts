@@ -9,7 +9,6 @@ import '@angular/forms';
 import '@angular/router';
 import '@angular/compiler';
 import '@angular/animations';
-import '@angular/flex-layout';
 
 // RxJS
 import 'rxjs';
@@ -18,12 +17,5 @@ import 'rxjs';
 // You can import js, ts, css, sass, ...
 
 import 'hammerjs';
-import 'three';
-import 'pixi.js';
-import 'quill';
-import 'moment';
-import 'highlight.js';
 
 import 'normalize.css';
-import 'animate.css';
-import '@angular/material/prebuilt-themes/indigo-pink.css';

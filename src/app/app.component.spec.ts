@@ -2,7 +2,6 @@ import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 import 'hammerjs';
 import { TestBed } from '@angular/core/testing';
-import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -11,7 +10,6 @@ describe('App', () => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [
-        MaterialModule
       ]
     }).compileComponents();
   });

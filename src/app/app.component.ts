@@ -2,7 +2,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import * as moment from 'moment';
 import 'rxjs/add/operator/switchMap';
 import '../assets/scss/common.scss';
 
@@ -21,7 +20,6 @@ export class AppComponent implements OnInit {
 
   public ngOnInit() {
     // this.goToLogin();
-    this.currentTime = moment().format('ddd MMM Do YYYY');
   }
 
   private goToLogin() {

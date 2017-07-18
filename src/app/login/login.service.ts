@@ -25,6 +25,13 @@ export class LoginService {
       .map(this.extractData)
       .catch(this.handleError);
   }
+
+  public loginWithGithub() {
+    return this.http.get(this.baseUrl + 'account/loginWithGithub').map((res: Response) => {
+      return res.json();
+    }).catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     const body = res.json();
     return body.data || {};
@@ -42,12 +49,6 @@ export class LoginService {
     }
     console.error(errMsg);
     return Observable.throw(errMsg);
-  }
-
-  public loginWithGithub () {
-    return this.http.get(this.baseUrl + 'account/loginWithGithub').map((res: Response) => {
-      return res.json();
-    }).catch(this.handleError);
   }
 
 }

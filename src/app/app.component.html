@@ -1,55 +1,16 @@
 <!--公共顶部-->
 <header class="cv-header">
   <nav>
-    <a routerLink="/" routerLinkActive="active" class="text-shadow-dark-2" md-button>Home</a>
-    <a routerLink="/bloglist" routerLinkActive="active" class="text-shadow-dark-2" md-button>Blog</a>
-    <a routerLink="/datav" routerLinkActive="active" class="text-shadow-dark-2" md-button>DataV</a>
-    <a href="" class="text-shadow-dark-2" md-button>About</a>
+    <a routerLink="/" routerLinkActive="active" class="text-shadow-dark-2">Home</a>
+    <a routerLink="/bloglist" routerLinkActive="active" class="text-shadow-dark-2">Blog</a>
+    <a href="" class="text-shadow-dark-2">About</a>
 
-    <a class="pull-right text-shadow-dark-2" md-button [mdMenuTriggerFor]="theme">Theme</a>
-    <md-menu #theme="mdMenu">
-      <button md-menu-item>
-        <md-icon class="text-dark">dashboard</md-icon>
-        <span>Material Dark</span>
-       </button>
-      <button md-menu-item>
-         <md-icon class="text-orange">dashboard</md-icon>
-         <span>Brief Coffee</span>
-       </button>
-      <button md-menu-item>
-        <md-icon class="text-blue">dashboard</md-icon>
-        <span>Blue Ocean</span>
-      </button>
-    </md-menu>
-
-    <a routerLink="/login" routerLinkActive="active" class="pull-right text-shadow-dark-2" md-button>Login</a>
-
-    <!--<button class="pull-right text-shadow-dark-2"  md-button [mdMenuTriggerFor]="account">TaylorPzreal</button>
-    <md-menu #account="mdMenu">
-      <button md-menu-item>
-        <md-icon>account_box</md-icon>
-        <span>My Profile</span>
-       </button>
-      <button md-menu-item>
-         <md-icon>message</md-icon>
-         <span>My Message</span>
-       </button>
-      <button md-menu-item>
-        <md-icon>power_settings_new</md-icon>
-        <span>Log Out</span>
-      </button>
-    </md-menu>-->
-
-    <span class="pull-right text-orange cv-label">{{currentTime}}</span>
+    <a routerLink="/login" routerLinkActive="active" class="pull-right text-shadow-dark-2">Login</a>
   </nav>
 </header>
 
 <!--路由-->
 <section class="cv-content">
-  <!--<main>
-    <h1>Curriculum Vitae Show</h1>
-  </main>-->
-
   <!--根路由-->
   <router-outlet></router-outlet> 
 </section>
