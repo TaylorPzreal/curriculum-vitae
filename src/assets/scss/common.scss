@@ -1,11 +1,15 @@
 // 在这里引入Font Awesome文件
 $fa-font-path: '/node_modules/font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
+// @import 'theme/blue-lover';
+// @import 'theme/dark-black';
+@import 'theme/classic-brown';
 @import 'color';
 @import 'font-family';
 @import 'basic-body';
 @import 'basic-style';
 @import 'basic-layout';
+@import 'rwd';
 
 cv-app {
   display: flex;
@@ -15,25 +19,39 @@ cv-app {
 }
 
 .cv-header {
+  background-color: $themecolor;
   box-shadow: 0 .3rem .3rem $shadowcolor;
-  color: $text-light;
+  color: $white;
+  font-family: $header-nav-family;
   padding: .8rem 1.6rem;
 
-  .mat-button {
-    span {
-      font-family: $header-nav-family;
-    }
+  nav a {
+    color: $white;
+    font-size: 1.6rem;
+    line-height: 4rem;
+    text-decoration-line: none;
+    padding: 0 1rem;
   }
 }
 
-.cv-footer > p {
-  box-shadow: 0 -.2rem .1rem $shadowcolor;
-  line-height: 3;
-  margin: auto;
-  text-align: center;
+.cv-footer {
+  background-color: $themecolor;
+  box-shadow: 0 -.2rem .2rem $shadowcolor;
+
+  &>small {
+    display: flex;
+    justify-content: center;
+    line-height: 3;
+    margin: auto;
+    text-align: center;
+  }
 }
 
-@each $color, $var in (dark, $dark), (blue, $blue) , (orange, $orange),  (white, $lightgray) {
+@each $color,
+$var in (dark, $dark),
+(blue, $blue),
+(orange, $orange),
+(white, $white) {
   .text-#{$color},
   .mat-menu-item .mat-icon.text-#{$color} {
     color: $var;

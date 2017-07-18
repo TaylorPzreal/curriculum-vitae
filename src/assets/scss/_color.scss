@@ -1,15 +1,16 @@
 // 定义主题主色调及部分颜色
+// $themecolor: #393e46;
+// $shadowcolor: #222831;
+// $lightcolor: #00adb5;
+// $lightgray: #eee;
 
-$themecolor: #393e46;
-$shadowcolor: #222831;
-
-$lightcolor: #00adb5;
-$lightgray: #eee;
-
-$text-light: $lightgray;
-
-$white: #fff;
-$dark: #222831;
-$blue: #00adb5;
+// Plain color
+$white: #eee !default;
+$dark: #222831 !default;
+$blue: #00adb5 !default;
 $red: #b83b5e !default;
 $orange: #f08a5d !default;
+$gray: #666 !default;
+
+// Semantic color
+$bodycolor: #F0F4F8 !default;
