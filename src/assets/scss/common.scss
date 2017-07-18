@@ -1,9 +1,9 @@
 // 在这里引入Font Awesome文件
 $fa-font-path: '/node_modules/font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
-// @import 'theme/blue-lover';
+@import 'theme/blue-lover';
 // @import 'theme/dark-black';
-@import 'theme/classic-brown';
+// @import 'theme/classic-brown';
 @import 'color';
 @import 'font-family';
 @import 'basic-body';
@@ -25,12 +25,11 @@ cv-app {
   font-family: $header-nav-family;
   padding: .8rem 1.6rem;
 
-  nav a {
+  &>nav>a {
     color: $white;
     font-size: 1.6rem;
     line-height: 4rem;
     text-decoration-line: none;
-    padding: 0 1rem;
   }
 }
 

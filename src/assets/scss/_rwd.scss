@@ -1,5 +1,4 @@
 // 响应式布局 Responsive web design RWD
-
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -14,11 +13,11 @@
 
 .box {
   border-radius: 2px;
-  width: 100%;
   padding: 10px;
+  width: 100%;
 
   &.box-shadow {
-    box-shadow: 2px 2px 6px $shadowcolor;    
+    box-shadow: 2px 2px 6px $shadowcolor;
   }
 
   .box-header {
@@ -29,7 +28,7 @@
     }
 
     .with-border {
-      border-bottom: 2px solid #fff;
+      border-bottom: 2px solid $white;
     }
   }
 
@@ -52,6 +51,11 @@
   color: $themecolor;
 }
 
+.box-theme {
+  background-color: $highlightcolor;
+  color: $shadowcolor;
+}
+
 .wisdom-box {
   font-size: 1.6rem;
 
@@ -65,3 +69,48 @@
     justify-content: flex-end;
   }
 }
+
+.btn {
+  border-radius: .2rem;
+  padding: .4rem 1.6rem;
+
+  &.btn-theme {
+    &:hover {
+      background-color: $shadowcolor;
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  &.table {
+    tr {
+      line-height: 2;
+    }
+    td,
+    th {
+      padding: .8rem;
+      text-align: left;
+    }
+    td {
+      border-top: .1rem solid $gray-ddd;
+      
+      & a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &.table-hover {
+    tr:hover {
+      &>td {
+        background-color: $highlightcolor;
+        transition: background-color .2s ease-in;
+      }
+    }
+  }
+}
+
+

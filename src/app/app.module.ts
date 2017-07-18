@@ -13,10 +13,13 @@ import { HomeComponent } from './home';
 import { BlogListComponent } from './blog-list';
 import { BlogEditComponent } from './blog-edit';
 
+import { HomeService } from './home/home.service';
+
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
     AppRoutingModule
   ],
   declarations: [
@@ -26,6 +29,7 @@ import { BlogEditComponent } from './blog-edit';
     BlogListComponent,
     BlogEditComponent
   ],
+  providers: [HomeService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
