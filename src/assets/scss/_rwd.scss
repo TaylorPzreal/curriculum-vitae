@@ -1,0 +1,67 @@
+// 响应式布局 Responsive web design RWD
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+
+  @media all and (min-width: 1200px) {
+    width: 1200px;
+  }
+  @media all and (max-width: 1199px) {
+    width: 100%;
+  }
+}
+
+.box {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+
+  &.box-shadow {
+    box-shadow: 2px 2px 6px $shadowcolor;    
+  }
+
+  .box-header {
+
+    h3.box-title {
+      font-size: 1.8rem;
+      margin: auto;
+    }
+
+    .with-border {
+      border-bottom: 2px solid #fff;
+    }
+  }
+
+  .box-body {
+    padding: 10px 0;
+  }
+
+  .box-footer {
+    padding: 10px 0;
+  }
+}
+
+.box-red {
+  background-color: $red;
+  color: $white;
+}
+
+.box-white {
+  background-color: $white;
+  color: $themecolor;
+}
+
+.wisdom-box {
+  font-size: 1.6rem;
+
+  p {
+    margin: auto;
+  }
+
+  .wisdom-author {
+    display: flex;
+    font-family: $header-nav-family;
+    justify-content: flex-end;
+  }
+}
