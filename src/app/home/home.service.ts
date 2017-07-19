@@ -6,12 +6,12 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HomeService {
-  private baseURL = 'http://www.honeymorning.com:9999/api';
+  private baseURL = 'http://www.honeymorning.com/api';
 
   constructor(private http: Http) {}
 
   public getArticle() {
-    const url = this.baseURL + '/blog/queryByPage?page=1';
+    const url = this.baseURL + '/blog/queryByPage/1';
 
     return this.http.get(url)
       .map((res: Response) => {
