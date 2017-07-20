@@ -79,3 +79,44 @@ $var in (dark, $dark),
   transform-origin: bottom;
   transform: scale(1.2);
 }
+
+.card-movie {
+  .card-header {
+    color: $themecolor;
+    font-size: 1.6rem;
+  }
+  .card-block {
+    h3 {
+      color: $subcolor;
+    }
+  }
+
+  .topMovies {
+    display: flex;
+    flex-direction: row;
+
+    &>figure {
+      img {
+        max-width: 10rem;
+      }
+    }
+
+    &>div {
+      padding: 1rem;
+
+      h3 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        color: $subtextcolor;
+        margin: 0;
+        padding: .2rem .7rem;
+        
+        &:first-child {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}

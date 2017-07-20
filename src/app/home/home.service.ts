@@ -10,6 +10,12 @@ export class HomeService {
 
   constructor(private http: Http) {}
 
+  /**
+   * 获取文章
+   *
+   * @returns Obserable
+   * @memberof HomeService
+   */
   public getArticle() {
     const url = this.baseURL + '/blog/queryByPage/1';
 
@@ -17,6 +23,20 @@ export class HomeService {
       .map((res: Response) => {
         return res.json();
       })
+      .catch(this.handleError);
+  }
+
+  /**
+   * 获取最新的电影
+   *
+   * @returns
+   * @memberof HomeService
+   */
+  public getTopMovie() {
+    const url = this.baseURL + '/movie/queryTopMovie';
+
+    return this.http.get(url)
+      .map((res: Response) => res.json())
       .catch(this.handleError);
   }
 

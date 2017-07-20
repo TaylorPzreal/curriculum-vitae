@@ -1,5 +1,5 @@
-// 这里只包含 width, height, padding, margin的设置
-$numlist: 4, 6, 8, 10, 16, 20, 24, 32, 40, 48, 60;
+// 这里只包含 width, height, padding, margin, font的设置
+$numlist: 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 48, 60;
 $directions: 'top', 'right', 'bottom', 'left';
 
 .full-width {
@@ -49,3 +49,9 @@ $directions: 'top', 'right', 'bottom', 'left';
 
 @include container('margin');
 @include container('padding');
+
+@each $size in $numlist {
+    .font-#{$size} {
+        font-size: #{$size/10}rem;
+    }
+}

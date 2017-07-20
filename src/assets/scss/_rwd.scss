@@ -23,12 +23,12 @@
   .box-header {
 
     h3.box-title {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin: auto;
     }
 
     .with-border {
-      border-bottom: 2px solid $white;
+      border-bottom: 2px solid $gray-ddd;
     }
   }
 
@@ -37,7 +37,8 @@
   }
 
   .box-footer {
-    padding: 10px 0;
+    border-top: .1rem solid $gray-ddd;
+    padding: 20px 0 10px;
   }
 }
 

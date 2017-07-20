@@ -156,6 +156,14 @@ module.exports = {
     //   { } // a map of your routes
     // ),
 
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jquery': 'jquery',
+      Tether: 'tether',
+      'window.Tether': 'tether'
+    }),
+
     // 用于去掉浏览器console的warning
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)@angular/,

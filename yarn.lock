@@ -715,6 +715,13 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bootstrap@next:
+  version "4.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-alpha.6.tgz#4f54dd33ac0deac3b28407bc2df7ec608869c9c8"
+  dependencies:
+    jquery ">=1.9.1"
+    tether "^1.4.0"
+
 brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.7.tgz#3effc3c50e000531fb720eaff80f0ae8ef23cf59"
@@ -3293,7 +3300,7 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-jquery@^3.2.1:
+jquery@>=1.9.1, jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
@@ -5966,6 +5973,10 @@ temp@0.8.3:
   dependencies:
     os-tmpdir "^1.0.0"
     rimraf "~2.2.6"
+
+tether@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.0.tgz#0f9fa171f75bf58485d8149e94799d7ae74d1c1a"
 
 text-table@~0.2.0:
   version "0.2.0"
