@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HomeService {
-  private baseURL = 'http://www.honeymorning.com/api';
+  private baseURL = 'https://www.honeymorning.com/api';
 
   constructor(private http: Http) {}
 
