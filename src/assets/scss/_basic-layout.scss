@@ -15,3 +15,16 @@
 .flex {
   display: flex;
 }
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-center-v {
+  align-items: center;
+}
+
+.flex-center-h {
+  justify-content: center;
+}

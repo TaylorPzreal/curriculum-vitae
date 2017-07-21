@@ -14,7 +14,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class LoginService {
-  private baseUrl = 'https://localhost:3000/';
+  private baseUrl = 'https://www.honeymorning.com/api/';
 
   constructor(private http: Http) {}
 
@@ -27,7 +27,7 @@ export class LoginService {
   }
 
   public loginWithGithub() {
-    return this.http.get(this.baseUrl + 'account/loginWithGithub').map((res: Response) => {
+    return this.http.get(this.baseUrl + 'account/login/github').map((res: Response) => {
       return res.json();
     }).catch(this.handleError);
   }

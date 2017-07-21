@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   public ngOnInit() {
     // this.getData();
-    this.loginWithGithub();
+    // this.loginWithGithub();
   }
 
   // private getData() {
@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
   //   );
   // }
 
-  private loginWithGithub() {
+  public loginWithGithub() {
+    console.warn('Login...');
     this.loginService.loginWithGithub().subscribe((result: any) => {
       console.warn(result);
     }, (error: any) => {
