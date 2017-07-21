@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
   public loginWithGithub() {
     window.location.href = 'https://github.com/login/oauth/authorize'
       + '?response_type=code'
-      + '&redirect_uri=https%3A%2F%2Fwww.honeymorning.com%2Fapi%2Faccount%2FgetGithubAccess'
       + '&client_id=3405df2b2fca58331dc1';
   }
 }
