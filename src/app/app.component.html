@@ -1,12 +1,37 @@
 <!--公共顶部-->
 <header class="cv-header">
-  <nav class="container">
-    <a routerLink="/" routerLinkActive="active" class="btn btn-theme">Home</a>
-    <a routerLink="/bloglist" routerLinkActive="active" class="btn btn-theme">Blog</a>
-    <a href="" class="btn btn-theme">About</a>
-
-    <a routerLink="/login" routerLinkActive="active" class="pull-right">Login</a>
-  </nav>
+  <div class="container">
+    <nav class="navbar navbar-inverse navbar-toggleable-md">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="../assets/images/icon.png" width="30" height="30" alt="">
+      </a>
+      
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+          <a routerLink="/" routerLinkActive="active" class="btn btn-theme">Home</a>
+          </li>
+          <li class="nav-tem">
+          <a routerLink="/bloglist" routerLinkActive="active" class="btn btn-theme">Blog</a>
+          </li>
+          <li class="nav-tem">
+          <a class="btn btn-theme">About</a>
+          </li>
+        </ul>
+        <form class="form-inline">
+          <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="btn btn-theme text-white">Login</a>
+          <a class="no-padding font-14" *ngIf="userInfo">
+            <img src="{{userInfo.logo}}" alt="Logo" width="26" height="26" class="">
+            <span>{{userInfo.name}}</span>
+          </a>
+          <a href="JavaScript: void(0)" class="no-padding font-14 btn btn-theme" *ngIf="userInfo" (click)="logout()">Logout</a>
+        </form>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <!--路由-->

@@ -21,16 +21,21 @@ cv-app {
 .cv-header {
   background-color: $themecolor;
   box-shadow: 0 .3rem .3rem $shadowcolor;
-  color: $white;
   font-family: $header-nav-family;
-  padding: .8rem 1.6rem;
+  padding: .8rem 0;
 
-  &>nav>a {
+  .navbar-brand {
+    color: $shadowcolor;
+    font-size: 1.8rem;
+  }
+
+  .navbar-nav a, form a {
     color: $white;
     font-size: 1.6rem;
-    line-height: 4rem;
+    padding: .6rem 1.2rem;
     text-decoration-line: none;
   }
+
 }
 
 .cv-footer {
