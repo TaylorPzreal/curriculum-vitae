@@ -1,0 +1,50 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-white margin-top-20 margin-bottom-20">
+          <div class="box-header with-border">
+            <h3 class="box-title text-dark font-16">Welcome to Free Chat Rome</h3>
+          </div>
+          <div class="box-body">
+            <div class="col-md-8 col-xs-12">
+            <div class="chat">
+              <ul>
+                <li *ngFor="let msg of messages" [ngClass]="{'reverse': myName === msg.name}">
+                  <figure>
+                    <img src="{{msg.logo}}" width="30" height="30" alt="Logo">
+                  </figure>
+                  <span class="name">{{msg.name}}</span>
+                  <span class="msg">{{msg.msg}}</span>
+                </li>
+              </ul>
+            </div>
+            </div>
+            <!--展示一些及时系统消息，用户统计-->
+            <div class="col-md-4 col-xs-12">
+
+            </div>
+          </div>
+          <div class="box-footer">
+            <!--发送进度条-->
+            <!--<div class="col-12 margin-bottom-4">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 25%; height: 1px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>-->
+            <div class="form-group row no-margin">
+              <div class="col-md-12">
+                <div class="input-group has-success">
+                  <input type="text" class="form-control form-control-success" required [(ngModel)]="message" #msg (keyup.enter)="onEnter(msg.value)" placeholder="Write message.">
+                  <span class="input-group-btn">
+                  <a class="btn btn-outline-success font-20" (click)="sendMessage()"><i class="fa fa-send-o"></i></a>
+                </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

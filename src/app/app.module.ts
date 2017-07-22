@@ -13,6 +13,7 @@ import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 import { BlogListComponent } from './blog-list';
 import { BlogEditComponent } from './blog-edit';
+import { ChatComponent } from './chat';
 
 import { HomeService } from './home/home.service';
 
@@ -22,6 +23,7 @@ import { HomeService } from './home/home.service';
     BrowserAnimationsModule,
     ToastModule.forRoot(),
     HttpModule,
+    FormsModule,
     AppRoutingModule
   ],
   declarations: [
@@ -29,7 +31,8 @@ import { HomeService } from './home/home.service';
     LoginComponent,
     HomeComponent,
     BlogListComponent,
-    BlogEditComponent
+    BlogEditComponent,
+    ChatComponent
   ],
   providers: [HomeService],
   bootstrap: [ AppComponent ]

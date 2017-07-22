@@ -76,11 +76,8 @@ export class AppComponent implements OnInit {
     // 1. 判断cookie的sid是否存在，存在直接在Localstroage获取，不存在调用后端接口。
     const cookie = document.cookie;
 
-    if (cookie && /isLogin=true/.test(cookie)) {
+    if (cookie && /isLogin=true/.test(cookie) && localStorage.getItem('user')) {
       this.userInfo = JSON.parse(localStorage.getItem('user'));
-      if (!this.userInfo) { // 如果清空了localstorage，那么就要清空cookie
-        document.cookie = null;
-      }
     } else {
       this.appService.getUserInfo().subscribe((result: any) => {
         if (2000 === result.code) {

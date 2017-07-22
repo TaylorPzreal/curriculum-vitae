@@ -1,0 +1,46 @@
+$chatbgc: rgba(255, 255, 255, .8);
+$shadowcolor: #222;
+$name: hsla(0, 0%, 6.7%, .6);
+$msg: hsl(0, 0%, 6.7%);
+
+.chat {
+  background-color: $chatbgc;
+  box-shadow: inset 0 0 1rem $shadowcolor;
+  height: 40rem;
+  overflow-y: scroll;
+  padding: 1rem;
+
+  &>ul {
+    margin: auto;
+    padding: 0;
+
+    li {
+      align-items: center;
+      display: flex;
+      font-size: 1.3rem;
+      justify-content: flex-start;
+      line-height: 1.6rem;
+      padding: .4rem 1rem;
+      width: 80%;
+
+      .name {
+        color: $name;
+        margin: auto 1rem;
+      }
+      .msg {
+        color: $msg;
+      }
+
+      &.reverse {
+        flex-direction: row-reverse;
+        float: right;
+      }
+    }
+  }
+
+  figure {
+    border-radius: 15px;
+    margin: 0;
+    overflow: hidden;
+  }
+}

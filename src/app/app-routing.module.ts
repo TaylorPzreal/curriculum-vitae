@@ -7,11 +7,13 @@ import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 import { BlogListComponent } from './blog-list';
 import { BlogEditComponent } from './blog-edit';
+import { ChatComponent } from './chat';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'bloglist', component: BlogListComponent},
   {path: 'blogedit', component: BlogEditComponent},
+  {path: 'chat', component: ChatComponent},
   {path: '', component: HomeComponent},
   { path: '', redirectTo: '', pathMatch: 'full'},
   // { path: '**', component: PageNotFoundComponent }
