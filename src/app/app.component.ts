@@ -49,7 +49,10 @@ export class AppComponent implements OnInit {
       this.appService.logout().subscribe((result: any) => {
         if (2000 === result.code) {
           this.toastr.success('Loged out', 'Success');
+
+          // 释放存储的信息
           this.userInfo = null;
+          localStorage.removeItem('user');
         }
       }, (error: any) => {
         console.error(error);
