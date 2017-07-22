@@ -72,8 +72,8 @@ export class AppComponent implements OnInit {
     // toastr.success('success', 'honeymorningyarn start');
     // 1. 判断cookie的sid是否存在，存在直接在Localstroage获取，不存在调用后端接口。
     const cookie = document.cookie;
-    console.warn(cookie);
-    if (cookie && /sid=/.test(cookie)) {
+
+    if (cookie && /isLogin=true/.test(cookie)) {
       this.userInfo = JSON.parse(localStorage.getItem('user'));
       if (!this.userInfo) { // 如果清空了localstorage，那么就要清空cookie
         document.cookie = null;
@@ -84,6 +84,8 @@ export class AppComponent implements OnInit {
           // save to LocalStorage
           this.userInfo = result.data;
           localStorage.setItem('user', JSON.stringify(result.data));
+
+          this.toastr.success('Login Success', 'Welcome');
         } else {
           console.warn(result.msg);
         }
