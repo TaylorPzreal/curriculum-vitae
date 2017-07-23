@@ -16,6 +16,14 @@
   display: flex;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
 .flex-center {
   align-items: center;
   justify-content: center;

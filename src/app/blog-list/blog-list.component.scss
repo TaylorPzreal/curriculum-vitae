@@ -1,52 +1,47 @@
-$color1: rgba(142, 246, 228, .9);
-$color2: rgba(51, 204, 204, .9);
+$bordercolor: rgba(0, 0, 0, .1);
+$authorcolor: rgba(0, 0, 0, .8);
+$subcolor: rgba(0, 0, 0, .44);
 
-.css-gradient {
-  background: linear-gradient(to bottom left, $color1, $color2);
-}
+.blog-list {
+  border: .1rem solid $bordercolor;
+  border-radius: .2rem;
 
-.container {
-  max-width: 1200px;
-}
+  &>figure {
+    height: 120px;
+    overflow: hidden;
 
-.overflow-auto {
-  overflow: auto;
-}
-
-.css-animation {
-  background: linear-gradient(to bottom left, $color1, $color2);
-  width: 100px;
-  height: 100px;
-  animation: cv-css-rotate 1s linear 3s infinite alternate;
-}
-
-@keyframes cv-css-rotate {
-  0% {
-    background: linear-gradient(to bottom right, $color1, $color2);
-    transform: rotate(0);
+    &>img {
+      max-width: 100%;
+    }
   }
-  25% {
-    background: linear-gradient(to bottom left, $color1, $color2);
-    // width: 120px;
-    // height: 120px;
-    transform: rotate(90deg);
-  }
-  50% {
-    background: linear-gradient(to top left, $color1, $color2);
-    // width: 130px;
-    // height: 130px;
-    transform: rotate(180deg);
-  }
-  75% {
-    // width: 120px;
-    // height: 120px;
-    transform: rotate(90deg);
-    background: linear-gradient(to top right, $color1, $color2);
-  }
-  100% {
-    // width: 100px;
-    // height: 100px;
-    transform: rotate(0deg);
-    background: linear-gradient(to bottom right, $color1, $color2)
+  &>.blog-content {
+    padding: 2rem;
+
+    & img {
+      border-radius: 2rem;
+      height: 4rem;
+      margin-right: 1rem;
+      width: 4rem;
+    }
+
+    & .author {
+      align-items: center;
+      display: flex;
+      justify-content: flex-start;
+
+      & .author-info {
+        a {
+          color: $authorcolor;
+        }
+        span {
+          color: $subcolor;
+        }
+      }
+
+      & div:last-child {
+        flex: 1;
+        text-align: right;
+      }
+    }
   }
 }

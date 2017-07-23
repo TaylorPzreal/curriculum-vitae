@@ -43,6 +43,7 @@ cv-app {
   box-shadow: 0 -.2rem .2rem $shadowcolor;
 
   &>small {
+    color: $white;
     display: flex;
     justify-content: center;
     line-height: 3;
