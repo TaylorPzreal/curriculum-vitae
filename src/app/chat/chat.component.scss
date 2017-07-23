@@ -21,14 +21,14 @@ $msg: hsl(0, 0%, 6.7%);
       justify-content: flex-start;
       line-height: 1.6rem;
       padding: .4rem 1rem;
-      width: 80%;
 
       .name {
         color: $name;
-        margin: auto 1rem;
+        margin-right: .8rem;
       }
       .msg {
         color: $msg;
+        word-break: break-all;
       }
 
       &.reverse {
@@ -39,8 +39,30 @@ $msg: hsl(0, 0%, 6.7%);
   }
 
   figure {
-    border-radius: 15px;
-    margin: 0;
-    overflow: hidden;
+    margin: 0 1.6rem 0 0;
+
+    img {
+      border-radius: 15px;
+    }
   }
+}
+
+@keyframes changebg {
+  // from {background: lightseagreen}
+  // to {background: lightcyan}
+  0% {background: lightcoral}
+  // // 25% {background: darkgoldenrod}
+  75% {background: lightseagreen}
+  // // 75% {background: lightcoral}
+  100% {background: lightcoral}
+}
+
+.colorful-dot {
+  animation: changebg 4s ease infinite;
+  background: lightseagreen;
+  border-radius: .6rem;
+  display: inline-flex;
+  height: 1.2rem;
+  margin: auto .6rem;
+  width: 1.2rem;
 }

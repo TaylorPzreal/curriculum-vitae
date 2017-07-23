@@ -4,25 +4,35 @@
       <div class="col-md-12">
         <div class="box box-white margin-top-20 margin-bottom-20">
           <div class="box-header with-border">
-            <h3 class="box-title text-dark font-16">Welcome to Free Chat Rome</h3>
+            <h3 class="box-title text-dark font-16">Welcome to Free Chat Room <span class="colorful-dot"></span></h3>
           </div>
           <div class="box-body">
-            <div class="col-md-8 col-xs-12">
-            <div class="chat">
-              <ul>
-                <li *ngFor="let msg of messages" [ngClass]="{'reverse': myName === msg.name}">
-                  <figure>
-                    <img src="{{msg.logo}}" width="30" height="30" alt="Logo">
-                  </figure>
-                  <span class="name">{{msg.name}}</span>
-                  <span class="msg">{{msg.msg}}</span>
-                </li>
-              </ul>
-            </div>
-            </div>
-            <!--展示一些及时系统消息，用户统计-->
-            <div class="col-md-4 col-xs-12">
-
+            <div class="row">
+              <div class="col-md-8 col-xs-12">
+                <div class="chat">
+                  <ul>
+                    <li *ngFor="let msg of messages">
+                      <figure>
+                        <img src="{{msg.logo}}" width="30" height="30" alt="Logo">
+                      </figure>
+                      <div>
+                        <span class="name">{{msg.name}}</span>
+                        <span class="msg">{{msg.msg}}</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!--展示一些及时系统消息，用户统计-->
+              <div class="col-md-4 col-xs-12">
+                <h3 class="">Log</h3>
+                <div>
+                  <div class="">
+                    <strong>CurrentUsers: </strong> <span>2</span>
+                    <strong>CurrentViewers: </strong> <span>200</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="box-footer">

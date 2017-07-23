@@ -17,7 +17,6 @@ interface IMsg {
 
 
 export class ChatComponent implements OnInit, OnDestroy {
-  public myName: string;
   public messages: object[] = [];
   public message: string;
   private connection: any;
@@ -53,7 +52,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.myName = JSON.parse(localStorage.getItem('user')).name;
     this.connection = this.chatService.getMessage().subscribe((msg: IMsg) => {
       this.toastr.warning('New Message', 'TIP');
       msg.logo = msg.logo || 'src/assets/images/icon.png';
