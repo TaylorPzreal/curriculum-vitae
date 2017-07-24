@@ -5,6 +5,8 @@ $subcolor: rgba(0, 0, 0, .44);
 .blog-list {
   border: .1rem solid $bordercolor;
   border-radius: .2rem;
+  border-top: 0;
+  overflow: hidden;
 
   &>figure {
     height: 120px;
@@ -12,8 +14,17 @@ $subcolor: rgba(0, 0, 0, .44);
 
     &>img {
       max-width: 100%;
+      transform: all .3s ease-out;
+    }
+    &:hover {
+      &>img {
+        transform: scale(1.2);
+        transition: transform .4s ease-in;
+      }
     }
   }
+
+
   &>.blog-content {
     padding: 2rem;
 

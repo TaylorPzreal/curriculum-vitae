@@ -14,6 +14,7 @@ import { HomeComponent } from './home';
 import { BlogListComponent } from './blog-list';
 import { BlogEditComponent } from './blog-edit';
 import { ChatComponent } from './chat';
+import { QuillComponent } from './quill';
 
 import { HomeService } from './home/home.service';
 
@@ -32,7 +33,8 @@ import { HomeService } from './home/home.service';
     HomeComponent,
     BlogListComponent,
     BlogEditComponent,
-    ChatComponent
+    ChatComponent,
+    QuillComponent
   ],
   providers: [HomeService],
   bootstrap: [ AppComponent ]

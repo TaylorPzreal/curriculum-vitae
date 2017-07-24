@@ -72,7 +72,8 @@ module.exports = {
         'file-loader?name=fonts/[name].[hash].[ext]' : 'file-loader?name=fonts/[name].[hash].[ext]&publicPath=/dist/',
       include: [
         // helpers.root('fonts'),
-        helpers.root('node_modules/font-awesome/fonts')
+        helpers.root('node_modules/font-awesome/fonts'),
+        helpers.root('node_modules/katex/dist/fonts')
         // helpers.root('node_modules/bootstrap/dist/fonts')
       ]
     }, {
@@ -161,7 +162,9 @@ module.exports = {
       jQuery: 'jquery',
       'window.jquery': 'jquery',
       Tether: 'tether',
-      'window.Tether': 'tether'
+      'window.Tether': 'tether',
+      KaTeX: 'katex',
+      'window.KaTeX': 'katex'
     }),
 
     // 用于去掉浏览器console的warning

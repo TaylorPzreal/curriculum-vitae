@@ -1,11 +1,6 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {
-  LoginService
-} from './login.service';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'cv-login',
@@ -13,9 +8,7 @@ import {
   styleUrls: ['login.component.scss'],
   providers: [LoginService]
 })
-
 export class LoginComponent implements OnInit {
-
   constructor(private loginService: LoginService) {}
 
   public ngOnInit() {
@@ -34,8 +27,6 @@ export class LoginComponent implements OnInit {
   // }
 
   public loginWithGithub() {
-    window.location.href = 'https://github.com/login/oauth/authorize'
-      + '?response_type=code'
-      + '&client_id=3405df2b2fca58331dc1';
+    window.location.href = 'https://github.com/login/oauth/authorize' + '?response_type=code' + '&client_id=3405df2b2fca58331dc1';
   }
 }
