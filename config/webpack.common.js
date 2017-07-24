@@ -17,13 +17,13 @@ const SERVER = {
 };
 
 module.exports = {
-
+  cache: true,
   devtool: DEVELOPMENT ? 'cheap-module-eval-source-map' : 'source-map',
 
   entry: {
-    'polyfills': './src/polyfills.ts',
+    'app': './src/main.ts',
     'vendor': './src/vendor.ts',
-    'app': './src/main.ts'
+    'polyfills': './src/polyfills.ts',
   },
 
   output: {
@@ -157,14 +157,14 @@ module.exports = {
     //   { } // a map of your routes
     // ),
 
+    // new webpack.NamedModulesPlugin(),
+
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jquery': 'jquery',
       Tether: 'tether',
-      'window.Tether': 'tether',
-      KaTeX: 'katex',
-      'window.KaTeX': 'katex'
+      'window.Tether': 'tether'
     }),
 
     // 用于去掉浏览器console的warning
@@ -174,7 +174,8 @@ module.exports = {
     ),
 
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor', 'manifest']
+      name: ['vendor', 'manifest'],
+      minChunks: 2
     }),
 
     // new webpack.optimize.CommonsChunkPlugin({
@@ -190,7 +191,8 @@ module.exports = {
     // }),
 
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/index.html',
+      chunksSortMode: 'dependency'
     }),
 
     new webpack.LoaderOptionsPlugin({
@@ -239,10 +241,10 @@ module.exports = {
         comments: DEVELOPMENT,
         sourceMap: true,
         mangle: {
-        // Skip mangling these
-        except: ['$super', '$', 'exports', 'require'],
-        screw_ie8: true,
-        keep_fnames: true
+          // Skip mangling these
+          except: ['$super', '$', 'exports', 'require'],
+          screw_ie8: true,
+          keep_fnames: true
         }
       }
     }),
@@ -255,5 +257,12 @@ module.exports = {
 
     // 实现文件顶部版权声明
     new webpack.BannerPlugin('Copyright www.honeymorning.com 2017 inc.')
-  ]
+  ],
+  node: {
+    console: false,
+    global: true,
+    process: true,
+    Buffer: false,
+    setImmediate: false
+  },
 };

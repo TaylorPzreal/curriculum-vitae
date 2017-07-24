@@ -21,6 +21,9 @@ import 'jquery';
 import 'tether';
 import 'bootstrap';
 import 'ng2-toastr';
+// import 'highlight.js';
+// import 'katex';
+// import 'quill';
 
 import 'normalize.css';
 import 'bootstrap/scss/bootstrap.scss';

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 // syntax
-import 'highlight.js/styles/atom-one-dark.css';
-import * as hljs from 'highlight.js';
+// import 'highlight.js/styles/atom-one-dark.css';
+// import * as hljs from 'highlight.js';
 // KaTex
 import 'katex/dist/katex.min.css';
 import 'katex';
@@ -18,18 +18,21 @@ import * as Quill from 'quill';
   styleUrls: ['./quill.component.scss']
 })
 export class QuillComponent implements OnInit {
-  public ngOnInit() {
-    this.initQuill();
+  public async ngOnInit() {
+    // await this.initHljs();
+    await this.initQuill();
   }
 
-  private initQuill() {
+  private initHljs() {
     hljs.configure({
       // optionally configure hljs
       useBR: false,
       languages: ['javascript', 'bash', 'python', 'css', 'http', 'html', 'json', 'typescript', 'markdown', 'nginx', 'sql']
     });
-    hljs.initHighlighting();
+    hljs.initHighlightingOnLoad();
+  }
 
+  private initQuill() {
     const fonts = ['sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu', 'Abel', 'Satisfy', 'cursive', 'sans-serif', 'Microsoft Yahei'];
     const Font = Quill.import('formats/font');
     Font.whitelist = fonts;
@@ -50,7 +53,7 @@ export class QuillComponent implements OnInit {
       // [{ header: [1, 2, 3, 4, 5, 6, false] }],
 
       [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-      [{ font: fonts }],
+      [{ font: [] }],
       [{direction: 'rtl'}, { align: [] }],
 
       ['link', 'image', 'video', 'formula'],
@@ -61,7 +64,7 @@ export class QuillComponent implements OnInit {
       bounds: '#quill-editor',
       modules: {
         formula: true,
-        syntax: true, // code语法高亮
+        // syntax: true, // code语法高亮
         toolbar: toolbarOptions
       },
       placeholder: 'Free Write...',
