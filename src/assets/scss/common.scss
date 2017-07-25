@@ -98,8 +98,19 @@ cv-app {
     flex-direction: row;
 
     & > figure {
+      border: .1rem solid $bodycolor;
+      border-radius: .2rem;
+      overflow: hidden;
+      width: 10rem;
+
       img {
-        max-width: 10rem;
+        transform: all .4s ease-out;
+        width: 10rem;
+
+        &:hover {
+          transform: scale(1.1);
+          transition: transform .4s ease-in;
+        }
       }
     }
 

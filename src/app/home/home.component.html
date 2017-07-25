@@ -49,7 +49,7 @@
               <div class="col-12 no-padding" *ngFor="let movie of topMovies">
                 <div class="topMovies">
                   <figure>
-                    <img src="{{movie.logo}}" alt="">
+                    <img class="lazyload" data-src="{{movie.logo}}" alt="">
                   </figure>
                   <div>
                     <h3><a href="">{{movie.name}}</a></h3>

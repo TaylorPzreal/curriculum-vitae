@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { HomeService } from './home.service';
 import { Article } from './article';
+import 'lazysizes'; // 图片懒加载
 
 interface IMovie {
   id: number;
