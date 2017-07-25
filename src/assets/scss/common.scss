@@ -29,13 +29,13 @@ cv-app {
     font-size: 1.8rem;
   }
 
-  .navbar-nav a, form a {
+  .navbar-nav a,
+  form a {
     color: $white;
     font-size: 1.6rem;
     padding: .6rem 1.2rem;
     text-decoration-line: none;
   }
-
 }
 
 .cv-footer {
@@ -46,17 +46,13 @@ cv-app {
   justify-content: center;
   line-height: 3;
 
-  &>a {
+  & > a {
     color: $white;
     margin: auto .4rem;
   }
 }
 
-@each $color,
-$var in (dark, $dark),
-(blue, $blue),
-(orange, $orange),
-(white, $white) {
+@each $color, $var in (dark, $dark), (blue, $blue), (orange, $orange), (white, $white) {
   .text-#{$color},
   .mat-menu-item .mat-icon.text-#{$color} {
     color: $var;
@@ -82,8 +78,8 @@ $var in (dark, $dark),
 
 // 定义font-awesome基准
 .fa {
-  transform-origin: bottom;
   transform: scale(1.2);
+  transform-origin: bottom;
 }
 
 .card-movie {
@@ -101,13 +97,13 @@ $var in (dark, $dark),
     display: flex;
     flex-direction: row;
 
-    &>figure {
+    & > figure {
       img {
         max-width: 10rem;
       }
     }
 
-    &>div {
+    & > div {
       padding: 1rem;
 
       h3 {
@@ -118,7 +114,7 @@ $var in (dark, $dark),
         color: $subtextcolor;
         margin: 0;
         padding: .2rem .7rem;
-        
+
         &:first-child {
           margin-top: 1rem;
         }
@@ -130,4 +126,32 @@ $var in (dark, $dark),
 .form-control {
   font-size: 1.6rem;
   line-height: 2.4rem;
+}
+
+.header-search {
+  position: relative;
+
+  i {
+    color: $white;
+    cursor: pointer;
+    font-size: 1.4rem;
+    position: absolute;
+    right: 1.4rem;
+    top: .8rem;
+  }
+
+  & input {
+    background-color: $header-search-bg;
+    border: 0;
+    color: $shadowcolor;
+    outline-style: none;
+
+    &:focus,
+    &:active {
+      &,
+      & ~ i {
+        color: $themecolor;
+      }
+    }
+  }
 }

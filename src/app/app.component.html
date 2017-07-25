@@ -8,19 +8,25 @@
       <a class="navbar-brand" routerLink="/">
         <img src="../assets/images/icon.png" width="30" height="30" alt="">
       </a>
-      
+
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-          <a routerLink="/" routerLinkActive="active" class="btn btn-theme">Home</a>
+            <a routerLink="/" routerLinkActive="active" class="btn btn-theme">Home</a>
           </li>
           <li class="nav-tem">
-          <a routerLink="/bloglist" routerLinkActive="active" class="btn btn-theme">Blog</a>
+            <a routerLink="/bloglist" routerLinkActive="active" class="btn btn-theme">Blog</a>
           </li>
           <li class="nav-tem">
-          <a routerLink="/chat" routerLinkActive="active" class="btn btn-theme">Chat</a>
+            <a routerLink="/chat" routerLinkActive="active" class="btn btn-theme">Chat</a>
           </li>
         </ul>
+        <form class="form-inline">
+          <div class="header-search">
+            <input class="form-control form-control-sm mr-sm-2" type="search">
+            <i class="fa fa-search"></i>
+          </div>
+        </form>
         <form class="form-inline">
           <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="btn btn-theme text-white">Login</a>
           <a class="no-padding font-14" *ngIf="userInfo">

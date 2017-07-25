@@ -158,6 +158,8 @@ module.exports = {
     // ),
 
     // new webpack.NamedModulesPlugin(),
+    // Scope Hoisting
+    new webpack.optimize.ModuleConcatenationPlugin(),
 
     new webpack.ProvidePlugin({
       $: 'jquery',

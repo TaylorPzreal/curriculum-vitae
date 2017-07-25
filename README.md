@@ -32,6 +32,8 @@ yarn start //启动项目服务
 protractor protractor.conf.js // 启动e2e testing
 ```
 
+## Guidelines
+- [AngularGuide](https://angular.io/guide/styleguide)
 
 ## 一. 目的
 - 追求唯美，可视化，简洁，大方的主题
