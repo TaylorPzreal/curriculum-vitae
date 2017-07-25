@@ -1,27 +1,22 @@
 
 // 引入核心模块
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-import { LoginComponent } from './login';
-import { HomeComponent } from './home';
-import { BlogListComponent } from './blog-list';
-import { BlogEditComponent } from './blog-edit';
-import { ChatComponent } from './chat';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'bloglist', component: BlogListComponent},
-  {path: 'blogedit', component: BlogEditComponent},
-  {path: 'chat', component: ChatComponent},
-  {path: '', component: HomeComponent},
+  {path: 'login', loadChildren: '../app/login/login.module#LoginModule'},
+  {path: 'bloglist', loadChildren: '../app/blog-list/blog-list.module#BlogListModule'},
+  {path: 'blogedit', loadChildren: '../app/blog-edit/blog-edit.module#BlogEditModule'},
+  {path: 'chat', loadChildren: '../app/chat/chat.module#ChatModule'},
+  {path: '', loadChildren: '../app/home/home.module#HomeModule'},
   { path: '', redirectTo: '', pathMatch: 'full'},
   // { path: '**', component: PageNotFoundComponent }
 ];
 
+// PreloadAllModules预加载所有Module
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
   ],
   exports: [RouterModule]
 })

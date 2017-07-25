@@ -67,6 +67,7 @@ protractor protractor.conf.js // 启动e2e testing
 * Webpack2.x + Rollup
 * d3.js, three.js, lodash, moment, font-awesome, 可拖拽插件(Dragula)
 * Koa2.x(OR Express) + Mongodb + Redis
+* angular-router-loader 进行code splitting & lazy loading & preload
 
 ### 5. 开发规划 2017-04-13
 - 第一周: 实现前端框架的搭建并做好布局 至2017-04-22

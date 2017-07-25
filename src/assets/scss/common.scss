@@ -41,11 +41,12 @@ cv-app {
 .cv-footer {
   background-color: $themecolor;
   box-shadow: 0 -.2rem .2rem $shadowcolor;
+  color: $white;
   display: flex;
   justify-content: center;
   line-height: 3;
 
-  &, a {
+  &>a {
     color: $white;
     margin: auto .4rem;
   }
