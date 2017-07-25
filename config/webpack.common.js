@@ -175,7 +175,7 @@ module.exports = {
 
     new webpack.optimize.CommonsChunkPlugin({
       name: ['vendor', 'manifest'],
-      minChunks: 2
+      // minChunks: 2
     }),
 
     // new webpack.optimize.CommonsChunkPlugin({

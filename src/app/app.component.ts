@@ -7,7 +7,6 @@ import '../assets/scss/common.scss';
 import { AppService } from './app.service';
 
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-// import 'toastr';
 
 interface IUser {
   name: string;
