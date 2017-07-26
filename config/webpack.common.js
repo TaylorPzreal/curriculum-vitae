@@ -241,7 +241,7 @@ module.exports = {
           drop_console: true
         },
         comments: DEVELOPMENT,
-        sourceMap: true,
+        sourceMap: DEVELOPMENT,
         mangle: {
           // Skip mangling these
           except: ['$super', '$', 'exports', 'require'],

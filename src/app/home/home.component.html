@@ -1,69 +1,71 @@
 <section>
   <header>
-    <div class="container">
+    <div class="linear-gradient">
+      <div class="container">
+        <div class="box box-theme box-shadow">
+          <div class="box-body">
+            <div class="wisdom-box">
+              <p>God grant me the serenity to accept the things I cannot change, courage to change the things I can, and wisdom to know the difference.</p>
+              <span class="wisdom-author">- The Serenity Prayer (Reinhold Niebuhr)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <div class="box box-theme box-shadow margin-top-20">
-        <div class="box-body">
-          <div class="wisdom-box">
-            <p>God grant me the serenity to accept the things I cannot change, courage to change the things I can, and wisdom to know the difference.</p>
-            <span class="wisdom-author">- The Serenity Prayer (Reinhold Niebuhr)</span>
+  <div class="container">
+    <div class="row margin-bottom-20">
+      <div class="col-md-8 col-sm-12 col-xs-12  margin-top-20">
+        <div class="box box-white">
+          <div class="box-header">
+            <h3 class="box-title">New Article</h3>
+          </div>
+          <div class="box-body">
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <th>标题</th>
+                  <th>作者</th>
+                  <th>浏览量</th>
+                </tr>
+                <tr *ngFor="let article of articleList">
+                  <td><a href="">{{article.title}}</a></td>
+                  <td>{{article.author}}</td>
+                  <td>{{article.visites}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-footer text-center">
+            <!--分页  -->
+            <a href="" class="btn btn-outline-primary font-14"> 查看更多 <i class="fa fa-refresh font-12"></i></a>
           </div>
         </div>
       </div>
 
-      <div class="row margin-bottom-20">
-        <div class="col-md-8 col-sm-12 col-xs-12  margin-top-20">
-          <div class="box box-white">
-            <div class="box-header">
-              <h3 class="box-title">New Article</h3>
-            </div>
-            <div class="box-body">
-              <table class="table table-hover">
-                <tbody>
-                  <tr>
-                    <th>标题</th>
-                    <th>作者</th>
-                    <th>浏览量</th>
-                  </tr>
-                  <tr *ngFor="let article of articleList">
-                    <td><a href="">{{article.title}}</a></td>
-                    <td>{{article.author}}</td>
-                    <td>{{article.visites}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="box-footer text-center">
-              <!--分页  -->
-              <a href="" class="btn btn-outline-primary font-14"> 查看更多 <i class="fa fa-refresh font-12"></i></a>
-            </div>
+      <div class="col-md-4 col-sm-12 col-xs-12  margin-top-20">
+        <div class="card card-movie">
+          <div class="card-header">
+            New Movie
           </div>
-        </div>
-
-        <div class="col-md-4 col-sm-12 col-xs-12  margin-top-20">
-          <div class="card card-movie">
-            <div class="card-header">
-              New Movie
-            </div>
-            <div class="card-block">
-              <div class="col-12 no-padding" *ngFor="let movie of topMovies">
-                <div class="topMovies">
-                  <figure>
-                    <img class="lazyload" data-src="{{movie.logo}}" alt="">
-                  </figure>
-                  <div>
-                    <h3><a href="">{{movie.name}}</a></h3>
-                    <p><strong>区域: </strong> <span>{{movie.country}}</span></p>
-                    <p><strong>类型: </strong> <span>{{movie.type}}</span></p>
-                    <p><strong>发布日期: </strong> <span>{{movie.publicDate}}</span></p>
-                  </div>
+          <div class="card-block">
+            <div class="col-12 no-padding" *ngFor="let movie of topMovies">
+              <div class="topMovies">
+                <figure>
+                  <img class="lazyload" data-src="{{movie.logo}}" alt="">
+                </figure>
+                <div>
+                  <h3><a href="">{{movie.name}}</a></h3>
+                  <p><strong>区域: </strong> <span>{{movie.country}}</span></p>
+                  <p><strong>类型: </strong> <span>{{movie.type}}</span></p>
+                  <p><strong>发布日期: </strong> <span>{{movie.publicDate}}</span></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-  </header>
+  </div>
 </section>

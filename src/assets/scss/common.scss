@@ -166,3 +166,9 @@ cv-app {
     }
   }
 }
+
+.linear-gradient {
+  background: linear-gradient(to top left, $shadowcolor, $themecolor);
+  height: 40rem;
+  padding-top: 4rem;
+}
