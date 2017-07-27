@@ -19,85 +19,54 @@ import * as Quill from 'quill';
   styleUrls: ['./quill.component.scss']
 })
 export class QuillComponent implements OnInit {
+  // Quill toolbar 配置
+  private toolbarOptions: any[] = [
+    [{ font: [] }, { size: ['small', false, 'large', 'huge'] }, { header: 1 }, { header: 2 }], // custom button values
+    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
 
-    private toolbarOptions: any[] = [
-      [{font: []}, { size: ['small', false, 'large', 'huge'] }, { header: 1 }, { header: 2 }], // custom button values
-      ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
+    [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ align: [] }],
 
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
-      [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
-      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-      [{ align: [] }],
-
-      ['link', 'image'], ['formula', 'blockquote', 'code-block'], ['clean']
-    ];
+    ['link', 'image'],
+    ['formula', 'blockquote', 'code-block'],
+    ['clean']
+  ];
 
   public ngOnInit() {
-      this.initQuill();
-  }
-
-  // open local file upload image to server.
-  private imageHandler() {
-
-
-    // var fd = new FormData();
-    // fd.append('image', image, image.name);
-
-
+    this.initQuill();
   }
 
   private initQuill() {
-    const fonts = ['sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu', 'Abel', 'Satisfy', 'cursive', 'sans-serif', 'Microsoft Yahei'];
-    const Font = Quill.import('formats/font');
-    Font.whitelist = fonts;
-    Quill.register(Font, true);
-
     const editor: any = new Quill('#quill-editor', {
       bounds: '#quill-editor',
       modules: {
         formula: true,
         syntax: true, // code语法高亮
-        toolbar: {
-          container: this.toolbarOptions,
-          // handlers: {
-          //   image: () => {
-          //    const range = editor.getSelection();
-          //    const value = prompt('Please input image URL:');
-          //    editor.insertEmbed(range.index, 'image', value);
-          //   }
-          // }
-        }
+        toolbar: this.toolbarOptions
       },
       placeholder: 'Free Write...',
-      theme: 'snow',
+      theme: 'snow'
     });
 
-    function uploadImage() {
+      /**
+       * select local image
+       *
+       */
+    function selectLocalImage() {
       const input = document.createElement('input');
       input.setAttribute('type', 'file');
       input.click();
 
+      // Listen upload local image and save to server
       input.onchange = () => {
-        console.warn(input.files[0]);
         const file = input.files[0];
+
+        // file type is only image.
         if (/^image\//.test(file.type)) {
-          // const URL = window.URL || window.webkitURL;
-          // const blob: Blob = URL.createObjectURL(file);
-
-          // saveToServer(blob, file.name);
-          const fd = new FormData();
-          fd.append('image', file);
-
-          const xhr = new XMLHttpRequest();
-          xhr.open('POST', 'http://localhost:3000/upload/image', true);
-          xhr.onload = () => {
-            if (xhr.status === 200) {
-              console.warn(xhr.responseText);
-            }
-          };
-          xhr.send(fd);
-
+          saveToServer(file);
         } else {
           console.warn('You could only upload images.');
         }
@@ -105,37 +74,43 @@ export class QuillComponent implements OnInit {
     }
 
     /**
-     * Upload image to server.
+     * save to server
      *
-     * @param {Blob} blob
-     * @param {string} fileName
-     * @returns
+     * @param {File} file
      */
-    function saveToServer(blob: Blob, fileName: string) {
+    function saveToServer(file: File) {
       const fd = new FormData();
-      const name = 'file';
-      fd.append(name, blob, fileName);
-
-      console.warn(blob);
-
-      if (blob.size > 512000) {
-        const size = Math.ceil(blob.size / 1024);
-        console.warn(`Image size is more then 500k, Current size is ${size}`);
-        return;
-      }
+      fd.append('image', file);
 
       const xhr = new XMLHttpRequest();
       xhr.open('POST', 'http://localhost:3000/upload/image', true);
       xhr.onload = () => {
         if (xhr.status === 200) {
-          console.warn(xhr.responseText);
+          // this is callback data: url
+          const data = JSON.parse(xhr.responseText);
+          if (2000 === data.code) {
+            const url = data.data;
+            insertToEditor(url);
+          }
         }
       };
       xhr.send(fd);
     }
 
+    /**
+     * insert image url to rich editor.
+     *
+     * @param {string} url
+     */
+    function insertToEditor(url: string) {
+      // push image url to rich editor.
+      const range = editor.getSelection();
+      editor.insertEmbed(range.index, 'image', `http://localhost:9000${url}`);
+    }
+
+    // quill editor add image handler
     editor.getModule('toolbar').addHandler('image', () => {
-     uploadImage();
+      selectLocalImage();
     });
 
     editor.on('text-change', () => {
