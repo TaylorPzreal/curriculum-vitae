@@ -1,5 +1,7 @@
+import { create } from 'domain';
 import { Component, OnInit } from '@angular/core';
 
+import * as Phaser from 'phaser-ce';
 import { HomeService } from './home.service';
 import { Article } from './article';
 import 'lazysizes'; // 图片懒加载
@@ -24,11 +26,29 @@ interface IMovie {
 export class HomeComponent implements OnInit {
   public articleList: Article[];
   public topMovies: IMovie[];
-  constructor(private homeService: HomeService) {}
+
+  private game;
+  constructor(private homeService: HomeService) {
+    this.game = new Phaser.Game(1200, 600, Phaser.AUTO, 'content', {
+      preload: this.preload,
+      create: this.create
+    });
+  }
 
   public ngOnInit() {
     this.initArticle();
     this.initMovie();
+  }
+
+  private preload() {
+
+  }
+  private create() {
+    
+  }
+
+  private initPhaser() {
+    const game = new Phaser.Game();
   }
 
   private initArticle() {
