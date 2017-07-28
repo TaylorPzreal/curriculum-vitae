@@ -1,4 +1,3 @@
-import { create } from 'domain';
 import { Component, OnInit } from '@angular/core';
 
 import 'pixi';
@@ -111,7 +110,7 @@ export class HomeComponent implements OnInit {
 
     this.game.physics.arcade.overlap(this.player, this.stars, collectStar, null, this);
 
-    function collectStar(player, star) {
+    function collectStar(player: any, star: any) {
       star.kill();
       this.score += 10;
       this.scoreText.text = 'Score: ' + this.score;
