@@ -4,8 +4,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const os = require('os');
-
 const helpers = require('./helpers');
+const path = require('path');
+
+const PHASER_DIR = helpers.root('/node_modules/phaser-ce');
+
 
 // 定义环境变量
 const DEVELOPMENT = process.env.NODE_ENV === 'development';
@@ -34,11 +37,25 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', 'json'],
+    alias: {
+      'phaser-ce': path.join(PHASER_DIR, 'build/custom/phaser-split.js'),
+      'pixi': path.join(PHASER_DIR, 'build/custom/pixi.js'),
+      'p2': path.join(PHASER_DIR, 'build/custom/p2.js')
+    }
   },
 
   module: {
-    rules: [{
+    rules: [{ // configuration of Phaser
+      test: /pixi\.js/,
+      loader: 'expose-loader?PIXI'
+    }, {
+      test: /phaser-split\.js$/,
+      loader: 'expose-loader?Phaser' 
+    }, {
+      test: /p2\.js/,
+      loader: 'expose-loader?p2'
+    }, {
       enforce: 'pre',
       test: /\.ts/,
       use: [{
@@ -265,6 +282,9 @@ module.exports = {
     global: true,
     process: true,
     Buffer: false,
-    setImmediate: false
+    setImmediate: false,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
   },
 };
