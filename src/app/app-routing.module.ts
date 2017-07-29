@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'bloglist', loadChildren: '../app/blog-list/blog-list.module#BlogListModule'},
   {path: 'blogedit', loadChildren: '../app/blog-edit/blog-edit.module#BlogEditModule'},
   {path: 'chat', loadChildren: '../app/chat/chat.module#ChatModule'},
+  {path: 'game', loadChildren: '../app/game/game.module#GameModule'},
   {path: '', loadChildren: '../app/home/home.module#HomeModule'},
   { path: '', redirectTo: '', pathMatch: 'full'},
   // { path: '**', component: PageNotFoundComponent }

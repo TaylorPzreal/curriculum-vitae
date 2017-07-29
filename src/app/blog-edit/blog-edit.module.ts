@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { BlogEditComponent } from './blog-edit.component';
@@ -11,6 +12,8 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [
+    FormsModule,
+    CommonModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

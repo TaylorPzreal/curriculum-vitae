@@ -1,24 +1,28 @@
 <section>
   <div class="container margin-top-20 margin-bottom-20">
     <div class="row">
-      <form class="col-12">
-        <div class="form-group">
-          <label for="title" class="font-18">Title</label>
-          <input type="text" id="title" class="form-control form-control-sm" placeholder="Enter Title">
-        </div>
-        <div class="form-group">
-          <!--Rich Text  -->
-          <quill></quill>
-        </div>
+      <div class="box bgc-white">
+        <form class="col-12">
+          <div class="form-group">
+            <label for="title" class="font-18">Title</label>
+            <input type="text" id="title" name="title" class="form-control form-control-sm" [(ngModel)]="blog.title" placeholder="Enter Title">
+          </div>
+          <div class="form-group">
+            <!--Rich Text  -->
+            <quill [setDetail]="blog.detail" (returnDetail)="getDetailReturn($event)"></quill>
+          </div>
 
-        <div class="form-group">
-          tags.
-        </div>
+          <div class="form-group">
+            <select id="multiSelect" name="selectedTags" class="form-control form-control-lg" [(ngModel)]="blog.tag">
+            <option *ngFor="let t of blogTags" [value]="t.name">{{t.name}}</option>
+          </select>
+          </div>
 
-        <div class="form-group">
-          <a href="" class="btn btn-outline-success">Submit</a>
-        </div>
-      </form>
+          <div class="form-group text-center">
+            <a href="JavaScript: void(0)" (click)="publishStory()" class="btn btn-primary btn-lg">Publish Story</a>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>

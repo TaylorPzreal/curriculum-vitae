@@ -9,6 +9,7 @@ import { AppService } from './app.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 interface IUser {
+  id: number;
   name: string;
   bio: string;
   logo: string;

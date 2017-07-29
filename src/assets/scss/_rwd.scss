@@ -51,7 +51,7 @@
 }
 
 .box-white {
-  background-color: $white;
+  background-color: $realwhite;
   color: $themecolor;
 }
 
@@ -117,4 +117,6 @@ table {
   }
 }
 
-
+.bgc-white {
+  background-color: $realwhite;
+}

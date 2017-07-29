@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 // syntax
 import 'highlight.js/styles/atom-one-dark.css';
@@ -19,6 +19,10 @@ import * as Quill from 'quill';
   styleUrls: ['./quill.component.scss']
 })
 export class QuillComponent implements OnInit {
+  private defaultDetail: string;
+  @Output() private returnDetail: EventEmitter<string> = new EventEmitter<string> ();
+  @Input () private setDetail: string = null;
+
   // Quill toolbar 配置
   private toolbarOptions: any[] = [
     [{ font: [] }, { size: ['small', false, 'large', 'huge'] }, { header: 1 }, { header: 2 }], // custom button values
@@ -50,6 +54,9 @@ export class QuillComponent implements OnInit {
       placeholder: 'Free Write...',
       theme: 'snow'
     });
+
+    // Default content from server(edit blog.)
+    editor.root.innerHTML = this.setDetail;
 
       /**
        * select local image
@@ -113,8 +120,9 @@ export class QuillComponent implements OnInit {
       selectLocalImage();
     });
 
+    // 监听同步detail
     editor.on('text-change', () => {
-      console.warn(editor.root.innerHTML);
+      this.returnDetail.emit(editor.root.innerHTML);
     });
   }
 }
