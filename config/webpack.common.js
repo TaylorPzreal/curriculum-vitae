@@ -166,15 +166,6 @@ module.exports = {
   },
 
   plugins: [
-    // Workaround for angular/angular#11580
-    // new webpack.ContextReplacementPlugin(
-    //   // The (\\|\/) piece accounts for path separators in *nix and Windows
-    //   /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-    //   helpers.root('./src'), // location of your src
-    //   { } // a map of your routes
-    // ),
-
-    // new webpack.NamedModulesPlugin(),
     // Scope Hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
 
@@ -230,39 +221,20 @@ module.exports = {
       fileName: 'cv-manifest.json'
     }),
 
-    // JS打包压缩
-    // new UglifyJSPlugin({
-    //   sourceMap: DEVELOPMENT,
-    //   beautify: DEVELOPMENT, // 最紧凑的输出
-    //   compress: {
-    //     warnings: DEVELOPMENT,
-    //     drop_debugger: DEVELOPMENT,
-    //     screw_ie8: true
-    //   },
-    //   mangle: {
-    //     // Skip mangling these
-    //     except: ['$super', '$', 'exports', 'require'],
-    //     screw_ie8: true,
-    //     keep_fnames: true
-    //   },
-    //   comments: DEVELOPMENT
-    // }),
-
     new ParallelUglifyPlugin({
       workerCount: os.cpus().length,
       cacheDir: '.cache/',
+      sourceMap: DEVELOPMENT,
       uglifyJS: {
         compress: {
           warnings: DEVELOPMENT,
-          drop_debugger: true,
-          drop_console: true
+          drop_debugger: PRODUCTION,
+          drop_console: PRODUCTION
         },
-        comments: DEVELOPMENT,
-        sourceMap: DEVELOPMENT,
+        // comments: DEVELOPMENT,
         mangle: {
           // Skip mangling these
-          except: ['$super', '$', 'exports', 'require'],
-          screw_ie8: true,
+          reserved: ['$super', '$', 'exports', 'require'],
           keep_fnames: true
         }
       }
@@ -278,7 +250,7 @@ module.exports = {
     new webpack.BannerPlugin('Copyright www.honeymorning.com 2017 inc.')
   ],
   node: {
-    // console: false,
+    console: DEVELOPMENT,
     global: true,
     process: true,
     Buffer: false,
