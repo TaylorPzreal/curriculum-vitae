@@ -5,7 +5,7 @@
         <form class="col-12">
           <div class="form-group">
             <label for="title" class="font-18">Title</label>
-            <input type="text" id="title" name="title" class="form-control form-control-sm" [(ngModel)]="blog.title" placeholder="Enter Title">
+            <input type="text" id="title" name="title" class="form-control form-control-sm" [(ngModel)]="blog.title" placeholder="Enter Title" required>
           </div>
           <div class="form-group">
             <!--Rich Text  -->
@@ -13,7 +13,11 @@
           </div>
 
           <div class="form-group">
-            <select id="multiSelect" name="selectedTags" class="form-control form-control-lg" [(ngModel)]="blog.tag">
+            <textarea class="form-control full-width" name="desc" rows="4" [(ngModel)]="blog.desc" placeholder="please input description. Max 255 char." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <select id="multiSelect" name="selectedTags" class="form-control form-control-lg" [(ngModel)]="blog.tag" required>
             <option *ngFor="let t of blogTags" [value]="t.name">{{t.name}}</option>
           </select>
           </div>

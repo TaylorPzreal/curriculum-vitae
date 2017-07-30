@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { BlogListComponent } from './blog-list.component';
+import { BlogDetailComponent } from './blog-detail.component';
 
 export const routes: Routes = [
-  {path: '', component: BlogListComponent}
+  {path: '', component: BlogDetailComponent}
 ];
 
 @NgModule({
@@ -16,8 +16,8 @@ export const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    BlogListComponent
+    BlogDetailComponent
   ]
 })
 
-export class BlogListModule { }
+export class BlogDetailModule { }

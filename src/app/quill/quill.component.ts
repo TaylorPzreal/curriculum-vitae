@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { ServiceConf } from '../service-conf';
 // syntax
 import 'highlight.js/styles/atom-one-dark.css';
 // const hljs = require('highlight.js');
@@ -44,6 +45,10 @@ export class QuillComponent implements OnInit {
   }
 
   private initQuill() {
+    // 将detail的第一张图片作为封面图片
+    let coverImage: string;
+    let gettingCoverImage: boolean = true;
+
     const editor: any = new Quill('#quill-editor', {
       bounds: '#quill-editor',
       modules: {
@@ -59,7 +64,7 @@ export class QuillComponent implements OnInit {
     editor.root.innerHTML = this.setDetail;
 
       /**
-       * select local image
+       * 1. select local image
        *
        */
     function selectLocalImage() {
@@ -81,7 +86,7 @@ export class QuillComponent implements OnInit {
     }
 
     /**
-     * save to server
+     * 2. save to server
      *
      * @param {File} file
      */
@@ -90,7 +95,7 @@ export class QuillComponent implements OnInit {
       fd.append('image', file);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://localhost:3000/upload/image', true);
+      xhr.open('POST', `${ServiceConf.baseURL}/upload/image`, true);
       xhr.onload = () => {
         if (xhr.status === 200) {
           // this is callback data: url
@@ -105,14 +110,20 @@ export class QuillComponent implements OnInit {
     }
 
     /**
-     * insert image url to rich editor.
+     * 3. insert image url to rich editor.
      *
      * @param {string} url
      */
     function insertToEditor(url: string) {
       // push image url to rich editor.
       const range = editor.getSelection();
-      editor.insertEmbed(range.index, 'image', `http://localhost:9000${url}`);
+      const fullUrl = `https://www.honeymorning.com${url}`;
+      editor.insertEmbed(range.index, 'image', fullUrl);
+
+      if (gettingCoverImage) {
+        coverImage = fullUrl;
+        gettingCoverImage = false;
+      }
     }
 
     // quill editor add image handler
@@ -122,7 +133,11 @@ export class QuillComponent implements OnInit {
 
     // 监听同步detail
     editor.on('text-change', () => {
-      this.returnDetail.emit(editor.root.innerHTML);
+      const emitData = {
+        detail: editor.root.innerHTML,
+        coverImage
+      };
+      this.returnDetail.emit(JSON.stringify(emitData));
     });
   }
 }

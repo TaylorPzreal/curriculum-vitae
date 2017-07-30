@@ -14,21 +14,21 @@
             </div>
             <div class="box-body">
               <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12 margin-bottom-12">
+                <div class="col-md-4 col-sm-6 col-xs-12 margin-bottom-12" *ngFor="let blog of blogs">
                   <div class="blog-list">
                     <figure>
-                      <img src="../../assets/images/awesome/wallhaven-461274.jpg" alt="StoryLogo">
+                      <img src="{{blog.coverImage}}" alt="StoryLogo">
                     </figure>
                     <div class="blog-content">
-                      <h3 class=""><a href="">Towards an Internet of Living Things</a></h3>
-                      <p>Conservation groups are using technology to understand and protect our planet in an entirely new way.</p>
+                      <h3 class=""><a [routerLink]="['/blogdetail', blog.titleId]">{{blog.title}}</a></h3>
+                      <p>{{blog.summary}}</p>
                       <div class="author">
                         <a href="">
-                          <img src="../../assets/images/magic/wallhaven-277430.jpg" alt="UserLogo">
+                          <img src="{{blog.logo}}" alt="UserLogo">
                         </a>
                         <div class="author-info">
-                          <div><a href="">name</a></div>
-                          <div><span>2017-07-20</span></div>
+                          <div><a href="">{{blog.author}}</a></div>
+                          <div><span>{{blog.ctime}}</span></div>
                         </div>
                         <div class="">
                           <a href=""><i class="fa fa-heart-o"></i></a>
@@ -37,126 +37,6 @@
                     </div>
                   </div>
                 </div>
-
-                                <div class="col-md-4 col-sm-6 col-xs-12 margin-bottom-12">
-                  <div class="blog-list">
-                    <figure>
-                      <img src="../../assets/images/awesome/wallhaven-461274.jpg" alt="StoryLogo">
-                    </figure>
-                    <div class="blog-content">
-                      <h3 class=""><a href="">Towards an Internet of Living Things</a></h3>
-                      <p>Conservation groups are using technology to understand and protect our planet in an entirely new way.</p>
-                      <div class="author">
-                        <a href="">
-                          <img src="../../assets/images/magic/wallhaven-277430.jpg" alt="UserLogo">
-                        </a>
-                        <div class="author-info">
-                          <div><a href="">name</a></div>
-                          <div><span>2017-07-20</span></div>
-                        </div>
-                        <div class="">
-                          <a href=""><i class="fa fa-heart-o"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12 margin-bottom-12">
-                  <div class="blog-list">
-                    <figure>
-                      <img src="../../assets/images/awesome/wallhaven-461274.jpg" alt="StoryLogo">
-                    </figure>
-                    <div class="blog-content">
-                      <h3 class=""><a href="">Towards an Internet of Living Things</a></h3>
-                      <p>Conservation groups are using technology to understand and protect our planet in an entirely new way.</p>
-                      <div class="author">
-                        <a href="">
-                          <img src="../../assets/images/magic/wallhaven-277430.jpg" alt="UserLogo">
-                        </a>
-                        <div class="author-info">
-                          <div><a href="">name</a></div>
-                          <div><span>2017-07-20</span></div>
-                        </div>
-                        <div class="">
-                          <a href=""><i class="fa fa-heart-o"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                                 <div class="col-md-4 col-sm-6 col-xs-12 margin-bottom-12">
-                  <div class="blog-list">
-                    <figure>
-                      <img src="../../assets/images/awesome/wallhaven-461274.jpg" alt="StoryLogo">
-                    </figure>
-                    <div class="blog-content">
-                      <h3 class=""><a href="">Towards an Internet of Living Things</a></h3>
-                      <p>Conservation groups are using technology to understand and protect our planet in an entirely new way.</p>
-                      <div class="author">
-                        <a href="">
-                          <img src="../../assets/images/magic/wallhaven-277430.jpg" alt="UserLogo">
-                        </a>
-                        <div class="author-info">
-                          <div><a href="">name</a></div>
-                          <div><span>2017-07-20</span></div>
-                        </div>
-                        <div class="">
-                          <a href=""><i class="fa fa-heart-o"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                                <div class="col-md-4 col-sm-6 col-xs-12 margin-bottom-12">
-                  <div class="blog-list">
-                    <figure>
-                      <img src="../../assets/images/awesome/wallhaven-461274.jpg" alt="StoryLogo">
-                    </figure>
-                    <div class="blog-content">
-                      <h3 class=""><a href="">Towards an Internet of Living Things</a></h3>
-                      <p>Conservation groups are using technology to understand and protect our planet in an entirely new way.</p>
-                      <div class="author">
-                        <a href="">
-                          <img src="../../assets/images/magic/wallhaven-277430.jpg" alt="UserLogo">
-                        </a>
-                        <div class="author-info">
-                          <div><a href="">name</a></div>
-                          <div><span>2017-07-20</span></div>
-                        </div>
-                        <div class="">
-                          <a href=""><i class="fa fa-heart-o"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                                <div class="col-md-4 col-sm-6 col-xs-12 margin-bottom-12">
-                  <div class="blog-list">
-                    <figure>
-                      <img src="../../assets/images/awesome/wallhaven-461274.jpg" alt="StoryLogo">
-                    </figure>
-                    <div class="blog-content">
-                      <h3 class=""><a href="">Towards an Internet of Living Things</a></h3>
-                      <p>Conservation groups are using technology to understand and protect our planet in an entirely new way.</p>
-                      <div class="author">
-                        <a href="">
-                          <img src="../../assets/images/magic/wallhaven-277430.jpg" alt="UserLogo">
-                        </a>
-                        <div class="author-info">
-                          <div><a href="">name</a></div>
-                          <div><span>2017-07-20</span></div>
-                        </div>
-                        <div class="">
-                          <a href=""><i class="fa fa-heart-o"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
 
               </div>
             </div>

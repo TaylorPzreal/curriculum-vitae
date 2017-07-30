@@ -283,8 +283,8 @@ module.exports = {
     process: true,
     Buffer: false,
     setImmediate: false,
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
+    // fs: 'empty',
+    // net: 'empty',
+    // tls: 'empty'
   },
 };

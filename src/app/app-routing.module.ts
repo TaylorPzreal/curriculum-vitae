@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: 'login', loadChildren: '../app/login/login.module#LoginModule'},
   {path: 'bloglist', loadChildren: '../app/blog-list/blog-list.module#BlogListModule'},
   {path: 'blogedit', loadChildren: '../app/blog-edit/blog-edit.module#BlogEditModule'},
+  {path: 'blogdetail/:id', loadChildren: '../app/blog-detail/blog-detail.module#BlogDetailModule'},
   {path: 'chat', loadChildren: '../app/chat/chat.module#ChatModule'},
   {path: 'game', loadChildren: '../app/game/game.module#GameModule'},
   {path: '', loadChildren: '../app/home/home.module#HomeModule'},

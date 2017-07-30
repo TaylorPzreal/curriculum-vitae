@@ -1,0 +1,26 @@
+<section>
+  <div class="container margin-top-40 margin-bottom-20">
+    <div class="row flex-center-h">
+      <div class="blog-detail">
+        <header>
+          <div class="author">
+            <figure>
+              <img src="{{blog.logo}}" alt="avatar">
+            </figure>
+            <div>
+              <span class="name">{{blog.author}}</span>
+              <div class="sup">
+                <span>{{blog.ctime}}</span>
+                <strong class="tag">{{blog.tag}}</strong>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="">
+          <h3 class="title"><strong>{{blog.title}}</strong></h3>
+          <div class="content" [innerHtml]="blog.detail"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

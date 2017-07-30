@@ -1,11 +1,10 @@
 export class Blog {
-  public id: number;
   public title: string;
-  public detail: string;
-  public tag: string;
+  public titleId: string;
   public author: string;
-  public authorId: number;
   public logo: string;
-  public desc: string;
+  public tag: string;
+  public ctime: Date;
+  public summary: string;
   public coverImage: string;
 }

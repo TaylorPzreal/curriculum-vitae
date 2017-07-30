@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { QuillComponent } from '../quill';
@@ -36,18 +36,21 @@ export class BlogEditComponent implements OnInit {
 
   private user: User;
 
-  constructor(private route: ActivatedRoute, private toastr: ToastsManager, vRef: ViewContainerRef, private blogEditService: BlogEditService) {
+  constructor(
+    private route: ActivatedRoute,
+    private toastr: ToastsManager,
+    vRef: ViewContainerRef,
+    private blogEditService: BlogEditService,
+    private router: Router
+  ) {
     this.toastr.setRootViewContainerRef(vRef);
   }
 
   public ngOnInit(): void {
-
     const userTmp = JSON.parse(localStorage.getItem('user'));
     if (userTmp) {
-      console.warn(1);
       this.user = userTmp;
     } else {
-      console.warn(2);
       this.user = {
         name: 'HM',
         id: 0,
@@ -64,9 +67,12 @@ export class BlogEditComponent implements OnInit {
         id: 0,
         title: null,
         detail: null,
+        desc: null,
+        coverImage: null,
         tag: this.blogTags[0].name,
         author: this.user.name,
-        authorId: this.user.id
+        authorId: this.user.id,
+        logo: this.user.logo
       };
     } else {
       this.toastr.info('Getting blog detail ... ', 'Loading');
@@ -76,30 +82,38 @@ export class BlogEditComponent implements OnInit {
   }
 
   public publishStory() {
-
-    this.blogEditService.editBlog(this.blog).subscribe((result: any) => {
-      if (2000 === result.code) {
-        this.toastr.success('Save Success', 'Success');
+    this.blogEditService.editBlog(this.blog).subscribe(
+      (result: any) => {
+        if (2000 === result.code) {
+          this.toastr.success('Save Success', 'Success');
+          this.router.navigate(['/bloglist']);
+        }
+      },
+      (error: any) => {
+        console.error(error);
       }
-    }, (error: any) => {
-      console.error(error);
-    });
+    );
   }
 
   // get quill editor's innerHtml
   public getDetailReturn(event: string) {
-    this.blog.detail = event;
+    const onData = JSON.parse(event);
+    this.blog.detail = onData.detail;
+    this.blog.coverImage = onData.coverImage;
   }
 
   private getBlogById(id: number) {
     // get from server
     this.blog = {
-        id: 0,
-        title: null,
-        detail: null,
-        tag: 'Please select a tag.',
-        author: this.user.name,
-        authorId: this.user.id
+      id: 0,
+      title: null,
+      detail: null,
+      desc: null,
+      coverImage: null,
+      tag: 'Please select a tag.',
+      author: this.user.name,
+      authorId: this.user.id,
+      logo: this.user.logo
     };
   }
 }
