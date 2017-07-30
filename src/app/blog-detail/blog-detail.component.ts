@@ -12,7 +12,15 @@ import { Blog } from './blog.model';
 })
 
 export class BlogDetailComponent implements OnInit {
-  public blog: Blog;
+  public blog: Blog = {
+    title: null,
+    author: null,
+    authorId: null,
+    logo: null,
+    ctime: null,
+    tag: null,
+    detail: null
+  };
   constructor(
     private blogDetailService: BlogDetailService,
     private route: ActivatedRoute,
