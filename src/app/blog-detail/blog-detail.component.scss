@@ -6,7 +6,6 @@ $blue: #0278ae;
 .blog-detail {
   background-color: $bgc;
   border-radius: 3px;
-  max-width: 1000px;
   padding: 30px 40px;
 
   .author {
@@ -58,7 +57,7 @@ $blue: #0278ae;
       line-height: 1.5;
       max-width: 100%;
 
-      *,
+      // *,
       img {
         max-width: 100%;
       }

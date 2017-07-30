@@ -1,7 +1,7 @@
 <section>
   <div class="container margin-top-40 margin-bottom-20">
-    <div class="row flex-center-h">
-      <div class="blog-detail">
+    <div class="row ">
+      <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12 col-xs-12 blog-detail">
         <header>
           <div class="author">
             <figure>
@@ -18,7 +18,7 @@
         </header>
         <div class="">
           <h3 class="title"><strong>{{blog.title}}</strong></h3>
-          <div class="content" [innerHtml]="blog.detail"></div>
+          <div class="col-12 content" [innerHtml]="blog.detail"></div>
         </div>
       </div>
     </div>
