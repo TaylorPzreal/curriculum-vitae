@@ -10,7 +10,7 @@
             <div>
               <span class="name">{{blog.author}}</span>
               <div class="sup">
-                <span>{{blog.ctime}}</span>
+                <span>{{blog.ctime | date: 'medium'}}</span>
                 <strong class="tag">{{blog.tag}}</strong>
               </div>
             </div>

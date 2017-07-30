@@ -278,7 +278,7 @@ module.exports = {
     new webpack.BannerPlugin('Copyright www.honeymorning.com 2017 inc.')
   ],
   node: {
-    console: false,
+    // console: false,
     global: true,
     process: true,
     Buffer: false,
