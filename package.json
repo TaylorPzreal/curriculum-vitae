@@ -10,7 +10,8 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js --colors --profile --hot",
     "startopen": "yarn run start -- --open",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config webpack.config.js --profile --colors",
-    "test": "karma start"
+    "test": "karma start",
+    "e2e": "node_modules/protractor/bin/webdriver-manager update && node_modules/protractor/bin/protractor ./protractor.conf.js"
   },
   "dependencies": {
     "@angular/animations": "^4.3.2",

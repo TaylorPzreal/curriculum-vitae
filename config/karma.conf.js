@@ -10,10 +10,12 @@ module.exports = function (config) {
       {pattern: './config/karma-test-shim.js', watched: false},
       
       // Include a Material theme in the test suite.
-      {pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css', included: true, watched: true},
+      // {pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css', included: true, watched: true},
     ],
 
     plugins: [
+      require('karma-webpack'),
+      require('karma-sourcemap-loader'),
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
