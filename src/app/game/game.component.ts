@@ -16,7 +16,7 @@ export class GameComponent implements OnInit {
   private cursors: Phaser.CursorKeys;
   private stars: Phaser.Group;
   private score: number = 0;
-  private scoreText: string;
+  private scoreText: Phaser.Text;
 
   private config: object = {
     width: 1170,
@@ -94,10 +94,11 @@ export class GameComponent implements OnInit {
     }
 
     // this.cursors = this.game.input.keyboard.createCursorKeys();
-    this.scoreText = this.game.add.text(16, 16, 'score: 0', {
-      fontSize: '32px',
+    const textStyle: Phaser.PhaserTextStyle = {
+      fontSize: 32,
       fill: '#fdc7ba'
-    });
+    };
+    this.scoreText = this.game.add.text(16, 16, 'score: 0', textStyle);
   }
 
   private update(): void {

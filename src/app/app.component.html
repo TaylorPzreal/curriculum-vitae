@@ -31,7 +31,8 @@
           </div>
         </form>
         <form class="form-inline">
-          <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="btn btn-theme text-white">Login</a>
+          <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="btn btn-theme text-white">Log in</a>
+          <a routerLink="/signup" *ngIf="!userInfo" routerLinkActive="active" class="btn btn-theme text-white">Sign up</a>
           <a class="no-padding font-14" *ngIf="userInfo">
             <img src="{{userInfo.logo}}" alt="Logo" width="26" height="26" style="border-radius: 13px;" class="">
             <span>{{userInfo.name}}</span>

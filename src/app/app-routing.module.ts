@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
+  {path: 'signup', loadChildren: '../app/sign-up/sign-up.module#SignUpModule'},
   {path: 'login', loadChildren: '../app/login/login.module#LoginModule'},
   {path: 'bloglist', loadChildren: '../app/blog-list/blog-list.module#BlogListModule'},
   {path: 'blogedit', loadChildren: '../app/blog-edit/blog-edit.module#BlogEditModule'},

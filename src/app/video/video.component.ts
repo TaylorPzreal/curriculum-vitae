@@ -27,7 +27,7 @@ export class VideoComponent implements OnInit {
     canvas.height = 360;
 
     video.addEventListener('play', function() {
-      const self = this;
+      const self: any = this;
       (function loop() {
         if (!self.paused && !self.ended) {
           ctx.drawImage(self, 0, 0);
