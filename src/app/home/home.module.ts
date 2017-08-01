@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { JsonpModule } from '@angular/http';
 
 import { CommonModule } from '@angular/common';
 
@@ -12,6 +13,7 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [
+    JsonpModule,
     CommonModule,
     RouterModule.forChild(routes)
   ],

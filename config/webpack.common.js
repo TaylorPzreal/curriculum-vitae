@@ -90,7 +90,8 @@ module.exports = {
       include: [
         // helpers.root('fonts'),
         helpers.root('node_modules/font-awesome/fonts'),
-        helpers.root('node_modules/katex/dist/fonts')
+        helpers.root('node_modules/katex/dist/fonts'),
+        helpers.root('node_modules/weather-icons/font')
         // helpers.root('node_modules/bootstrap/dist/fonts')
       ]
     }, {

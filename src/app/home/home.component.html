@@ -10,7 +10,16 @@
             </div>
           </div>
         </div>
-        <hm-video></hm-video>
+        <div class="weather">
+          <div>
+            <i [ngClass]="weather.icon"></i>
+            <div>
+              <div>{{weather.temperature}}</div>
+              <div>{{weather.time | date}}</div>
+            </div>
+          </div>
+        </div>
+        <!--<hm-video></hm-video>-->
       </div>
     </div>
   </header>
