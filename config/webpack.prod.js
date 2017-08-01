@@ -10,7 +10,7 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 module.exports = webpackMerge(commonConfig, {
 
   plugins: [
-    // new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(), // 如果出错就停止构建
 
     new ExtractTextPlugin({
       filename: '[name].[contenthash].css',
