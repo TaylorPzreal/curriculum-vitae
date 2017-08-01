@@ -40,9 +40,9 @@
 
               </div>
             </div>
-            <div class="box-footer">
+            <!--<div class="box-footer">
               More
-            </div>
+            </div>-->
           </div>
         </div>
 
@@ -50,13 +50,13 @@
         <div class="col-md-4 col-sm-12 col-xs-12">
           <div class="box box-theme">
             <div class="box-header with-border">
-              <h3 class="box-title">Hot Story</h3>
+              <h3 class="box-title">Blog Aanlyze</h3>
             </div>
             <div class="box-body">
-              Editing...
+              <cv-chart [chartData]="monthTrendData"></cv-chart>
             </div>
             <div class="box-footer">
-              More
+              <cv-chart [chartData]="tagsAnalyzeData"></cv-chart>
             </div>
           </div>
         </div>
