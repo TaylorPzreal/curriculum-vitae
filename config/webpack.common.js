@@ -6,6 +6,7 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const os = require('os');
 const helpers = require('./helpers');
 const path = require('path');
+const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 const PHASER_DIR = helpers.root('/node_modules/phaser-ce');
 
@@ -56,23 +57,26 @@ module.exports = {
       test: /p2\.js/,
       loader: 'expose-loader?p2'
     }, {
-      enforce: 'pre',
-      test: /\.ts/,
-      use: [{
-        loader: 'tslint-loader',
-        options: {
-          tsConfigFile: helpers.root('src/tsconfig.json')
-        }
-      }]
-    }, {
       test: /\.ts$/,
-      loaders: [{
-        loader: 'awesome-typescript-loader',
-        options: {
-          configFileName: helpers.root('src', 'tsconfig.json')
-        }
-      }, 'angular-router-loader', 'angular2-template-loader']
+      loader: '@ngtools/webpack'
     }, {
+    //   enforce: 'pre',
+    //   test: /\.ts/,
+    //   use: [{
+    //     loader: 'tslint-loader',
+    //     options: {
+    //       tsConfigFile: helpers.root('src/tsconfig.json')
+    //     }
+    //   }]
+    // }, {
+    //   test: /\.ts$/,
+    //   loaders: [{
+    //     loader: 'awesome-typescript-loader',
+    //     options: {
+    //       configFileName: helpers.root('src', 'tsconfig.json')
+    //     }
+    //   }, 'angular-router-loader', 'angular2-template-loader']
+    // }, {
       test: /\.html$/,
       loader: 'html-loader',
       include: [
@@ -170,6 +174,11 @@ module.exports = {
     // Scope Hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
 
+    new AotPlugin({
+      tsConfigPath: 'tsconfig-aot.json',
+      entryModule: helpers.root('src/app/app.module.ts#AppModule')
+    }),
+// https://github.com/angular/angular-cli/issues/4551
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
