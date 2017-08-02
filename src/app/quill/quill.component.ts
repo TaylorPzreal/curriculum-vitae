@@ -21,8 +21,8 @@ import * as Quill from 'quill';
 })
 export class QuillComponent implements OnInit {
   private defaultDetail: string;
-  @Output() private returnDetail: EventEmitter<string> = new EventEmitter<string> ();
-  @Input () private setDetail: string = null;
+  @Output() private returnDetail: EventEmitter<string> = new EventEmitter<string>();
+  @Input() private setDetail: string = null;
 
   // Quill toolbar 配置
   private toolbarOptions: any[] = [
@@ -54,7 +54,12 @@ export class QuillComponent implements OnInit {
       modules: {
         formula: true,
         syntax: true, // code语法高亮
-        toolbar: this.toolbarOptions
+        toolbar: this.toolbarOptions,
+        history: {
+          delay: 2000,
+          maxStack: 500,
+          userOnly: true
+        }
       },
       placeholder: 'Free Write...',
       theme: 'snow'
@@ -63,10 +68,10 @@ export class QuillComponent implements OnInit {
     // Default content from server(edit blog.)
     editor.root.innerHTML = this.setDetail;
 
-      /**
-       * 1. select local image
-       *
-       */
+    /**
+     * 1. select local image
+     *
+     */
     function selectLocalImage() {
       const input = document.createElement('input');
       input.setAttribute('type', 'file');
