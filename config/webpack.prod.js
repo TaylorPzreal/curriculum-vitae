@@ -9,8 +9,17 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 module.exports = webpackMerge(commonConfig, {
 
+    //     test: /\.ts$/,
+    //   loader: '@ngtools/webpack'
+    // }, {
+
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(), // 如果出错就停止构建
+
+    // new AotPlugin({
+    //   tsConfigPath: 'tsconfig-aot.json',
+    //   entryModule: helpers.root('src/app/app.module#AppModule')
+    // }),
 
     new ExtractTextPlugin({
       filename: '[name].[contenthash].css',
