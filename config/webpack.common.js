@@ -6,7 +6,6 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const os = require('os');
 const helpers = require('./helpers');
 const path = require('path');
-const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 const PHASER_DIR = helpers.root('/node_modules/phaser-ce');
 

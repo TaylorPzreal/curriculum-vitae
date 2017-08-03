@@ -12,7 +12,9 @@ module.exports = function(options) {
   return webpackMerge(commonConfig, {
 
     // module: {
-    //   rules: []
+    //   rules: [
+
+    //   ]
     // },
 
     plugins: [

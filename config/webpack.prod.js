@@ -4,20 +4,25 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var commonConfig = require('./webpack.common.js');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require('compression-webpack-plugin');
+// const AotPlugin = require('@ngtools/webpack').AotPlugin;
+// const helpers = require('./helpers');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 module.exports = webpackMerge(commonConfig, {
 
-    //     test: /\.ts$/,
-    //   loader: '@ngtools/webpack'
-    // }, {
+  // module: {
+  //  rules: [{
+  //    test: /\.ts$/,
+  //    loader: '@ngtools/webpack'
+  //  }] 
+  // },
 
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(), // 如果出错就停止构建
 
     // new AotPlugin({
-    //   tsConfigPath: 'tsconfig-aot.json',
+    //   tsConfigPath: helpers.root('tsconfig-aot.json'),
     //   entryModule: helpers.root('src/app/app.module#AppModule')
     // }),
 
