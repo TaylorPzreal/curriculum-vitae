@@ -1,5 +1,5 @@
 export class Blog {
-  public id: number;
+  public id: string;
   public title: string;
   public detail: string;
   public tag: string;

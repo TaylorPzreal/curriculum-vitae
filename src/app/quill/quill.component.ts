@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 import { ServiceConf } from '../service-conf';
 // syntax
@@ -19,8 +19,9 @@ import * as Quill from 'quill';
   `,
   styleUrls: ['./quill.component.scss']
 })
-export class QuillComponent implements OnInit {
+export class QuillComponent implements OnInit, OnChanges {
   private defaultDetail: string;
+  private editor: any; // 用于局部使用，跟editor指向的是同一个quill
   @Output() private returnDetail: EventEmitter<string> = new EventEmitter<string>();
   @Input() private setDetail: string = null;
 
@@ -44,6 +45,15 @@ export class QuillComponent implements OnInit {
     this.initQuill();
   }
 
+  public ngOnChanges(changes: SimpleChanges) {
+    // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    // Add 'implements OnChanges' to the class.
+    if (changes && this.editor) {
+      // Default content from server(edit blog.)
+      this.editor.root.innerHTML = changes['setDetail'].currentValue;
+    }
+  }
+
   private initQuill() {
     // 将detail的第一张图片作为封面图片
     let coverImage: string;
@@ -64,6 +74,7 @@ export class QuillComponent implements OnInit {
       placeholder: 'Free Write...',
       theme: 'snow'
     });
+    this.editor = editor;
 
     // Default content from server(edit blog.)
     editor.root.innerHTML = this.setDetail;

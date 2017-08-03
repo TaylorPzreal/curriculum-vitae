@@ -14,6 +14,8 @@ interface IChart {
   templateUrl: './chart.component.html'
 })
 export class ChartComponent implements OnChanges {
+  public ctxid: number;
+
   @Input() private chartData: IChart;
   private ctx: JQuery<HTMLElement>;
 
@@ -35,11 +37,16 @@ export class ChartComponent implements OnChanges {
   }
 
   private initChart(): void {
-    console.warn('initchart');
-    this.ctx = $('canvas');
+    this.ctxid = (new Date()).valueOf();
+
+    // console.warn('initchart', this.ctxid);
+    const canvas = document.createElement('canvas');
+    // document.getElementsByName('cv-chart')[0].appendChild(canvas);
+    document.getElementById('canvas-container').appendChild(canvas);
+    this.ctx = $(canvas);
     this.ctx.width(this.ctx.parent().width());
     this.ctx.height(300);
-    console.warn(this.ctx);
+
     const myChart = new Chart(this.ctx, {
       type: this.chartData.type,
       data: this.chartData.data,

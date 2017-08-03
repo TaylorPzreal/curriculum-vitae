@@ -7,12 +7,15 @@
             <figure>
               <img src="{{blog.logo}}" alt="avatar">
             </figure>
-            <div>
+            <div class="author-info">
               <span class="name">{{blog.author}}</span>
               <div class="sup">
-                <span>{{blog.ctime | date: 'medium'}}</span>
+                <span>{{blog.ctime | date: 'y-MM-dd HH:mm:ss'}}</span>
                 <strong class="tag">{{blog.tag}}</strong>
               </div>
+            </div>
+            <div>
+              <a class="btn btn-lg btn-outline-primary" *ngIf="isEditable" [routerLink]="['/bloge']" [queryParams]="{id: blogId}">Edit</a>
             </div>
           </div>
         </header>

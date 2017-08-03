@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -35,6 +34,7 @@ export class BlogEditComponent implements OnInit {
   ];
 
   private user: User;
+  private blogId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,68 +44,24 @@ export class BlogEditComponent implements OnInit {
     private router: Router
   ) {
     this.toastr.setRootViewContainerRef(vRef);
-  }
 
-  public ngOnInit(): void {
     const userTmp = JSON.parse(localStorage.getItem('user'));
     if (userTmp) {
       this.user = userTmp;
     } else {
-      this.user = {
-        name: 'HM',
-        id: 0,
-        bio: '',
-        logo: ''
-      };
+       this.toastr.warning('Please login first');
+       this.router.navigate(['/blogs']);
+       return;
     }
 
-    const id: any = Number(this.route.snapshot.queryParams['id']);
+    // init blogId
+    this.route.queryParams.subscribe((params: Params) => {
+      this.blogId = params['id'] || null;
+    });
 
-    if (!id) {
-      // if here no blog id, it's add blog, others edit blog.
-      this.blog = {
-        id: 0,
-        title: null,
-        detail: null,
-        desc: null,
-        coverImage: null,
-        tag: this.blogTags[0].name,
-        author: this.user.name,
-        authorId: this.user.id,
-        logo: this.user.logo
-      };
-    } else {
-      this.toastr.info('Getting blog detail ... ', 'Loading');
-      console.warn('get blog detail');
-      this.getBlogById(id);
-    }
-  }
-
-  public publishStory() {
-    this.blogEditService.editBlog(this.blog).subscribe(
-      (result: any) => {
-        if (2000 === result.code) {
-          this.toastr.success('Save Success', 'Success');
-          this.router.navigate(['/bloglist']);
-        }
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
-
-  // get quill editor's innerHtml
-  public getDetailReturn(event: string) {
-    const onData = JSON.parse(event);
-    this.blog.detail = onData.detail;
-    this.blog.coverImage = onData.coverImage;
-  }
-
-  private getBlogById(id: number) {
-    // get from server
+    // init blog
     this.blog = {
-      id: 0,
+      id: this.blogId,
       title: null,
       detail: null,
       desc: null,
@@ -115,5 +71,67 @@ export class BlogEditComponent implements OnInit {
       authorId: this.user.id,
       logo: this.user.logo
     };
+
+  }
+
+  public ngOnInit(): void {
+    if (this.blogId) { // edit
+      this.toastr.info('Getting blog detail ... ', 'Loading');
+      this.getBlogById(this.blogId);
+    }
+  }
+
+  /**
+   * add new save or edit save
+   *
+   * @memberof BlogEditComponent
+   */
+  public publishStory() {
+    this.blogEditService.editBlog(this.blog).subscribe(
+      (result: any) => {
+        if (2000 === result.code) {
+          this.toastr.success('New add success', 'Success');
+          this.router.navigate(['/blogs']);
+        } else if (2001 === result.code) {
+          this.toastr.success('Update success', 'Success');
+          this.router.navigate(['/blogv', this.blogId]);
+        }
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
+  /**
+   * get quill editor's innerHtml
+   *
+   * @param {string} event htmlstring
+   * @memberof BlogEditComponent
+   */
+  public getDetailReturn(event: string) {
+    const onData = JSON.parse(event);
+    this.blog.detail = onData.detail;
+    this.blog.coverImage = onData.coverImage;
+  }
+
+  /**
+   * 获取Blog详情
+   *
+   * @private
+   * @param {string} id
+   * @memberof BlogEditComponent
+   */
+  private getBlogById(id: string) {
+    // get from server
+    this.blogEditService.getBlogDetail(id).subscribe((result: any) => {
+      if (2000 === result.code) {
+        this.blog.title = result.data.title;
+        this.blog.detail = result.data.detail;
+        this.blog.desc = result.data.desc;
+        this.blog.coverImage = result.data.coverImage;
+        this.blog.tag = result.data.tag;
+      }
+    });
   }
 }

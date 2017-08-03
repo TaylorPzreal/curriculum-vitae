@@ -20,7 +20,7 @@
                       <img src="{{blog.coverImage}}" alt="StoryLogo">
                     </figure>
                     <div class="blog-content">
-                      <h3 class=""><a [routerLink]="['/blogdetail', blog.titleId]">{{blog.title}}</a></h3>
+                      <h3 class=""><a [routerLink]="['/blogv', blog.titleId]">{{blog.title}}</a></h3>
                       <p>{{blog.summary}}</p>
                       <div class="author">
                         <a href="">
@@ -28,7 +28,7 @@
                         </a>
                         <div class="author-info">
                           <div><a href="">{{blog.author}}</a></div>
-                          <div><span>{{blog.ctime | date: 'medium'}}</span></div>
+                          <div><span>{{blog.ctime | date: 'y-MM-dd'}}</span></div>
                         </div>
                         <div class="">
                           <a href=""><i class="fa fa-heart-o"></i></a>
@@ -54,9 +54,10 @@
             </div>
             <div class="box-body">
               <cv-chart [chartData]="monthTrendData"></cv-chart>
+              <cv-chart [chartData]="tagsAnalyzeData"></cv-chart>
             </div>
             <div class="box-footer">
-              <cv-chart [chartData]="tagsAnalyzeData"></cv-chart>
+              More are coming...
             </div>
           </div>
         </div>

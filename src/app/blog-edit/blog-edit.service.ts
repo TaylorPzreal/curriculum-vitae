@@ -19,4 +19,18 @@ export class BlogEditService {
       .map((res: Response) => res.json())
       .catch(ServiceConf.handleError);
   }
+
+  /**
+   * GetBlogDetail
+   *
+   * @param {string} id
+   * @returns
+   * @memberof BlogEditService
+   */
+  public getBlogDetail(id: string) {
+    const url = `${this.baseURL}/blog/queryByTitleId/${id}`;
+    return this.http.get(url)
+      .map((res: Response) => res.json())
+      .catch(ServiceConf.handleError);
+  }
 }
