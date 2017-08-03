@@ -44,7 +44,7 @@ export class BlogListComponent implements OnInit {
     const cookie = document.cookie;
     if (cookie && /isLogin=true/.test(cookie) && localStorage.getItem('user')) {
       // navigate to blog edit.
-      this.router.navigate(['/bloge/add']);
+      this.router.navigate(['/bloge']);
     } else {
       this.toastr.warning('You need login first!', 'Warning');
     }
