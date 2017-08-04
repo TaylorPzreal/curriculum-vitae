@@ -9,6 +9,7 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found';
 
 import { HomeService } from './home/home.service';
 
@@ -23,6 +24,7 @@ import { HomeService } from './home/home.service';
   ],
   declarations: [
     AppComponent,
+    PageNotFoundComponent
   ],
   providers: [HomeService],
   bootstrap: [ AppComponent ]
