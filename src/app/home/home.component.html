@@ -16,8 +16,12 @@
             <div>
               <div>{{weather.temperature}}</div>
               <div>{{weather.time | date}}</div>
+              <div>{{weather.timezone}}</div>
             </div>
           </div>
+        </div>
+        <div>
+          <cv-chart [chartData]="githubJSData"></cv-chart>
         </div>
         <!--<hm-video></hm-video>-->
       </div>

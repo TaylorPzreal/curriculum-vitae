@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './home.component';
 import { VideoComponent } from '../video';
+import { ChartComponent } from '../chart';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent}
@@ -19,7 +20,8 @@ export const routes: Routes = [
   ],
   declarations: [
     HomeComponent,
-    VideoComponent
+    VideoComponent,
+    ChartComponent
   ]
 })
 

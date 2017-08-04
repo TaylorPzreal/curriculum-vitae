@@ -20,6 +20,7 @@ interface IWeather {
   icon: string;
   time: number;
   temperature: string;
+  timezone: string;
 }
 
 @Component({
@@ -29,12 +30,14 @@ interface IWeather {
   providers: [HomeService]
 })
 export class HomeComponent implements OnInit {
+  public githubJSData: {};
   public articleList: Article[];
   public topMovies: IMovie[];
   public weather: IWeather = {
     icon: '',
     time: null,
-    temperature: null
+    temperature: null,
+    timezone: null
   };
   private icon = {
     'clear-day': 'wi wi-day-sunny',
@@ -55,6 +58,7 @@ export class HomeComponent implements OnInit {
     this.initArticle();
     this.initMovie();
     this.initGeoLocation();
+    this.analyseGithubJs();
   }
 
   private initArticle() {
@@ -112,9 +116,73 @@ export class HomeComponent implements OnInit {
     this.homeService.getWeather(loc).subscribe((res) => {
       this.weather.icon = this.icon[res.currently.icon];
       this.weather.time = res.currently.time * 1000;
-      this.weather.temperature = res.currently.temperature + ' ℉';
+      this.weather.temperature = ((res.currently.temperature - 32) / 1.8).toFixed(2) + ' ℃';
+      this.weather.timezone = res.timezone;
     }, (error) => {
       console.warn(error);
     });
   }
+
+  /**
+   * analyse githus js
+   *
+   * @private
+   * @memberof HomeComponent
+   */
+  private analyseGithubJs() {
+    this.homeService.analyseGithubJs().subscribe((result) => {
+      const data: number[] = [];
+      const labels: string[] = [];
+      result.items.forEach((e: any) => {
+        data.push(e.stargazers_count);
+        labels.push(e.name);
+      });
+
+      this.githubJSData = {
+        type: 'line',
+        data: {
+          labels: labels.reverse(),
+          datasets: [{
+            label: 'stars',
+            data: data.reverse(),
+            backgroundColor: ['rgba(255, 159, 64, 0.4)'],
+            borderColor: ['rgba(255, 159, 64, 1)'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Github JS Top50',
+            fontColor: 'rgba(255, 255, 255, 0.8)'
+          },
+          tooltips: {
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            titleFontColor: 'rgba(1, 72, 104, 0.8)',
+            bodyFontColor: 'rgba(2, 120, 174, 0.8)'
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                fontColor: 'rgba(255, 255, 255, 0.6)'
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                fontColor: 'rgba(255, 255, 255, 0.6)'
+              }
+            }]
+          },
+          legend: {
+            labels: {
+              fontColor: 'rgba(255, 255, 255, 0.6)'
+            }
+          }
+        }
+      };
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
 }

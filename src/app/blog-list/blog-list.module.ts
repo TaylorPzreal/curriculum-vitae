@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { BlogListComponent } from './blog-list.component';
-import { ChartComponent } from '../chart';
 
 export const routes: Routes = [
   {path: '', component: BlogListComponent}
@@ -18,7 +17,6 @@ export const routes: Routes = [
   ],
   declarations: [
     BlogListComponent,
-    ChartComponent
   ]
 })
 
