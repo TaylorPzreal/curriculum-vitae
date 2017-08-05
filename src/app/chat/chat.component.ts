@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ChatService } from './chat.service';
 import { ToastsManager } from 'ng2-toastr';
 
@@ -24,8 +25,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   constructor(
     private chatService: ChatService,
     public toastr: ToastsManager,
-    public vRef: ViewContainerRef
-    ) {}
+    public vRef: ViewContainerRef,
+    private titleService: Title
+    ) {
+      this.titleService.setTitle('Chat - HoneyMorning');
+    }
 
   public sendMessage() {
     // 如果未登录，不允许发送信息

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import 'pixi';
 import 'p2';
@@ -31,7 +32,9 @@ export class GameComponent implements OnInit {
     }
   };
 
-  // constructor() {}
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Game - HoneyMorning');
+  }
 
   public ngOnInit() {
     this.game = new Phaser.Game(this.config);

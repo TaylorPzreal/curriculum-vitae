@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { BlogDetailService } from './blog-detail.service';
@@ -28,7 +29,8 @@ export class BlogDetailComponent implements OnInit {
   constructor(
     private blogDetailService: BlogDetailService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) { }
 
   public ngOnInit() {
@@ -42,6 +44,8 @@ export class BlogDetailComponent implements OnInit {
       if (2000 === result.code) {
         this.blog = result.data;
         this.confirmLogin(result.data);
+
+        this.titleService.setTitle(this.blog.title + '- HoneyMorning');
       }
     }, (error) => {
       console.error(error);

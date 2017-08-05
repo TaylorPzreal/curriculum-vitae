@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import { HomeService } from './home.service';
 import { Article } from './article';
@@ -52,7 +53,9 @@ export class HomeComponent implements OnInit {
     'partly-cloudy-night': 'wi wi-night-alt-cloudy-gusts'
   };
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private titleService: Title) {
+    this.titleService.setTitle('Home - Honeymorning');
+  }
 
   public ngOnInit() {
     this.initArticle();
@@ -139,46 +142,8 @@ export class HomeComponent implements OnInit {
       });
 
       this.githubJSData = {
-        type: 'line',
-        data: {
-          labels: labels.reverse(),
-          datasets: [{
-            label: 'stars',
-            data: data.reverse(),
-            backgroundColor: ['rgba(255, 159, 64, 0.4)'],
-            borderColor: ['rgba(255, 159, 64, 1)'],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          title: {
-            display: true,
-            text: 'Github JS Top50',
-            fontColor: 'rgba(255, 255, 255, 0.8)'
-          },
-          tooltips: {
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-            titleFontColor: 'rgba(1, 72, 104, 0.8)',
-            bodyFontColor: 'rgba(2, 120, 174, 0.8)'
-          },
-          scales: {
-            xAxes: [{
-              ticks: {
-                fontColor: 'rgba(255, 255, 255, 0.6)'
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                fontColor: 'rgba(255, 255, 255, 0.6)'
-              }
-            }]
-          },
-          legend: {
-            labels: {
-              fontColor: 'rgba(255, 255, 255, 0.6)'
-            }
-          }
-        }
+        data,
+        labels
       };
     }, (error) => {
       console.error(error);

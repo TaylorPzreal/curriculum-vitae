@@ -45,7 +45,7 @@ export class ChartComponent implements OnChanges {
     document.getElementById('canvas-container').appendChild(canvas);
     this.ctx = $(canvas);
     this.ctx.width(this.ctx.parent().width());
-    this.ctx.height(460);
+    this.ctx.height(300);
 
     const myChart = new Chart(this.ctx, {
       type: this.chartData.type,

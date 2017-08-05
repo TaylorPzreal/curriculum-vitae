@@ -1,6 +1,7 @@
 import * as jQuery from 'jquery';
 
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
@@ -23,7 +24,8 @@ export class BlogListComponent implements OnInit {
     private router: Router,
     private toastr: ToastsManager,
     vRef: ViewContainerRef,
-    private blogListService: BlogListService
+    private blogListService: BlogListService,
+    private titleService: Title
   ) {
     this.toastr.setRootViewContainerRef(vRef);
   }
@@ -32,6 +34,8 @@ export class BlogListComponent implements OnInit {
     this.initBlogList();
     this.initChartOfMonthBlogs();
     this.initChartTags();
+
+    this.titleService.setTitle('Blog - HoneyMorning');
   }
 
   /**

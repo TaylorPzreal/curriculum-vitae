@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { User } from './sign-up-model';
@@ -38,12 +39,14 @@ export class SignUpComponent implements OnInit {
     }
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private titleService: Title) {
     this.user = {
       name: null,
       password: null,
       email: null
     };
+
+    this.titleService.setTitle('Sign up - HoneyMorning');
   }
 
   public onSubmit() {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import { LoginService } from './login.service';
 
@@ -9,7 +10,9 @@ import { LoginService } from './login.service';
   providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private titleService: Title) {
+    this.titleService.setTitle('Log in - HoneyMorning');
+  }
 
   public ngOnInit() {
     // this.getData();

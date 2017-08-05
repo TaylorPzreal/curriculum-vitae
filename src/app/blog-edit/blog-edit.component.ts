@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -41,8 +42,11 @@ export class BlogEditComponent implements OnInit {
     private toastr: ToastsManager,
     vRef: ViewContainerRef,
     private blogEditService: BlogEditService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {
+    this.titleService.setTitle('EditBlog - HoneyMorning');
+
     this.toastr.setRootViewContainerRef(vRef);
 
     const userTmp = JSON.parse(localStorage.getItem('user'));
