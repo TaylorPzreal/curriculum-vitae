@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { BlogEditComponent } from './blog-edit.component';
-import { QuillComponent } from '../quill';
+import { QuillModule } from '../quill';
 
 export const routes: Routes = [
   {path: '', component: BlogEditComponent}
@@ -14,11 +14,11 @@ export const routes: Routes = [
   imports: [
     FormsModule,
     CommonModule,
+    QuillModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
-    BlogEditComponent,
-    QuillComponent
+    BlogEditComponent
   ]
 })
 

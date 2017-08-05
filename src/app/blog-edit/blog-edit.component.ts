@@ -3,11 +3,13 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { QuillComponent } from '../quill';
-
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Blog } from './blog.model';
 import { User } from '../user.model';
+interface IEditorData {
+  detail: string;
+  coverImage: string;
+}
 
 import { BlogEditService } from './blog-edit.service';
 
@@ -19,6 +21,7 @@ import { BlogEditService } from './blog-edit.service';
 })
 export class BlogEditComponent implements OnInit {
   public blog: Blog;
+  public editorConfig: {};
 
   public blogTags = [
     { id: 0, name: 'Please select a tag.' },
@@ -36,6 +39,7 @@ export class BlogEditComponent implements OnInit {
 
   private user: User;
   private blogId: string;
+  private editorData: IEditorData; // detail , coverImage
 
   constructor(
     private route: ActivatedRoute,
@@ -76,6 +80,10 @@ export class BlogEditComponent implements OnInit {
       logo: this.user.logo
     };
 
+    this.editorConfig = {
+      height: 460
+    };
+
   }
 
   public ngOnInit(): void {
@@ -91,6 +99,9 @@ export class BlogEditComponent implements OnInit {
    * @memberof BlogEditComponent
    */
   public publishStory() {
+    this.blog.detail = this.editorData.detail;
+    this.blog.coverImage = this.editorData.coverImage;
+
     this.blogEditService.editBlog(this.blog).subscribe(
       (result: any) => {
         if (2000 === result.code) {
@@ -114,9 +125,7 @@ export class BlogEditComponent implements OnInit {
    * @memberof BlogEditComponent
    */
   public getDetailReturn(event: string) {
-    const onData = JSON.parse(event);
-    this.blog.detail = onData.detail;
-    this.blog.coverImage = onData.coverImage;
+    this.editorData = JSON.parse(event);
   }
 
   /**

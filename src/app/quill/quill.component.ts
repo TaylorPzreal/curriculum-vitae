@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, AfterViewInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 import { ServiceConf } from '../service-conf';
 // syntax
@@ -11,19 +11,23 @@ import 'katex/dist/katex.min.css';
 import 'quill/dist/quill.snow.css';
 import * as Quill from 'quill';
 
+interface IEditorConfig {
+  toolbarOptions: any[];
+  height: number;
+}
+
 @Component({
   selector: 'quill',
   template: `
     <div id="quill-editor">
     </div>
   `,
-  styleUrls: ['./quill.component.scss']
 })
-export class QuillComponent implements OnInit, OnChanges {
-  private defaultDetail: string;
+export class QuillComponent implements AfterViewInit, OnChanges {
   private editor: any; // 用于局部使用，跟editor指向的是同一个quill
   @Output() private returnDetail: EventEmitter<string> = new EventEmitter<string>();
   @Input() private setDetail: string = null;
+  @Input() private editorConfig: IEditorConfig; // {toolbarOptions:[]}
 
   // Quill toolbar 配置
   private toolbarOptions: any[] = [
@@ -41,11 +45,15 @@ export class QuillComponent implements OnInit, OnChanges {
     ['clean']
   ];
 
-  public ngOnInit() {
+  public ngAfterViewInit() {
     this.initQuill();
   }
 
   public ngOnChanges(changes: SimpleChanges) {
+    if (this.editorConfig) {
+      $('#quill-editor').height(this.editorConfig.height || 'auto');
+      this.toolbarOptions = this.editorConfig.toolbarOptions || this.toolbarOptions;
+    }
     // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
     // Add 'implements OnChanges' to the class.
     if (changes && this.editor) {

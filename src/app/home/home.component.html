@@ -23,7 +23,6 @@
         <div>
           <cv-chart [chartData]="githubJSData">Loading...</cv-chart>
         </div>
-        <!--<hm-video></hm-video>-->
       </div>
     </div>
   </header>
@@ -31,7 +30,8 @@
   <div class="container">
     <div class="row margin-bottom-20">
       <div class="col-md-8 col-sm-12 col-xs-12  margin-top-20">
-        <div class="box box-white">
+        <quill [editorConfig]="editorConfig"></quill>
+        <!--<div class="box box-white">
           <div class="box-header">
             <h3 class="box-title">New Article</h3>
           </div>
@@ -52,10 +52,9 @@
             </table>
           </div>
           <div class="box-footer text-center">
-            <!--分页  -->
             <a href="" class="btn btn-outline-primary font-14"> 查看更多 <i class="fa fa-refresh font-12"></i></a>
           </div>
-        </div>
+        </div>-->
       </div>
 
       <div class="col-md-4 col-sm-12 col-xs-12  margin-top-20">

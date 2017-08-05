@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { JsonpModule } from '@angular/http';
 
 import { CommonModule } from '@angular/common';
+import { QuillModule } from '../quill';
 
 import { HomeComponent } from './home.component';
-import { VideoComponent } from '../video';
 import { ChartComponent } from './chart';
 
 export const routes: Routes = [
@@ -16,11 +16,11 @@ export const routes: Routes = [
   imports: [
     JsonpModule,
     CommonModule,
+    QuillModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
     HomeComponent,
-    VideoComponent,
     ChartComponent
   ]
 })

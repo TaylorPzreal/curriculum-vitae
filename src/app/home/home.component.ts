@@ -40,6 +40,8 @@ export class HomeComponent implements OnInit {
     temperature: null,
     timezone: null
   };
+  public editorConfig: any = {};
+
   private icon = {
     'clear-day': 'wi wi-day-sunny',
     'clear-night': 'wi wi-night-clear',
@@ -55,6 +57,15 @@ export class HomeComponent implements OnInit {
 
   constructor(private homeService: HomeService, private titleService: Title) {
     this.titleService.setTitle('Home - Honeymorning');
+    this.editorConfig = {
+      toolbarOptions: [
+        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+        [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        ['formula', 'blockquote', 'code-block']
+      ],
+     height: 100
+    };
   }
 
   public ngOnInit() {
