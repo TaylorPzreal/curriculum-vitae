@@ -65,11 +65,11 @@ export class QuillComponent implements OnInit, OnChanges {
         formula: true,
         syntax: true, // code语法高亮
         toolbar: this.toolbarOptions,
-        history: {
-          delay: 2000,
-          maxStack: 500,
-          userOnly: true
-        }
+        // history: {
+        //   delay: 2000,
+        //   maxStack: 500,
+        //   userOnly: true
+        // }
       },
       placeholder: 'Free Write...',
       theme: 'snow'
