@@ -1,5 +1,9 @@
 // @import '../../assets/'
 $text: rgba(255, 255, 255, .5);
+$hoveridea: rgba(255, 255, 255, .62);
+$white: #fff;
+$texthover: #0278ae;
+$subtext: #657786;
 
 .weather {
   color: $text;
@@ -21,6 +25,57 @@ $text: rgba(255, 255, 255, .5);
 
     & > div {
       font-size: 14px;
+    }
+  }
+}
+
+.hm-idea {
+  background-color: $white;
+  border-radius: 2px;
+  display: flex;
+  margin-top: 1px;
+  overflow: scroll;
+  padding: 1rem;
+  width: 100%;
+
+  &:hover {
+    background-color: $hoveridea;
+  }
+
+  figure {
+    flex: 0 0 58px;
+    margin: 0;
+    padding-right: 10px;
+
+    img {
+      border-radius: 24px;
+      height: 48px;
+      width: 48px;
+    }
+  }
+
+  & > div {
+    width: calc(100% - 58px);
+  }
+
+  .summary {
+    font-size: 1.4rem;
+    & > i {
+      font-size: 1.2rem;
+    }
+    & > span {
+      color: $subtext;
+    }
+  }
+
+  .collection {
+    font-size: 14px;
+    margin-top: 6px;
+
+    &:hover {
+      * {
+        color: $texthover;
+      }
     }
   }
 }

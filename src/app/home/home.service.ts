@@ -5,6 +5,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { ServiceConf } from '../service-conf';
+interface Idea {
+  detail: string;
+  uname: string;
+  ulogo: string;
+  uid: number;
+  collection: number;
+}
 
 @Injectable()
 export class HomeService {
@@ -68,6 +75,21 @@ export class HomeService {
 
   public analyseGithubJs() {
     const url = `https://api.github.com/search/repositories?q=javascript&sort=stars&order=desc&per_page=50&page=1`;
+    return this.http.get(url).map((res: Response) => res.json()).catch(ServiceConf.handleError);
+  }
+
+  public addNewIdea(idea: Idea) {
+    const url = ServiceConf.baseURL + '/idea/add';
+    return this.http.post(url, idea).map((res: Response) => res.json()).catch(ServiceConf.handleError);
+  }
+
+  public getIdea(page: number) {
+    const url = ServiceConf.baseURL + '/idea/queryMore/' + page;
+    return this.http.get(url).map((res: Response) => res.json()).catch(ServiceConf.handleError);
+  }
+
+  public changeCollection(count: number, id: number) {
+    const url = ServiceConf.baseURL + '/idea/changeCollection/' + count + '/' + id;
     return this.http.get(url).map((res: Response) => res.json()).catch(ServiceConf.handleError);
   }
 

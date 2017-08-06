@@ -30,7 +30,45 @@
   <div class="container">
     <div class="row margin-bottom-20">
       <div class="col-md-8 col-sm-12 col-xs-12  margin-top-20">
-        <quill [editorConfig]="editorConfig"></quill>
+        <div class="box bgc-white">
+          <quill [setDetail]="initEditorContent" [editorConfig]="editorConfig" (returnDetail)="getEditorDetail($event)"></quill>
+          <div class="margin-top-10 text-right">
+            <a href="Javascript: void(0)" (click)="pushIdea()" class="btn btn-primary btn-lg">Push idea</a>
+          </div>
+        </div>
+        <div class="">
+          <!--tip-->
+          <div class="alert alert-info no-margin font-14 text-center" role="alert">
+            <a href="javascript:void(0)" (click)="getNewIdeas()">
+            There are <strong  class="text-primary"> 2 </strong>new ideas.
+            </a>
+          </div>
+
+          <div class="hm-idea" *ngFor="let idea of ideas">
+            <figure>
+              <img src="{{idea.ulogo}}" alt="Logo">
+            </figure>
+            <div>
+              <!--userinfo-->
+              <div class="summary">
+                <strong>{{idea.uname}}</strong>
+                <i class="fa fa-mortar-board text-blue" aria-hidden="true"></i>
+                <span>{{idea.ctime | date: 'y-MM-dd HH:mm:ss'}}</span>
+              </div>
+              <!--detail-->
+              <div class="font-14" [innerHtml]="idea.detail"></div>
+              <!--收藏，分享等功能-->
+              <div class="collection">
+                <a class="text-gray">
+                  <i class="fa fa-star-o" aria-hidden="true"></i> <span>{{idea.collection}}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="text-center margin-top-10">
+            <a href="javascript: void(0)" (click)="getIdea()" class="btn btn-secondary btn-lg font-14">Get More</a>
+          </div>
+        </div>
         <!--<div class="box box-white">
           <div class="box-header">
             <h3 class="box-title">New Article</h3>

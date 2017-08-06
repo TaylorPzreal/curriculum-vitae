@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ToastsManager } from 'ng2-toastr';
 
 import { HomeService } from './home.service';
 import { Article } from './article';
@@ -24,6 +25,22 @@ interface IWeather {
   timezone: string;
 }
 
+interface Idea {
+  id: number;
+  detail: string;
+  uname: string;
+  ulogo: string;
+  uid: number;
+  ctime: Date;
+  collection: number;
+}
+interface IUser {
+  id: number;
+  name: string;
+  bio: string;
+  logo: string;
+}
+
 @Component({
   selector: 'cv-home',
   templateUrl: './home.component.html',
@@ -41,6 +58,9 @@ export class HomeComponent implements OnInit {
     timezone: null
   };
   public editorConfig: any = {};
+  public ideas: Idea[] = [];
+  public initEditorContent: string = null;
+  public isHasData: boolean = true;
 
   private icon = {
     'clear-day': 'wi wi-day-sunny',
@@ -55,8 +75,13 @@ export class HomeComponent implements OnInit {
     'partly-cloudy-night': 'wi wi-night-alt-cloudy-gusts'
   };
 
-  constructor(private homeService: HomeService, private titleService: Title) {
+  private editorDetail: string;
+  private user: IUser;
+  private currentPage: number = 1;
+
+  constructor(private homeService: HomeService, private titleService: Title, public vRef: ViewContainerRef, private toastr: ToastsManager) {
     this.titleService.setTitle('Home - Honeymorning');
+    this.toastr.setRootViewContainerRef(vRef);
     this.editorConfig = {
       toolbarOptions: [
         ['bold', 'italic', 'underline', 'strike'], // toggled buttons
@@ -73,8 +98,88 @@ export class HomeComponent implements OnInit {
     this.initMovie();
     this.initGeoLocation();
     this.analyseGithubJs();
+    this.getIdea();
   }
 
+  public getEditorDetail(detail: string) {
+    this.editorDetail = JSON.parse(detail).detail;
+  }
+
+  public pushIdea() {
+    if (!this.validateUser()) {
+      this.toastr.warning('Please login first.', 'Warning');
+      return;
+    } else if (!this.editorDetail) {
+      this.toastr.warning('Please white your idea.');
+      return;
+    }
+    const param = {
+      detail: this.editorDetail,
+      uname: this.user.name,
+      ulogo: this.user.logo,
+      uid: this.user.id,
+      collection: 0
+    };
+    this.homeService.addNewIdea(param).subscribe((result) => {
+      if (2000 === result.code) {
+        this.initEditorContent = null;
+        this.editorDetail = null;
+        this.toastr.success('Push success', 'Success');
+        this.currentPage = 1;
+        this.getIdea();
+      }
+    }, (error) => {
+      console.warn(error);
+    });
+  }
+
+
+  /**
+   * 获取IDEA
+   *
+   * @returns
+   * @memberof HomeComponent
+   */
+  public getIdea() {
+    if (!this.isHasData) {
+      this.toastr.warning('There does not has more data', 'Tip');
+      return;
+    }
+    this.homeService.getIdea(this.currentPage).subscribe((result) => {
+      if (2000 === result.code) {
+        this.ideas = this.ideas.concat(result.data);
+
+        if (result.data && result.data.length === 10) {
+          this.currentPage++;
+        } else if (result.data.length < 10 && result.data.length > 0) {
+          this.isHasData = false;
+        }
+      }
+    }, (error) => {
+      console.warn(error);
+    });
+  }
+
+  /**
+   * 获取新的Idea
+   *
+   * @memberof HomeComponent
+   */
+  public getNewIdeas() {
+    this.ideas = [].concat(this.ideas);
+  }
+
+  private validateUser() {
+    const cookie = document.cookie;
+    const user: IUser = JSON.parse(localStorage.getItem('user'));
+
+    if (cookie && /isLogin=true/.test(cookie) && user && user.name) {
+      this.user = user;
+      return true;
+    } else {
+      return false;
+    }
+  }
   private initArticle() {
     this.homeService.getArticle().subscribe(
       (result: any) => {
