@@ -19,7 +19,7 @@ module.exports = webpackMerge(commonConfig, {
   // },
 
   plugins: [
-    new webpack.NoEmitOnErrorsPlugin(), // 如果出错就停止构建
+    // new webpack.NoEmitOnErrorsPlugin(), // 如果出错就停止构建
 
     // new AotPlugin({
     //   tsConfigPath: helpers.root('tsconfig-aot.json'),

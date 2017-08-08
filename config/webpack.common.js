@@ -179,10 +179,10 @@ module.exports = {
     }),
 
     // 用于去掉浏览器console的warning
-    new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)@angular/,
-      helpers.root('./src'), {}
-    ),
+    // new webpack.ContextReplacementPlugin(
+    //   /angular(\\|\/)core(\\|\/)@angular/,
+    //   helpers.root('./src'), {}
+    // ),
 
     new webpack.optimize.CommonsChunkPlugin({
       name: ['vendor', 'manifest'],

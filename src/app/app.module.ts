@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found';
 
-import { HomeService } from './home/home.service';
+// import { HomeService } from './home/home.service';
 
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ import { HomeService } from './home/home.service';
     AppComponent,
     PageNotFoundComponent
   ],
-  providers: [HomeService, Title],
+  providers: [Title],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
