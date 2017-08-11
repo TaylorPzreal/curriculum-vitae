@@ -17,10 +17,10 @@ const routes: Routes = [
   { path: '**', component: PageNotFoundComponent }
 ];
 
-// PreloadAllModules预加载所有Module
+// PreloadAllModules预加载所有Module , {preloadingStrategy: PreloadAllModules}, 不加就是lazy loading
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })
