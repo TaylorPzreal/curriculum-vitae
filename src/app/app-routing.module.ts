@@ -18,6 +18,7 @@ const routes: Routes = [
 ];
 
 // PreloadAllModules预加载所有Module , {preloadingStrategy: PreloadAllModules}, 不加就是lazy loading
+// RouteModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)

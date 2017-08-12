@@ -82,7 +82,7 @@ module.exports = {
       test: /\.(png|jpe?g|gif|ico|svg)$/,
       use: DEVELOPMENT ?
         'url-loader?limit=50000&name=src/assets/images/[name].[hash].[ext]' : 'url-loader?limit=50000&name=src/assets/images/[name].[hash].[ext]&publicPath=/dist/',
-      include: [helpers.root('src/assets/images')]
+      include: [helpers.root('src/assets/images'), helpers.root('node_modules/katex/dist/images')]
     }, {
       test: /\.(ttf|eot|woff|woff2|svg)([\w\?=\.]*)?$/,
       use: DEVELOPMENT ?
@@ -91,8 +91,8 @@ module.exports = {
         // helpers.root('fonts'),
         helpers.root('node_modules/font-awesome/fonts'),
         helpers.root('node_modules/katex/dist/fonts'),
-        helpers.root('node_modules/weather-icons/font')
-        // helpers.root('node_modules/bootstrap/dist/fonts')
+        helpers.root('node_modules/weather-icons/font'),
+        helpers.root('node_modules/bootstrap/dist/fonts')
       ]
     }, {
       test: /\.scss$/,
@@ -174,15 +174,17 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
       'window.jquery': 'jquery',
-      Tether: 'tether',
-      'window.Tether': 'tether'
+      Popper: 'popper.js',
+      'window.Popper': 'popper.js'
+      // Tether: 'tether',
+      // 'window.Tether': 'tether'
     }),
 
     // 用于去掉浏览器console的warning
-    // new webpack.ContextReplacementPlugin(
-    //   /angular(\\|\/)core(\\|\/)@angular/,
-    //   helpers.root('./src'), {}
-    // ),
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)@angular/,
+      helpers.root('./src'), {}
+    ),
 
     new webpack.optimize.CommonsChunkPlugin({
       name: ['vendor', 'manifest'],

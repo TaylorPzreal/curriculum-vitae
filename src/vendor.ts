@@ -18,7 +18,7 @@ import 'rxjs';
 
 import 'hammerjs';
 import 'jquery';
-import 'tether';
+import 'popper.js';
 import 'bootstrap';
 import 'ng2-toastr';
 // require('highlight.js');
