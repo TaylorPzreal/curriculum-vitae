@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'blogv/:id', loadChildren: '../app/blog-detail/blog-detail.module#BlogDetailModule'},
   {path: 'chat', loadChildren: '../app/chat/chat.module#ChatModule'},
   {path: 'game', loadChildren: '../app/game/game.module#GameModule'},
+  {path: 'game3d', loadChildren: '../app/game-3d/game-3d.module#Game3DModule'},
   {path: '', loadChildren: '../app/home/home.module#HomeModule'},
   { path: '', redirectTo: '', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }
