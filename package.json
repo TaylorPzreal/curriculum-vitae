@@ -36,6 +36,7 @@
     "katex": "^0.8.1",
     "lazysizes": "^4.0.0-rc3",
     "lodash": "^4.17.4",
+    "ng2-ckeditor": "^1.1.9",
     "ng2-toastr": "^4.1.2",
     "normalize.css": "^7.0.0",
     "phaser-ce": "^2.8.3",
@@ -110,8 +111,8 @@
     "webpack-parallel-uglify-plugin": "^1.0.0"
   },
   "engines": {
-    "node": ">= 7.9.0",
-    "npm": ">= 4.2.0"
+    "node": ">= 8.0.0",
+    "npm": ">= 5.0.0"
   },
   "sasslintConfig": ".sass-lint.yml"
 }
