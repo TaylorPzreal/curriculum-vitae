@@ -9,7 +9,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js --colors --profile --hot",
     "startopen": "yarn run start -- --open",
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config webpack.config.js --profile --colors --display-error-details --verbove",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config webpack.config.js --profile --colors --display-error-details",
     "test": "karma start",
     "e2e": "node_modules/protractor/bin/webdriver-manager update && node_modules/protractor/bin/protractor ./protractor.conf.js",
     "upgrade:angular": "yarn upgrade @angular/{animations,common,compiler,core,forms,http,platform-browser,platform-browser-dynamic,router,cli,compiler-cli,platform-server} @ngtools/webpack"
