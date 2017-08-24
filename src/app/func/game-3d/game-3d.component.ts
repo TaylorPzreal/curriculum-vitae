@@ -30,8 +30,8 @@ export class Game3DComponent implements AfterViewInit {
     this.camera.attachControl(this.canvas, false);
 
     this.light = new BABYLON.DirectionalLight('dirLight', new BABYLON.Vector3(0, -0.5, -1), this.scene);
-    this.light.position = new BABYLON.Vector3(50, 250, 200);
-    this.light.shadowOrthoScale = 2.0;
+    // this.light.position = new BABYLON.Vector3(50, 250, 200);
+    // this.light.shadowOrthoScale = 2.0;
     this.light.parent = this.camera;
     this.light.diffuse = new BABYLON.Color3(0, 0, 0);
 
@@ -74,14 +74,14 @@ export class Game3DComponent implements AfterViewInit {
     const ground2Material: BABYLON.StandardMaterial = new BABYLON.StandardMaterial('ground2', this.scene);
     ground2Material.diffuseTexture = new BABYLON. Texture('src/assets/images/game/floor1.jpeg', this.scene);
     // ground2Material.diffuseTexture = new BABYLON.Texture('src/assets/images/game/plant.jpeg', this.scene);
-    ground2Material.diffuseTexture.uScale = 20;
-    ground2Material.diffuseTexture.vScale = 20;
+    // ground2Material.diffuseTexture.uScale = 20;
+    // ground2Material.diffuseTexture.vScale = 20;
     ground2Material.specularColor = new BABYLON.Color3(0, 0, 0);
     ground2.position.y = -2.05;
     ground2.material = ground2Material;
     ground2.receiveShadows = true;
 
-    const shadowGenerator = new BABYLON.ShadowGenerator(1024, this.light);
+    // const shadowGenerator = new BABYLON.ShadowGenerator(1024, this.light);
 
 
     let alpha = 0;
@@ -101,8 +101,8 @@ export class Game3DComponent implements AfterViewInit {
     plane.position = new BABYLON.Vector3(0, 40, 100);
     const planeMaterial = new BABYLON.StandardMaterial('wall', this.scene);
     planeMaterial.diffuseTexture = new BABYLON.Texture('src/assets/images/game/wall.jpeg', this.scene);
-    planeMaterial.diffuseTexture.uScale = 10;
-    planeMaterial.diffuseTexture.vScale = 10;
+    // planeMaterial.diffuseTexture.uScale = 10;
+    // planeMaterial.diffuseTexture.vScale = 10;
     // planeMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
     planeMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
     plane.material = planeMaterial;

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
-import { ServiceConf } from '../service-conf';
+import { ServiceConf } from '../../service-conf';
 // syntax
 import 'highlight.js/styles/atom-one-dark.css';
 // const hljs = require('highlight.js');

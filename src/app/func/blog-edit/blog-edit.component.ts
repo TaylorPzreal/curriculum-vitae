@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Blog } from './blog.model';
-import { User } from '../user.model';
+import { User } from '../../user.model';
 interface IEditorData {
   detail: string;
   coverImage: string;

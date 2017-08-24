@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { ServiceConf } from '../service-conf';
+import { ServiceConf } from '../../service-conf';
 
 @Injectable()
 export class BlogListService {

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { JsonpModule } from '@angular/http';
 
 import { CommonModule } from '@angular/common';
-import { QuillModule } from '../quill';
+import { QuillModule } from '../../tool/quill';
 
 import { HomeComponent } from './home.component';
 import { ChartComponent } from './chart';

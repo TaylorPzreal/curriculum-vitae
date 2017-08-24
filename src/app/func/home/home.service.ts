@@ -4,7 +4,7 @@ import { Http, Response, Jsonp  } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { ServiceConf } from '../service-conf';
+import { ServiceConf } from '../../service-conf';
 interface Idea {
   detail: string;
   uname: string;

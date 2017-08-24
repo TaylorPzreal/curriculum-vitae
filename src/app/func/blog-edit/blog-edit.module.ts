@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { BlogEditComponent } from './blog-edit.component';
-import { QuillModule } from '../quill';
+import { QuillModule } from '../../tool/quill';
 
 export const routes: Routes = [
   {path: '', component: BlogEditComponent}
