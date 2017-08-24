@@ -12,30 +12,24 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a routerLink="/" routerLinkActive="active" class="btn btn-theme">Home</a>
+            <a routerLink="/" routerLinkActive="active" >Home</a>
           </li>
           <li class="nav-item">
-            <a routerLink="/blogs" routerLinkActive="active" class="btn btn-theme">Blog</a>
+            <a routerLink="/blogs" routerLinkActive="active" >Blog</a>
           </li>
           <li class="nav-item">
-            <a routerLink="/chat" routerLinkActive="active" class="btn btn-theme">Chat</a>
+            <a routerLink="/chat" routerLinkActive="active" >Chat</a>
           </li>
           <li class="nav-item">
-            <a routerLink="/game" routerLinkActive="active" class="btn btn-theme">Game</a>
+            <a routerLink="/game" routerLinkActive="active" >Game</a>
           </li>
           <li class="nav-item">
-            <a routerLink="/game3d" routerLinkActive="active" class="btn btn-theme">3D Game</a>
+            <a routerLink="/game3d" routerLinkActive="active" >3D Game</a>
           </li>
         </ul>
         <form class="form-inline">
-          <div class="header-search">
-            <input class="form-control form-control-sm mr-sm-2" type="search">
-            <i class="fa fa-search"></i>
-          </div>
-        </form>
-        <form class="form-inline">
-          <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="btn btn-theme text-white">Log in</a>
-          <a routerLink="/signup" *ngIf="!userInfo" routerLinkActive="active" class="btn btn-theme text-white">Sign up</a>
+          <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="text-blue">Log in</a>
+          <a routerLink="/signup" *ngIf="!userInfo" routerLinkActive="active" class="text-secondary">Sign up</a>
           <a class="no-padding font-14" *ngIf="userInfo">
             <img src="{{userInfo.logo}}" alt="Logo" width="26" height="26" style="border-radius: 13px;" class="">
             <span>{{userInfo.name}}</span>
@@ -56,8 +50,8 @@
 <!--公共底部-->
 <footer class="cv-footer">
   <small>© 2017 honeymorning.com 版权所有 ICP证: 京ICP备16053636号</small>
-  <a href="https://twitter.com/TaylorPzreal" target="_blank"><i class="fa fa-twitter-square"></i></a>
-  <a href="https://www.facebook.com/TaylorPzrealHome"><i class="fa fa-facebook-square"></i></a>
-  <a href="https://github.com/TaylorPzreal" target="_blank"><i class="fa fa-github-square"></i></a>
-  <a><i class="fa fa-email"></i> taylorpzreal@gmail.com</a>
+  <a href="https://twitter.com/TaylorPzreal" target="_blank"><i class="fa fa-twitter-square text-blue"></i></a>
+  <a href="https://www.facebook.com/TaylorPzrealHome" target="_blank"><i class="fa fa-facebook-square text-orange"></i></a>
+  <a href="https://github.com/TaylorPzreal" target="_blank"><i class="fa fa-github-square text-warning"></i></a>
+  <a class="text-success"><i class="fa fa-email"></i> taylorpzreal@gmail.com</a>
 </footer>

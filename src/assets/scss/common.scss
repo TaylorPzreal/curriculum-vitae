@@ -1,7 +1,8 @@
 // 在这里引入Font Awesome文件
 $fa-font-path: '/node_modules/font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
-@import 'theme/blue-lover';
+@import './theme/_plain.scss';
+// @import 'theme/blue-lover';
 // @import 'theme/dark-black';
 // @import 'theme/classic-brown';
 @import 'color';
@@ -20,7 +21,7 @@ cv-app {
 
 .cv-header {
   background-color: $themecolor;
-  box-shadow: 0 .3rem .3rem $shadowcolor;
+  // box-shadow: 0 .3rem .3rem $shadowcolor;
   font-family: $header-nav-family;
   padding: .8rem 0;
 
@@ -31,7 +32,7 @@ cv-app {
 
   .navbar-nav a,
   form a {
-    color: $white;
+    color: $highlightcolor;
     font-size: 1.6rem;
     padding: .6rem 1.2rem;
     text-decoration-line: none;
@@ -39,9 +40,10 @@ cv-app {
 }
 
 .cv-footer {
+  align-items: center;
   background-color: $themecolor;
   box-shadow: 0 -.2rem .2rem $shadowcolor;
-  color: $white;
+  color: $highlightcolor;
   display: flex;
   justify-content: center;
   line-height: 3;
@@ -143,7 +145,7 @@ cv-app {
   position: relative;
 
   i {
-    color: $white;
+    color: $highlightcolor;
     cursor: pointer;
     font-size: 1.4rem;
     position: absolute;
@@ -161,14 +163,14 @@ cv-app {
     &:active {
       &,
       & ~ i {
-        color: $themecolor;
+        color: $highlightcolor;
       }
     }
   }
 }
 
-.linear-gradient {
-  background: linear-gradient(to top left, $shadowcolor, $themecolor);
-  height: 50rem;
-  padding-top: 4rem;
-}
+// .linear-gradient {
+//   background: linear-gradient(to top left, $shadowcolor, $themecolor);
+//   height: 50rem;
+//   padding-top: 4rem;
+// }

@@ -34,55 +34,91 @@ export class ChartComponent implements OnChanges {
   }
 
   private initChart(): void {
-    this.ctxid = (new Date()).valueOf();
+    this.ctxid = new Date().valueOf();
 
     const canvas = document.createElement('canvas');
     document.getElementById('canvas-container').appendChild(canvas);
     this.ctx = $(canvas);
     this.ctx.width(this.ctx.parent().width());
-    this.ctx.height(460);
+    this.ctx.height(420);
 
     const myChart = new Chart(this.ctx, {
-      type: 'line',
-        data: {
-          labels: this.chartData.labels.reverse(),
-          datasets: [{
+      type: 'bar',
+      data: {
+        labels: this.chartData.labels.reverse(),
+        datasets: [
+          {
             label: 'stars',
             data: this.chartData.data.reverse(),
-            backgroundColor: ['rgba(255, 159, 64, 0.4)'],
-            borderColor: ['rgba(255, 159, 64, 1)'],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 159, 64, 0.4)',
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 159, 64, 0.4)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+              'rgba(255, 159, 64, 1)',
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
             borderWidth: 1
-          }]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Github JS Top15',
+          fontColor: 'rgba(255, 255, 255, 0.8)'
         },
-        options: {
-          title: {
-            display: true,
-            text: 'Github JS Top50',
-            fontColor: 'rgba(255, 255, 255, 0.8)'
-          },
-          tooltips: {
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-            titleFontColor: 'rgba(1, 72, 104, 0.8)',
-            bodyFontColor: 'rgba(2, 120, 174, 0.8)'
-          },
-          scales: {
-            xAxes: [{
+        tooltips: {
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          titleFontColor: 'rgba(1, 72, 104, 0.8)',
+          bodyFontColor: 'rgba(2, 120, 174, 0.8)'
+        },
+        scales: {
+          xAxes: [
+            {
               ticks: {
                 fontColor: 'rgba(255, 255, 255, 0.6)'
               }
-            }],
-            yAxes: [{
-              ticks: {
-                fontColor: 'rgba(255, 255, 255, 0.6)'
-              }
-            }]
-          },
-          legend: {
-            labels: {
-              fontColor: 'rgba(255, 255, 255, 0.6)'
             }
+          ],
+          yAxes: [
+            {
+              ticks: {
+                fontColor: 'rgba(255, 255, 255, 0.6)'
+              }
+            }
+          ]
+        },
+        legend: {
+          labels: {
+            fontColor: 'rgba(255, 255, 255, 0.6)'
           }
         }
+      }
     });
   }
 }

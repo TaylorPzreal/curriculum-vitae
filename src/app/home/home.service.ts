@@ -74,7 +74,7 @@ export class HomeService {
   }
 
   public analyseGithubJs() {
-    const url = `https://api.github.com/search/repositories?q=javascript&sort=stars&order=desc&per_page=50&page=1`;
+    const url = `https://api.github.com/search/repositories?q=javascript&sort=stars&order=desc&per_page=14&page=1`;
     return this.http.get(url).map((res: Response) => res.json()).catch(ServiceConf.handleError);
   }
 
