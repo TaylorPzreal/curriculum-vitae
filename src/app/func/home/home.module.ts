@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { QuillModule } from '../../tool/quill';
 
 import { HomeComponent } from './home.component';
-import { ChartComponent } from './chart';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent}
@@ -20,8 +19,7 @@ export const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    HomeComponent,
-    ChartComponent
+    HomeComponent
   ]
 })
 
