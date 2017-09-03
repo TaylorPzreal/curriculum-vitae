@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
-import { ServiceConf } from '../../service-conf';
+import { AppService } from '../../app.service';
 import { Blog } from './blog.model';
 
 @Injectable()
 export class BlogEditService {
-  private baseURL = ServiceConf.baseURL;
+  constructor(private http: HttpClient, private appService: AppService) { }
 
-  constructor(private http: Http) { }
-
-  public editBlog(blog: any) {
-    const url = this.baseURL + '/blog/edit';
-
-    return this.http.post(url, blog)
-      .map((res: Response) => res.json())
-      .catch(ServiceConf.handleError);
+  public editBlog(blog: any): Observable<any> {
+    const url = `${this.appService.baseURL}/blog/edit`;
+    return this.http.post(url, blog);
   }
 
   /**
@@ -27,10 +21,8 @@ export class BlogEditService {
    * @returns
    * @memberof BlogEditService
    */
-  public getBlogDetail(id: string) {
-    const url = `${this.baseURL}/blog/queryByTitleId/${id}`;
-    return this.http.get(url)
-      .map((res: Response) => res.json())
-      .catch(ServiceConf.handleError);
+  public getBlogDetail(id: string): Observable<any> {
+    const url = `${this.appService.baseURL}/blog/queryByTitleId/${id}`;
+    return this.http.get(url);
   }
 }

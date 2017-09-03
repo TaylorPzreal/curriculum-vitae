@@ -1,5 +1,3 @@
-// 引入基本样式文件
-
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -18,8 +16,7 @@ interface IUser {
 @Component({
   selector: 'cv-app',
   templateUrl: './app.component.html',
-  styleUrls: ['app.component.scss'],
-  providers: [AppService]
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
   public currentTime: string;

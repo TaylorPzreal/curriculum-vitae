@@ -1,41 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
-import { ServiceConf } from './service-conf';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AppService {
-  private baseURL = ServiceConf.baseURL;
+  public baseURL: string = 'https://www.honeymorning.com/api';
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   /**
    * 获取用户基本信息
    *
-   * @returns
+   * @returns {Observable<any>}
    * @memberof AppService
    */
-  public getUserInfo() {
+  public getUserInfo(): Observable<any> {
    const url = this.baseURL + '/account/profile' ;
-
-   return this.http.get(url)
-    .map((res: Response) => res.json())
-    .catch(ServiceConf.handleError);
+   return this.http.get(url);
   }
 
   /**
    * 登出
    *
-   * @returns
+   * @return {Observable<any>}
    * @memberof AppService
    */
-  public logout() {
+  public logout(): Observable<any> {
     const url = this.baseURL + '/account/logout';
-
-    return this.http.get(url)
-      .map((res: Response) => res.json())
-      .catch(ServiceConf.handleError);
+    return this.http.get(url);
   }
 }

@@ -32,8 +32,8 @@ module.exports = {
   output: {
     path: helpers.root('dist'),
     publicPath: DEVELOPMENT ? `http://${SERVER.host}:${SERVER.port}/` : '/dist/',
-    filename: DEVELOPMENT ? '[name].js' : '[name].[hash].js',
-    chunkFilename: DEVELOPMENT ? '[id].chunk.js' : '[id].[hash].chunk.js'
+    filename: DEVELOPMENT ? '[name].js' : '[name].[chunkhash].js',
+    chunkFilename: DEVELOPMENT ? '[id].chunk.js' : '[id].[chunkhash].chunk.js'
   },
 
   resolve: {
@@ -90,8 +90,6 @@ module.exports = {
       include: [
         // helpers.root('fonts'),
         helpers.root('node_modules/font-awesome/fonts'),
-        helpers.root('node_modules/katex/dist/fonts'),
-        helpers.root('node_modules/weather-icons/font'),
         helpers.root('node_modules/bootstrap/dist/fonts')
       ]
     }, {
@@ -174,10 +172,8 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
       'window.jquery': 'jquery',
-      Popper: 'popper.js',
-      'window.Popper': 'popper.js'
-      // Tether: 'tether',
-      // 'window.Tether': 'tether'
+      Popper: ['popper.js', 'default'],
+      'window.Popper': ['popper.js', 'default']
     }),
 
     // 用于去掉浏览器console的warning

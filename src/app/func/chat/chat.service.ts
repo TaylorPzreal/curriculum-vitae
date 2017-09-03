@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { ServiceConf } from '../../service-conf';
 import * as io from 'socket.io-client';
+
+import { AppService } from '../../app.service';
 
 @Injectable()
 export class ChatService {
-  private url = ServiceConf.baseURL.replace(/(.)*\/api$/, '');
-  private socket = io(this.url, {
-    path: '/api/socket.io'
-  });
+  private url: string;
+  private socket: any;
 
-  public sendMessage(msg: object) {
+  constructor(private appService: AppService) {
+    this.url = this.appService.baseURL.replace(/(.)*\/api$/, '');
+    this.socket = io(this.url, {
+      path: '/api/socket.io'
+    });
+  }
+
+  public sendMessage(msg: object): void {
     this.socket.emit('chat', msg);
   }
 
-  public getMessage() {
+  public getMessage(): Observable<any> {
     const observable = new Observable((observer) => {
       this.socket.on('chat', (data: object) => {
         observer.next(data);

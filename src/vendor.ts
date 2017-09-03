@@ -25,6 +25,6 @@ import 'ng2-toastr';
 // import 'katex';
 // import 'quill';
 
-import 'normalize.css';
+// import 'normalize.css';
 import 'bootstrap/scss/bootstrap.scss';
 import 'ng2-toastr/bundles/ng2-toastr.min.css';

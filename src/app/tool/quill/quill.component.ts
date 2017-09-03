@@ -1,12 +1,12 @@
 import { Component, AfterViewInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
-import { ServiceConf } from '../../service-conf';
+import { AppService } from '../../app.service';
 // syntax
 import 'highlight.js/styles/atom-one-dark.css';
 // const hljs = require('highlight.js');
 
 // KaTex
-import 'katex/dist/katex.min.css';
+// import 'katex/dist/katex.min.css';
 
 import 'quill/dist/quill.snow.css';
 import * as Quill from 'quill';
@@ -44,6 +44,8 @@ export class QuillComponent implements AfterViewInit, OnChanges {
     ['formula', 'blockquote', 'code-block'],
     ['clean']
   ];
+
+  constructor(private appService: AppService) {}
 
   public ngAfterViewInit() {
     this.initQuill();
@@ -119,7 +121,7 @@ export class QuillComponent implements AfterViewInit, OnChanges {
       fd.append('image', file);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', `${ServiceConf.baseURL}/upload/image`, true);
+      xhr.open('POST', `${this.appService.baseURL}/upload/image`, true);
       xhr.onload = () => {
         if (xhr.status === 200) {
           // this is callback data: url

@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
-import { ServiceConf } from '../../service-conf';
+import { AppService } from '../../app.service';
 
 @Injectable()
 export class BlogListService {
-  private baseURL = ServiceConf.baseURL;
-
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient, private appService: AppService) { }
 
   /**
    * 分页获取博客列表
@@ -19,12 +15,9 @@ export class BlogListService {
    * @returns
    * @memberof BlogListService
    */
-  public queryList(page: number) {
-    const url = `${this.baseURL}/blog/querySelf/${page}`;
-
-    return this.http.get(url)
-      .map((res: Response) => res.json())
-      .catch(ServiceConf.handleError);
+  public queryList(page: number): Observable<any> {
+    const url = `${this.appService.baseURL}/blog/querySelf/${page}`;
+    return this.http.get(url);
   }
 
   /**
@@ -33,12 +26,9 @@ export class BlogListService {
    * @returns
    * @memberof BlogListService
    */
-  public tagStatistic() {
-    const url = `${this.baseURL}/blog/tagStatistic`;
-
-    return this.http.get(url)
-      .map((res: Response) => res.json())
-      .catch(ServiceConf.handleError);
+  public tagStatistic(): Observable<any> {
+    const url = `${this.appService.baseURL}/blog/tagStatistic`;
+    return this.http.get(url);
   }
 
   /**
@@ -47,11 +37,8 @@ export class BlogListService {
    * @returns
    * @memberof BlogListService
    */
-  public monthBlogs() {
-    const url = `${this.baseURL}/blog/monthBlogs`;
-
-    return this.http.get(url)
-      .map((res: Response) => res.json())
-      .catch(ServiceConf.handleError);
+  public monthBlogs(): Observable<any> {
+    const url = `${this.appService.baseURL}/blog/monthBlogs`;
+    return this.http.get(url);
   }
 }

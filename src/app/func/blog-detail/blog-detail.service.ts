@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
-import { ServiceConf } from '../../service-conf';
+import { AppService } from '../../app.service';
 
 @Injectable()
 export class BlogDetailService {
-  private baseURL = ServiceConf.baseURL;
-
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient, private appService: AppService) { }
 
   /**
    * GetBlogDetail
@@ -16,10 +15,8 @@ export class BlogDetailService {
    * @returns
    * @memberof BlogDetailService
    */
-  public getBlogDetail(id: string) {
-    const url = `${this.baseURL}/blog/queryByTitleId/${id}`;
-    return this.http.get(url)
-      .map((res: Response) => res.json())
-      .catch(ServiceConf.handleError);
+  public getBlogDetail(id: string): Observable<any> {
+    const url = `${this.appService.baseURL}/blog/queryByTitleId/${id}`;
+    return this.http.get(url);
   }
 }
