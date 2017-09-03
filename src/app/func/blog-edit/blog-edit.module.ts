@@ -3,8 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CKEditorModule } from 'ng2-ckeditor';
+import { NgxCropperModule } from 'ngx-cropper';
+
 import { BlogEditComponent } from './blog-edit.component';
-import { QuillModule } from '../../tool/quill';
 
 export const routes: Routes = [
   {path: '', component: BlogEditComponent}
@@ -14,7 +16,8 @@ export const routes: Routes = [
   imports: [
     FormsModule,
     CommonModule,
-    QuillModule,
+    CKEditorModule,
+    NgxCropperModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

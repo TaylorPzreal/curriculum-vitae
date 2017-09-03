@@ -6,8 +6,8 @@ export class Editor {
   private uploadUrl: string;
 
   constructor(private appService: AppService) {
-    this.imageServerURL = `${this.appService.baseURL}/uc/uploadPicture?type=1`;
-    this.uploadUrl = `${this.appService.baseURL}/uc/uploadPicture?type=2`;
+    this.imageServerURL = `${this.appService.baseURL}/uploadPicture?type=1`;
+    this.uploadUrl = `${this.appService.baseURL}/uploadPicture?type=2`;
     this.initConfig();
   }
 

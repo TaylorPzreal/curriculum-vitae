@@ -6,7 +6,7 @@ import { PageNotFoundComponent } from './func/page-not-found';
 
 const routes: Routes = [
   {path: 'signup', loadChildren: './func/sign-up/sign-up.module#SignUpModule'},
-  {path: 'login', loadChildren: './func/login/login.module#LoginModule'},
+  {path: 'login', loadChildren: './func/log-in/log-in.module#LogInModule'},
   {path: 'blogs', loadChildren: './func/blog-list/blog-list.module#BlogListModule'},
   {path: 'bloge', loadChildren: './func/blog-edit/blog-edit.module#BlogEditModule'},
   {path: 'blogv/:id', loadChildren: './func/blog-detail/blog-detail.module#BlogDetailModule'},

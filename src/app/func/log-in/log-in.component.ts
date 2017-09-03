@@ -1,33 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { LoginService } from './login.service';
+import { LoginService } from './log-in.service';
 
 @Component({
   selector: 'cv-login',
-  templateUrl: 'login.component.html',
-  styleUrls: ['login.component.scss'],
+  templateUrl: 'log-in.component.html',
+  styleUrls: ['log-in.component.scss'],
   providers: [LoginService]
 })
-export class LoginComponent implements OnInit {
+export class LogInComponent implements OnInit {
   constructor(private loginService: LoginService, private titleService: Title) {
     this.titleService.setTitle('Log in - HoneyMorning');
   }
 
   public ngOnInit() {
-    // this.getData();
+    // do
   }
-
-  // private getData() {
-  //   this.loginService.getJSON().subscribe(
-  //     (results: any) => {
-  //       console.warn(results);
-  //     },
-  //     (error: any) => {
-  //       console.warn(error);
-  //     }
-  //   );
-  // }
 
   public loginWithGithub() {
     window.location.href = 'https://github.com/login/oauth/authorize' + '?response_type=code' + '&client_id=3405df2b2fca58331dc1';

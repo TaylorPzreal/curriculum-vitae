@@ -9,7 +9,9 @@
           </div>
           <div class="form-group">
             <!--Rich Text  -->
-            <quill [setDetail]="blog.detail" [editorConfig]="editorConfig" (returnDetail)="getDetailReturn($event)"></quill>
+            <!--<quill [setDetail]="blog.detail" [editorConfig]="editorConfig" (returnDetail)="getDetailReturn($event)"></quill>-->
+            <ckeditor name="ckeditor" [(ngModel)]="blog.detail" [config]="editorConf" [readonly]="false" debounce="500">
+            </ckeditor>
           </div>
 
           <div class="form-group">

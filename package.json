@@ -38,6 +38,7 @@
     "lodash": "^4.17.4",
     "ng2-ckeditor": "^1.1.9",
     "ng2-toastr": "^4.1.2",
+    "ngx-cropper": "^1.0.0-alpha.4",
     "normalize.css": "^7.0.0",
     "phaser-ce": "^2.8.5",
     "popper.js": "^1.12.5",
