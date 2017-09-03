@@ -52,6 +52,7 @@
     "@angular/cdk": "^2.0.0-beta.10",
     "@angular/cli": "^1.3.2",
     "@angular/compiler-cli": "^4.3.6",
+    "@angular/language-service": "^4.4.0-RC.0",
     "@angular/platform-server": "^4.3.6",
     "@ngtools/webpack": "^1.6.2",
     "@types/babylonjs": "^2.4.1",
