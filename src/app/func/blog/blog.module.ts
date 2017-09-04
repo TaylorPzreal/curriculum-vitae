@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { BlogListComponent } from './blog-list.component';
+import { BlogComponent } from './blog.component';
 import { ChartComponent } from './chart';
 
 export const routes: Routes = [
-  {path: '', component: BlogListComponent}
+  {path: 'edit', loadChildren: './blog-edit/blog-edit.module#BlogEditModule'},
+  {path: 'detail/:id', loadChildren: './blog-detail/blog-detail.module#BlogDetailModule'},
+  {path: '', component: BlogComponent}
 ];
 
 @NgModule({
@@ -17,9 +19,9 @@ export const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    BlogListComponent,
+    BlogComponent,
     ChartComponent
   ]
 })
 
-export class BlogListModule { }
+export class BlogModule { }

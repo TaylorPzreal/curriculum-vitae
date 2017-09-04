@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { BlogDetailService } from './blog-detail.service';
 import { Blog } from './blog.model';
-import { User } from '../../user.model';
+import { User } from '../../../user.model';
 
 @Component({
   selector: 'blog-detail',

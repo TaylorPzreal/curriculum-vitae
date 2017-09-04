@@ -20,7 +20,7 @@
                       <img src="{{blog.coverImage}}" alt="StoryLogo">
                     </figure>
                     <div class="blog-content">
-                      <h3 class=""><a [routerLink]="['/blogv', blog.titleId]">{{blog.title}}</a></h3>
+                      <h3 class=""><a [routerLink]="['detail', blog.titleId]">{{blog.title}}</a></h3>
                       <p>{{blog.summary}}</p>
                       <div class="author">
                         <a href="">

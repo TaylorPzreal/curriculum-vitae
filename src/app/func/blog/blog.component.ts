@@ -5,16 +5,15 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
-import { BlogListService } from './blog-list.service';
+import { BlogService } from './blog.service';
 import { Blog } from './blog.model';
 
 @Component({
-  selector: 'blog-list',
-  templateUrl: './blog-list.component.html',
-  styleUrls: ['blog-list.component.scss'],
-  providers: [BlogListService]
+  templateUrl: './blog.component.html',
+  styleUrls: ['blog.component.scss'],
+  providers: [BlogService]
 })
-export class BlogListComponent implements OnInit {
+export class BlogComponent implements OnInit {
   public blogs: Blog[];
   public monthTrendData: {};
   public tagsAnalyzeData: {};
@@ -24,7 +23,7 @@ export class BlogListComponent implements OnInit {
     private router: Router,
     private toastr: ToastsManager,
     vRef: ViewContainerRef,
-    private blogListService: BlogListService,
+    private blogService: BlogService,
     private titleService: Title
   ) {
     this.toastr.setRootViewContainerRef(vRef);
@@ -48,7 +47,7 @@ export class BlogListComponent implements OnInit {
     const cookie = document.cookie;
     if (cookie && /isLogin=true/.test(cookie) && localStorage.getItem('user')) {
       // navigate to blog edit.
-      this.router.navigate(['/bloge']);
+      this.router.navigate(['edit']);
     } else {
       this.toastr.warning('You need login first!', 'Warning');
     }
@@ -62,7 +61,7 @@ export class BlogListComponent implements OnInit {
    */
   private initBlogList() {
     const page = Number(this.route.snapshot.queryParams['page'] || 1);
-    this.blogListService.queryList(page).subscribe((result) => {
+    this.blogService.queryList(page).subscribe((result) => {
       if (2000 === result.code) {
         this.blogs = result.data;
       }
@@ -70,7 +69,7 @@ export class BlogListComponent implements OnInit {
   }
 
   private initChartOfMonthBlogs() {
-    this.blogListService.monthBlogs().subscribe((result) => {
+    this.blogService.monthBlogs().subscribe((result) => {
       if (2000 === result.code) {
         const labels: string[] = [];
         const data: number[] = [];
@@ -121,7 +120,7 @@ export class BlogListComponent implements OnInit {
    * @memberof BlogListComponent
    */
   private initChartTags() {
-    this.blogListService.tagStatistic().subscribe((result) => {
+    this.blogService.tagStatistic().subscribe((result) => {
       if (2000 === result.code) {
         const data: number[] = [];
         const labels: string[] = [];

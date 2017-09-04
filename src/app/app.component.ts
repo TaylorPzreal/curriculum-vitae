@@ -19,14 +19,13 @@ interface IUser {
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public currentTime: string;
   public userInfo: IUser;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
-    public toastr: ToastsManager,
+    private toastr: ToastsManager,
     vRef: ViewContainerRef
   ) {
     this.toastr.setRootViewContainerRef(vRef);

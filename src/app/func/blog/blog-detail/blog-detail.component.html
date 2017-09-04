@@ -15,7 +15,7 @@
               </div>
             </div>
             <div>
-              <a class="btn btn-lg btn-outline-primary" *ngIf="isEditable" [routerLink]="['/bloge']" [queryParams]="{id: blogId}">Edit</a>
+              <a class="btn btn-lg btn-outline-primary" *ngIf="isEditable" [routerLink]="['edit']" [queryParams]="{id: blogId}">Edit</a>
             </div>
           </div>
         </header>

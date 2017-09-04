@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { AppService } from '../../app.service';
 
 @Injectable()
-export class BlogListService {
+export class BlogService {
   constructor(private http: HttpClient, private appService: AppService) { }
 
   /**
@@ -13,7 +13,7 @@ export class BlogListService {
    *
    * @param {number} page
    * @returns
-   * @memberof BlogListService
+   * @memberof BlogService
    */
   public queryList(page: number): Observable<any> {
     const url = `${this.appService.baseURL}/blog/querySelf/${page}`;
@@ -24,7 +24,7 @@ export class BlogListService {
    * 对标签进行统计分析
    *
    * @returns
-   * @memberof BlogListService
+   * @memberof BlogService
    */
   public tagStatistic(): Observable<any> {
     const url = `${this.appService.baseURL}/blog/tagStatistic`;
@@ -35,7 +35,7 @@ export class BlogListService {
    * Analyse blogs by monthly
    *
    * @returns
-   * @memberof BlogListService
+   * @memberof BlogService
    */
   public monthBlogs(): Observable<any> {
     const url = `${this.appService.baseURL}/blog/monthBlogs`;

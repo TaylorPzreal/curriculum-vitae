@@ -5,15 +5,15 @@ import { Observable } from 'rxjs/Observable';
 
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Blog } from './blog.model';
-import { User } from '../../user.model';
+import { User } from '../../../user.model';
 interface IEditorData {
   detail: string;
   coverImage: string;
 }
 
-import { AppService } from '../../app.service';
+import { AppService } from '../../../app.service';
 import { BlogEditService } from './blog-edit.service';
-import { Editor } from '../../tool/editor';
+import { Editor } from '../../../tool/editor';
 
 @Component({
   selector: 'blog-edit',

@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" routerLink="/">
-        <img src="../assets/images/hm.svg" width="30" height="30" alt="">
+        <img src="../assets/images/hm.svg" width="30" height="30" alt="HoneyMorning Logo">
       </a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -15,7 +15,7 @@
             <a routerLink="/" routerLinkActive="active" >Home</a>
           </li>
           <li class="nav-item">
-            <a routerLink="/blogs" routerLinkActive="active" >Blog</a>
+            <a routerLink="/blog" routerLinkActive="active" >Blog</a>
           </li>
           <li class="nav-item">
             <a routerLink="/chat" routerLinkActive="active" >Chat</a>
@@ -30,7 +30,7 @@
         <form class="form-inline">
           <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="text-blue">Log in</a>
           <a routerLink="/signup" *ngIf="!userInfo" routerLinkActive="active" class="text-secondary">Sign up</a>
-          <a class="no-padding font-14" *ngIf="userInfo">
+          <a class="no-padding font-14 user-logo" *ngIf="userInfo">
             <img src="{{userInfo.logo}}" alt="Logo" width="26" height="26" style="border-radius: 13px;" class="">
             <span>{{userInfo.name}}</span>
           </a>
