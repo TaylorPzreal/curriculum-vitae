@@ -12,7 +12,6 @@ import { AppService } from './app.service';
 import { AppInterceptor } from './app.interceptor';
 
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './func/page-not-found';
 
 @NgModule({
   imports: [
@@ -25,7 +24,6 @@ import { PageNotFoundComponent } from './func/page-not-found';
   ],
   declarations: [
     AppComponent,
-    PageNotFoundComponent
   ],
   providers: [
     Title,
