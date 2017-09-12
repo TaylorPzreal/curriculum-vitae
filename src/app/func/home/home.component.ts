@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ToastsManager } from 'ng2-toastr';
+import { gpgpu_util, GPGPUContext, NDArrayMathGPU, NDArrayMathCPU } from 'deeplearn';
 
 import { HomeService } from './home.service';
 import 'lazysizes'; // 图片懒加载
