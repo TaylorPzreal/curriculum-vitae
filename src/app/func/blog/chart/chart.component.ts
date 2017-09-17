@@ -47,7 +47,7 @@ export class ChartComponent implements OnChanges {
     this.ctx.width(this.ctx.parent().width());
     this.ctx.height(300);
 
-    const myChart = new Chart(this.ctx, {
+    const myChart = new Chart(this.ctx as any, {
       type: this.chartData.type,
       data: this.chartData.data,
       options: this.chartData.options
