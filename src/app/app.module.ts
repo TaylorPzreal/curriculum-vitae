@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppService } from './app.service';
 import { AppInterceptor } from './app.interceptor';
 
+import { MdSnackBarModule } from '@angular/material';
+import { SnackBar } from './tool/snackbar';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -19,6 +22,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    MdSnackBarModule,
     ToastModule.forRoot(),
     AppRoutingModule
   ],
@@ -36,7 +40,8 @@ import { AppComponent } from './app.component';
     {
       provide: ToastsManager,
       useClass: AppToastsManager
-    }
+    },
+    SnackBar
   ],
   bootstrap: [ AppComponent ]
 })

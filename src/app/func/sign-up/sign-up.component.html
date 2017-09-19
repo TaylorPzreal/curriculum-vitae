@@ -7,21 +7,21 @@
         </div>
 
         <md-form-field class="full-width font-16">
-          <input type="text" mdInput placeholder="Username" formControlName="name" required>
+          <input type="text" mdInput placeholder="Username" formControlName="name" [(ngModel)]="user.name" required>
           <md-error *ngIf="formErrors.name">
             {{formErrors.name}}
           </md-error>
         </md-form-field>
 
         <md-form-field class="full-width font-16">
-          <input type="email" mdInput placeholder="Email" formControlName="email" required>
+          <input type="email" mdInput placeholder="Email" formControlName="email" [(ngModel)]="user.email" required>
           <md-error *ngIf="formErrors.email">
             {{formErrors.email}}
           </md-error>
         </md-form-field>
 
         <md-form-field class="full-width font-16">
-          <input type="password" mdInput placeholder="Password" formControlName="password" required>
+          <input type="password" mdInput placeholder="Password" formControlName="password" [(ngModel)]="user.password" required>
           <md-error *ngIf="formErrors.password">
             {{formErrors.password}}
           </md-error>

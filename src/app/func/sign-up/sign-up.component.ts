@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
+import { SnackBar } from '../../tool/snackbar';
+
+import { SignUpService } from './sign-up.service';
 import { SignUp } from './sign-up-model';
 import { forbiddenNameValidator } from './forbidden-name.directive';
 import { validateEmailValidator } from './validate-email.directive';
@@ -9,7 +13,8 @@ import { validateEmailValidator } from './validate-email.directive';
 @Component({
   selector: 'hm-signup',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
+  providers: [SignUpService]
 })
 export class SignUpComponent implements OnInit {
   public userForm: FormGroup;
@@ -39,7 +44,13 @@ export class SignUpComponent implements OnInit {
     }
   };
 
-  constructor(private fb: FormBuilder, private titleService: Title) {
+  constructor(
+    private fb: FormBuilder,
+    private titleService: Title,
+    private signUpService: SignUpService,
+    private snackbar: SnackBar,
+    private router: Router
+    ) {
     this.user = {
       name: null,
       password: null,
@@ -53,9 +64,26 @@ export class SignUpComponent implements OnInit {
     this.buildForm();
   }
 
+// submit sign up form
   public onSubmit() {
-    //  signup
-    console.warn('signup success');
+    this.signUp();
+  }
+
+  private signUp() {
+    this.signUpService.signUp(this.user).subscribe((data: any) => {
+      if (2000 === data.code) {
+        this.snackbar.success('Sign up', 'Success');
+        this.router.navigate(['/login']);
+      } else if (3001 === data.code) {
+        const control = this.userForm.get('name');
+        control.setErrors({hasName: data.msg});
+        this.formErrors.name = data.msg;
+      } else if (3002 === data.code) {
+        const control = this.userForm.get('email');
+        control.setErrors({hasEmail: data.msg});
+        this.formErrors.email = data.msg;
+      }
+    });
   }
 
   private buildForm(): void {

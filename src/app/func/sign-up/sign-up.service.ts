@@ -15,7 +15,12 @@ export class SignUpService {
  * @memberof SignUpService
  */
   public signUp(param: SignUp): Observable<any> {
-   const method = '';
-   return this.appService.POST(method, param);
+   const method = '/signup/add';
+   const pData: SignUp = {
+    name: param.name,
+    email: param.email,
+    password: window.btoa(param.password)
+   };
+   return this.appService.POST(method, pData);
   }
 }
