@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { User } from './sign-up-model';
+import { SignUp } from './sign-up-model';
 import { forbiddenNameValidator } from './forbidden-name.directive';
 import { validateEmailValidator } from './validate-email.directive';
 
@@ -13,7 +13,7 @@ import { validateEmailValidator } from './validate-email.directive';
 })
 export class SignUpComponent implements OnInit {
   public userForm: FormGroup;
-  public user: User;
+  public user: SignUp;
 
   public formErrors = {
     name: '',
@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit {
     },
     email: {
       required: 'Email is required.',
-      validateEmail: 'Email Reg dose not correct'
+      validateEmail: 'Please enter a valid email address'
     },
     password: {
       required: 'Password is required.',
@@ -49,19 +49,19 @@ export class SignUpComponent implements OnInit {
     this.titleService.setTitle('Sign up - HoneyMorning');
   }
 
+  public ngOnInit(): void {
+    this.buildForm();
+  }
+
   public onSubmit() {
     //  signup
     console.warn('signup success');
   }
 
-  public ngOnInit(): void {
-    this.buildForm();
-  }
-
   private buildForm(): void {
     this.userForm = this.fb.group({
       name: [this.user.name, [Validators.required, Validators.minLength(4), Validators.maxLength(24), forbiddenNameValidator(/sb/gi)]],
-      email: [this.user.email, [Validators.required, validateEmailValidator(/(.)*@\w+\.\w+/ig)]],
+      email: [this.user.email, [Validators.required, validateEmailValidator()]],
       password: [this.user.password, [Validators.required, Validators.minLength(6), Validators.maxLength(32)]]
     });
 

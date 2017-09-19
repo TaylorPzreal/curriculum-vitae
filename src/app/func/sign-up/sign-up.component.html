@@ -1,34 +1,37 @@
 <section>
   <div class="container">
     <div class="row flex-center-h padding-top-140">
-      <form class="col-md-4 col-sm-6 col-xs-12" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <form class="col-md-4 col-sm-6 col-xs-12" [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
         <div class="margin-bottom-24">
           <h3 class="font-24"><strong>Join HoneyMorning today.</strong></h3>
         </div>
-        <div class="form-group margin-bottom-24">
-          <input type="text" class="form-control" formControlName="name" required placeholder="Full name">
-          <div *ngIf="formErrors.name" class="alert alert-danger">
+
+        <md-form-field class="full-width font-16">
+          <input type="text" mdInput placeholder="Username" formControlName="name" required>
+          <md-error *ngIf="formErrors.name">
             {{formErrors.name}}
-          </div>
-        </div>
-        <div class="form-group margin-bottom-24">
-          <input type="email" class="form-control" formControlName="email" required placeholder="Email">
-          <div *ngIf="formErrors.email" class="alert alert-danger">
+          </md-error>
+        </md-form-field>
+
+        <md-form-field class="full-width font-16">
+          <input type="email" mdInput placeholder="Email" formControlName="email" required>
+          <md-error *ngIf="formErrors.email">
             {{formErrors.email}}
-          </div>
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" formControlName="password" required placeholder="Password">
-          <div *ngIf="formErrors.password" class="alert alert-danger">
+          </md-error>
+        </md-form-field>
+
+        <md-form-field class="full-width font-16">
+          <input type="password" mdInput placeholder="Password" formControlName="password" required>
+          <md-error *ngIf="formErrors.password">
             {{formErrors.password}}
-          </div>
-        </div>
+          </md-error>
+        </md-form-field>
+
         <div class="form-group">
-          <!--<input type="checkbox" checked> Agree HoneyMorning's Privacy Policy.-->
           <md-checkbox>Agree HoneyMorning's Privacy Policy!</md-checkbox>
         </div>
         <div class="form-group text-center">
-          <button type="submit" class="btn btn-lg btn-primary" [disabled]="!userForm.valid">Sign up</button> 
+          <button type="submit" md-raised-button color="primary" [disabled]="!userForm.valid">Sign up</button>
         </div>
       </form>
     </div>

@@ -19,14 +19,14 @@ export class ForbiddenValidatorDirective implements Validator, OnChanges {
   private valFn = Validators.nullValidator;
 
   public ngOnChanges(changes: SimpleChanges): void {
-    const change = changes['forbiddenName'];
-    if (change) {
-      const val: string | RegExp = change.currentValue;
-      const re = val instanceof RegExp ? val : new RegExp(val, 'i');
-      this.valFn = forbiddenNameValidator(re);
-    } else {
-      this.valFn = Validators.nullValidator;
-    }
+    // const change = changes['forbiddenName'];
+    // if (change) {
+    //   const val: string | RegExp = change.currentValue;
+    //   const re = val instanceof RegExp ? val : new RegExp(val, 'i');
+    //   this.valFn = forbiddenNameValidator(re);
+    // } else {
+    //   this.valFn = Validators.nullValidator;
+    // }
   }
   public validate(control: AbstractControl): {[key: string]: any} {
     return this.valFn(control);
