@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AppService {
   public baseURL: string = 'https://www.honeymorning.com/api';
+  // public baseURL: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
