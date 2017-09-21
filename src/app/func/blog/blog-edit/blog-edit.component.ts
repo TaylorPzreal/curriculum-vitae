@@ -85,19 +85,19 @@ export class BlogEditComponent implements OnInit {
       logo: this.user.logo
     };
 
-    this.ngxCropperConfig = {
-      url: `${this.appService.baseURL}/uc/uploadPicture`, // image server url
-      maxsize: 512000, // image max size, default 500k = 512000bit
-      title: '调整案例图片的位置和尺寸', // edit modal title, this is default
-      uploadBtnName: '选择图片', // default Upload Image
-      uploadBtnClass: null, // default bootstrap styles, btn btn-primary
-      cancelBtnName: '取消', // default Cancel
-      cancelBtnClass: null, // default bootstrap styles, btn btn-default
-      applyBtnName: '应用', // default Apply
-      applyBtnClass: null, // default bootstrap styles, btn btn-primary
-      fdName: 'upload', // default 'file', this is  Content-Disposition: form-data; name="file"; filename="fire.jpg"
-      aspectRatio: 43 / 30// default 1 / 1, for example: 16 / 9, 4 / 3 ...
-    };
+    // this.ngxCropperConfig = {
+    //   url: `${this.appService.baseURL}/uc/uploadPicture`, // image server url
+    //   maxsize: 512000, // image max size, default 500k = 512000bit
+    //   title: '调整案例图片的位置和尺寸', // edit modal title, this is default
+    //   uploadBtnName: '选择图片', // default Upload Image
+    //   uploadBtnClass: null, // default bootstrap styles, btn btn-primary
+    //   cancelBtnName: '取消', // default Cancel
+    //   cancelBtnClass: null, // default bootstrap styles, btn btn-default
+    //   applyBtnName: '应用', // default Apply
+    //   applyBtnClass: null, // default bootstrap styles, btn btn-primary
+    //   fdName: 'upload', // default 'file', this is  Content-Disposition: form-data; name="file"; filename="fire.jpg"
+    //   aspectRatio: 43 / 30// default 1 / 1, for example: 16 / 9, 4 / 3 ...
+    // };
     this.editorConf = (new Editor(this.appService)).config;
 
   }
