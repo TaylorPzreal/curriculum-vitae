@@ -55,18 +55,14 @@ export class LogInComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.warn(this.user);
     this.loginService.login(this.user).subscribe((data: any) => {
       if (2000 === data.code) {
         this.snackbar.success('Logged in', 'Success');
-        this.router.navigate(['/']);
         localStorage.setItem('account', JSON.stringify(data.data));
-      } else {
-        this.snackbar.warning(data.msg, 'Log in failed');
+        this.router.navigate(['/']);
       }
     });
   }
-
 
   private buildForm(): void {
     this.userForm = this.fb.group({

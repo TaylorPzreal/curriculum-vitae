@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import '../assets/scss/common.scss';
 import { AppService } from './app.service';
-
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { SnackBar } from './tool/snackbar';
 
 interface IUser {
   id: number;
@@ -25,15 +24,13 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
-    private toastr: ToastsManager,
-    vRef: ViewContainerRef
-  ) {
-    this.toastr.setRootViewContainerRef(vRef);
-  }
+    private snackbar: SnackBar
+  ) {}
 
   public ngOnInit() {
     // this.goToLogin();
-    this.getUserInfo();
+    // this.getUserInfo();
+    this.userInfo = JSON.parse(localStorage.getItem('account'));
   }
 
     /**
@@ -44,11 +41,11 @@ export class AppComponent implements OnInit {
     public logout() {
       this.appService.logout().subscribe((result: any) => {
         if (2000 === result.code) {
-          this.toastr.success('Loged out', 'Success');
+          this.snackbar.success('Loged out', 'Success');
 
           // 释放存储的信息
           this.userInfo = null;
-          localStorage.removeItem('user');
+          localStorage.removeItem('account');
         }
       }, (error: any) => {
         console.error(error);
@@ -81,7 +78,7 @@ export class AppComponent implements OnInit {
           this.userInfo = result.data;
           localStorage.setItem('user', JSON.stringify(result.data));
 
-          this.toastr.success('Login Success', 'Welcome');
+          this.snackbar.success('Login Success', 'Welcome');
         } else {
           console.warn(result.msg);
         }

@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AppService {
-  public baseURL: string = 'https://www.honeymorning.com/api';
-  // public baseURL: string = 'http://localhost:3000';
+  // public baseURL: string = 'https://www.honeymorning.com/api';
+  public baseURL: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -27,7 +27,7 @@ export class AppService {
    * @memberof AppService
    */
   public logout(): Observable<any> {
-    const url = this.baseURL + '/account/logout';
+    const url = this.baseURL + '/auth/logout';
     return this.http.get(url);
   }
 

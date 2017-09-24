@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MdCheckboxModule, MdInputModule, MdButtonModule } from '@angular/material';
+import { GeetestModule } from '../../tool/geetest';
 
 import { SignUpComponent } from './sign-up.component';
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
     MdInputModule,
     MdButtonModule,
     ReactiveFormsModule,
+    GeetestModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

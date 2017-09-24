@@ -20,9 +20,9 @@ export class LoginService {
    * @memberof LoginService
    */
   public login(param: LogIn): Observable<any> {
-    const method = 'login/local';
-    const pData: LogIn = {
-      email: param.email,
+    const method = 'auth/login';
+    const pData = {
+      username: param.email,
       password: window.btoa(param.password)
     };
     return this.appService.POST(method, pData);

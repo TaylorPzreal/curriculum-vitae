@@ -1,7 +1,7 @@
 <section class="full-height">
   <div class="container full-height">
     <div class="row flex-center full-height">
-      <div class="card card-login text-center col-md-4 col-sm-6 col-xs-12 padding-top-20 padding-bottom-20">
+      <div class="card card-login text-center col-lg-4 col-md-6 col-sm-8 col-xs-12 padding-top-20 padding-bottom-20">
         <!--<img src="../../assets/images/usercenter/login_bg_2.jpg" alt="Login" class="card0img-top">-->
         <form (ngSubmit)="onSubmit()" [formGroup]="userForm" novalidate>
           <div class="form-group margin-bottom-24">
@@ -22,13 +22,16 @@
             </md-error>
           </md-form-field>
 
-
           <div class="form-group">
+            <hm-geetest></hm-geetest>
+          </div>
+
+          <div class="form-group text-left">
             <md-checkbox>Remember me!</md-checkbox>
           </div>
 
           <div class="form-group">
-            <button type="submit" md-raised-button color="primary" [disabled]="!userForm.valid" class="font-14">Log in</button>
+            <button type="submit" md-raised-button color="primary" [disabled]="!userForm.valid" class="font-14 full-width">Log in</button>
           </div>
         </form>
         <div class="card-block">
