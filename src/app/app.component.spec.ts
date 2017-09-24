@@ -55,12 +55,12 @@ describe('AppComponent Testing', () => {
     })
   );
   it('should work', () => {
-    comp.userInfo = {
+    comp.account = {
       id: 1,
       name: 'test',
       bio: 'bio',
       logo: null
     };
-    expect(el.textContent).toContain(comp.userInfo.name);
+    expect(el.textContent).toContain(comp.account.name);
   });
 });

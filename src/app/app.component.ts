@@ -18,7 +18,7 @@ interface IUser {
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public userInfo: IUser;
+  public account: IUser;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   public ngOnInit() {
     // this.goToLogin();
     // this.getUserInfo();
-    this.userInfo = JSON.parse(localStorage.getItem('account'));
+    this.account = JSON.parse(localStorage.getItem('account'));
   }
 
     /**
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
           this.snackbar.success('Loged out', 'Success');
 
           // 释放存储的信息
-          this.userInfo = null;
+          this.account = null;
           localStorage.removeItem('account');
         }
       }, (error: any) => {
@@ -70,12 +70,12 @@ export class AppComponent implements OnInit {
     const cookie = document.cookie;
 
     if (cookie && /isLogin=true/.test(cookie) && localStorage.getItem('user')) {
-      this.userInfo = JSON.parse(localStorage.getItem('user'));
+      this.account = JSON.parse(localStorage.getItem('user'));
     } else {
       this.appService.getUserInfo().subscribe((result: any) => {
         if (2000 === result.code) {
           // save to LocalStorage
-          this.userInfo = result.data;
+          this.account = result.data;
           localStorage.setItem('user', JSON.stringify(result.data));
 
           this.snackbar.success('Login Success', 'Welcome');

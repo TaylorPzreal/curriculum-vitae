@@ -7,7 +7,7 @@ export class AppService {
   // public baseURL: string = 'https://www.honeymorning.com/api';
   public baseURL: string = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http?: HttpClient) {}
 
   /**
    * 获取用户基本信息

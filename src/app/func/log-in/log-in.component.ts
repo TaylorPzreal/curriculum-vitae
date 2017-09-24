@@ -58,6 +58,7 @@ export class LogInComponent implements OnInit {
     this.loginService.login(this.user).subscribe((data: any) => {
       if (2000 === data.code) {
         this.snackbar.success('Logged in', 'Success');
+        data.data.logo = data.data.logo ? data.data.logo : 'src/assets/images/logo/logo-default.png';
         localStorage.setItem('account', JSON.stringify(data.data));
         this.router.navigate(['/']);
       }

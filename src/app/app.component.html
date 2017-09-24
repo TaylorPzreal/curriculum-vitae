@@ -1,33 +1,62 @@
 <!--公共顶部-->
 <header class="cv-header fixed-top">
   <!--<div class="container">-->
-    <nav class="navbar navbar-light navbar-expand-lg">
-      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-light navbar-expand-lg">
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" routerLink="/">
+    <a class="navbar-brand" routerLink="/">
         <img src="../assets/images/hm.svg" width="30" height="30" alt="HoneyMorning Logo">
       </a>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a routerLink="/" routerLinkActive="active" >Home</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/blog" routerLinkActive="active" >Blog</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/chat" routerLinkActive="active" >Chat</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/game" routerLinkActive="active" >Game</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/game3d" routerLinkActive="active" >3D Game</a>
-          </li>
-        </ul>
-        <form class="form-inline">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a routerLink="/" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/blog" routerLinkActive="active">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/chat" routerLinkActive="active">Chat</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/game" routerLinkActive="active">Game</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/game3d" routerLinkActive="active">3D Game</a>
+        </li>
+      </ul>
+
+      <!-- 登录注册 -->
+      <ul class="navbar-nav form-inline" *ngIf="!account">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">
+            Log in
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup">
+             Sign up
+           </a>
+        </li>
+      </ul>
+
+      <!-- 登录成功后显示 -->
+      <ul class="navbar-nav form-inline" *ngIf="account">
+        <li class="nav-item dropdown">
+          <img [src]="account.logo | ImgPathPre | trustURL" width="30" alt="UserLogo">
+          <a class="dropdown-toggle account-name" href="javascript: void(0)" id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             {{account.name}}
+           </a>
+          <div class="dropdown-menu" aria-labelledby="userDropdownMenuLink">
+            <a class="dropdown-item" routeLink=""><i class="fa fa-grav" aria-hidden="true"></i> My profile</a>
+            <a class="dropdown-item" href="javascript: void(0)" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+          </div>
+        </li>
+      </ul>
+
+      <!--<form class="form-inline">
           <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="text-blue">Log in</a>
           <a routerLink="/signup" *ngIf="!userInfo" routerLinkActive="active" class="text-secondary">Sign up</a>
           <a class="no-padding font-14 user-logo" *ngIf="userInfo">
@@ -35,9 +64,9 @@
             <span>{{userInfo.name}}</span>
           </a>
           <a href="JavaScript: void(0)" class="no-padding font-14 btn btn-theme" *ngIf="userInfo" (click)="logout()">Logout</a>
-        </form>
-      </div>
-    </nav>
+        </form>-->
+    </div>
+  </nav>
   <!--</div>-->
 </header>
 

@@ -14,6 +14,8 @@ import { AppInterceptor } from './app.interceptor';
 import { MdSnackBarModule } from '@angular/material';
 import { SnackBar } from './tool/snackbar';
 
+import { HmPipeModule } from './tool/pipe';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -23,6 +25,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     FormsModule,
     MdSnackBarModule,
+    HmPipeModule,
     ToastModule.forRoot(),
     AppRoutingModule
   ],
