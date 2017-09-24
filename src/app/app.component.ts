@@ -28,8 +28,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    // this.goToLogin();
-    // this.getUserInfo();
     this.account = JSON.parse(localStorage.getItem('account'));
   }
 
@@ -51,41 +49,5 @@ export class AppComponent implements OnInit {
         console.error(error);
       });
     }
-
-  private goToLogin() {
-    const a = this.route.params;
-    this.router.navigate(['/login']);
-  }
-
-  /**
-   * 获取用户基本信息
-   *
-   * @private
-   * @memberof AppComponent
-   */
-  private getUserInfo() {
-
-    // toastr.success('success', 'honeymorningyarn start');
-    // 1. 判断cookie的sid是否存在，存在直接在Localstroage获取，不存在调用后端接口。
-    const cookie = document.cookie;
-
-    if (cookie && /isLogin=true/.test(cookie) && localStorage.getItem('user')) {
-      this.account = JSON.parse(localStorage.getItem('user'));
-    } else {
-      this.appService.getUserInfo().subscribe((result: any) => {
-        if (2000 === result.code) {
-          // save to LocalStorage
-          this.account = result.data;
-          localStorage.setItem('user', JSON.stringify(result.data));
-
-          this.snackbar.success('Login Success', 'Welcome');
-        } else {
-          console.warn(result.msg);
-        }
-      }, (error: any) => {
-        console.warn(error);
-      });
-    }
-  }
 
  }

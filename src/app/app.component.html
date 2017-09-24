@@ -50,21 +50,11 @@
              {{account.name}}
            </a>
           <div class="dropdown-menu" aria-labelledby="userDropdownMenuLink">
-            <a class="dropdown-item" routeLink=""><i class="fa fa-grav" aria-hidden="true"></i> My profile</a>
+            <a class="dropdown-item" routeLink="/account/profile"><i class="fa fa-grav" aria-hidden="true"></i> My profile</a>
             <a class="dropdown-item" href="javascript: void(0)" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
           </div>
         </li>
       </ul>
-
-      <!--<form class="form-inline">
-          <a routerLink="/login" *ngIf="!userInfo" routerLinkActive="active" class="text-blue">Log in</a>
-          <a routerLink="/signup" *ngIf="!userInfo" routerLinkActive="active" class="text-secondary">Sign up</a>
-          <a class="no-padding font-14 user-logo" *ngIf="userInfo">
-            <img src="{{userInfo.logo}}" alt="Logo" width="26" height="26" style="border-radius: 13px;" class="">
-            <span>{{userInfo.name}}</span>
-          </a>
-          <a href="JavaScript: void(0)" class="no-padding font-14 btn btn-theme" *ngIf="userInfo" (click)="logout()">Logout</a>
-        </form>-->
     </div>
   </nav>
   <!--</div>-->
