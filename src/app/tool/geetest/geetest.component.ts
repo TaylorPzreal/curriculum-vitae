@@ -38,9 +38,9 @@ export class GeetestComponent implements OnInit {
                 geetest_validate: result.geetest_validate,
                 geetest_seccode: result.geetest_seccode
               };
-              this.geetestService.geetestValidate(param).subscribe((data: any) => {
-                if (2000 === data.code) {
-                  console.warn(data);
+              this.geetestService.geetestValidate(param).subscribe((res: any) => {
+                if (2000 === res.code) {
+                  console.warn(res);
                 }
               });
             });

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnackBar } from '../../tool/snackbar';
 import { LoginService } from './log-in.service';
+import { AppService } from '../../app.service';
 
 import { LogIn } from './log-in.model';
 
@@ -40,7 +41,8 @@ export class LogInComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private snackbar: SnackBar,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private appService: AppService
     ) {
     this.titleService.setTitle('Log in - HoneyMorning');
     this.user = new LogIn();
@@ -59,7 +61,9 @@ export class LogInComponent implements OnInit {
       if (2000 === data.code) {
         this.snackbar.success('Logged in', 'Success');
         data.data.logo = data.data.logo ? data.data.logo : 'src/assets/images/logo/logo-default.png';
-        localStorage.setItem('account', JSON.stringify(data.data));
+
+        // transfer data to AppService.
+        this.appService.announceAccount(data.data);
         this.router.navigate(['/']);
       }
     });

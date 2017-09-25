@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { User } from './user.model';
 
 @Injectable()
 export class AppService {
   // public baseURL: string = 'https://www.honeymorning.com/api';
   public baseURL: string = 'http://localhost:3000';
 
+  // Observable sources
+  private accountSource = new Subject<User>();
+  // Observable streams
+  // tslint:disable-next-line:member-ordering
+  public accountAnnounced = this.accountSource.asObservable();
+
   constructor(private http?: HttpClient) {}
 
-  /**
-   * 获取用户基本信息
-   *
-   * @returns {Observable<any>}
-   * @memberof AppService
-   */
-  public getUserInfo(): Observable<any> {
-    const url = this.baseURL + '/account/profile';
-    return this.http.get(url);
+/**
+ * Service message commands
+ *
+ * @param {User} account
+ * @memberof AppService
+ */
+  public announceAccount(account: User) {
+    localStorage.setItem('account', JSON.stringify(account)); // store
+    this.accountSource.next(account);
   }
 
   /**

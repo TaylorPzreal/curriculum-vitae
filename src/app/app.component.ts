@@ -29,6 +29,13 @@ export class AppComponent implements OnInit {
 
   public ngOnInit() {
     this.account = JSON.parse(localStorage.getItem('account'));
+
+    // Listener login,update profile.
+    this.appService.accountAnnounced.subscribe((account: IUser) => {
+      if (account) {
+        this.account = account;
+      }
+    });
   }
 
     /**
