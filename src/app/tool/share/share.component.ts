@@ -12,8 +12,8 @@ export class ShareComponent implements OnChanges {
   private url: string;
   private summary: string; //
   private desc: string = 'Share'; // default share reason
-  @Input() private sharePic: string = ''; // picture url
-  @Input() private shareDesc: string = ''; // desc, summary
+  @Input() private sharePic: string; // picture url
+  @Input() private shareDesc: string; // desc, summary
 
   constructor(
     private titleService: Title,
@@ -24,18 +24,29 @@ export class ShareComponent implements OnChanges {
 
     // This is used for wechat share.
     this.metaService.addTags([
-      { content: this.title, property: 'og:title'},
       { content: 'article', property: 'og:type' },
+      { content: this.title, property: 'og:title'},
       { content: this.siteName, property: 'og:site_name' }
     ]);
   }
 
-  public ngOnChanges(changes: {[propKey: string]: SimpleChange }) {
-    this.metaService.addTags([
-      {content: changes['shareDesc'].currentValue, property: 'og:description'},
-      {content: changes['sharePic'].currentValue, property: 'og:image'}
-    ]);
+  public ngOnChanges(changes: {
+    [propKey: string]: SimpleChange
+  }) {
+    if (changes['shareDesc'].currentValue) {
+      this.metaService.addTag({
+        content: changes['shareDesc'].currentValue,
+        property: 'og:description'
+      }, );
+    }
+    if (changes['sharePic'].currentValue) {
+      this.metaService.addTag({
+        content: changes['sharePic'].currentValue,
+        property: 'og:image'
+      });
+    }
   }
+
 
   /**
    * Share to Weibo
