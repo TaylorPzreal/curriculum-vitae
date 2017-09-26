@@ -12,7 +12,7 @@ export class ShareComponent {
   private url: string;
   private summary: string; //
   private desc: string = 'Share'; // default share reason
-  @Input() private sharePics: string; // picture url
+  @Input() private sharePic: string; // picture url
 
   constructor(
     private titleService: Title,
@@ -26,7 +26,7 @@ export class ShareComponent {
       { content: this.title, property: 'og:title'},
       { content: 'article', property: 'og:type' },
       { content: this.siteName, property: 'og:site_name' },
-      { content: this.sharePics, property: 'og:image'},
+      { content: this.sharePic, property: 'og:image'},
       { content: this.summary, property: 'og:description'}
     ]);
   }
@@ -41,7 +41,7 @@ export class ShareComponent {
     window['sharetitle'] = this.title;
     window['shareUrl'] = this.url;
 
-    const p = this.sharePics;
+    const p = this.sharePic;
     const code = 'utf-8';
     this.doShareToWeibo(screen, document, encodeURIComponent, this.siteName, this.url, p, this.title, this.summary, code);
   }
@@ -79,7 +79,7 @@ export class ShareComponent {
       summary: this.summary, /*分享摘要(可选)*/
       title: this.title, /*分享标题(可选)*/
       site: this.siteName, /*分享来源 如：腾讯网(可选)*/
-      pics: this.sharePics, /*分享图片的路径(可选)*/
+      pics: this.sharePic, /*分享图片的路径(可选)*/
       style: '201',
       width: 113,
       height: 39

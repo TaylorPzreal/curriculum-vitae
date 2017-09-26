@@ -24,7 +24,7 @@ import { ShareModule } from 'path/to/tool/share';
 ### 2. HTML
 
 ```html
-<hm-share sharePics="{{currentPageLogoURL}}"></hm-share>
+<hm-share sharePic="{{currentPageLogoURL}}"></hm-share>
 ```
 
 ### 3. index.html
