@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
@@ -6,13 +6,14 @@ import { Title, Meta } from '@angular/platform-browser';
   templateUrl: './share.component.html',
   styleUrls: ['./share.component.scss']
 })
-export class ShareComponent {
+export class ShareComponent implements OnChanges {
   private siteName: string = 'HoneyMorning'; // Website name
   private title: string; // header title
   private url: string;
   private summary: string; //
   private desc: string = 'Share'; // default share reason
-  @Input() private sharePic: string; // picture url
+  @Input() private sharePic: string = ''; // picture url
+  @Input() private shareDesc: string = ''; // desc, summary
 
   constructor(
     private titleService: Title,
@@ -25,9 +26,14 @@ export class ShareComponent {
     this.metaService.addTags([
       { content: this.title, property: 'og:title'},
       { content: 'article', property: 'og:type' },
-      { content: this.siteName, property: 'og:site_name' },
-      { content: this.sharePic, property: 'og:image'},
-      { content: this.summary, property: 'og:description'}
+      { content: this.siteName, property: 'og:site_name' }
+    ]);
+  }
+
+  public ngOnChanges(changes: {[propKey: string]: SimpleChange }) {
+    this.metaService.addTags([
+      {content: changes['shareDesc'].currentValue, property: 'og:description'},
+      {content: changes['sharePic'].currentValue, property: 'og:image'}
     ]);
   }
 
