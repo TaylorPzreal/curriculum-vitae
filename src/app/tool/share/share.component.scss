@@ -1,0 +1,53 @@
+$colors: #69c7df, #ed7c95, #ffba59;
+$white: #fff;
+
+section {
+  display: inline-block;
+
+  ul {
+    display: flex;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+
+    li {
+      display: flex;
+      margin: auto 11px;
+      position: relative;
+    }
+
+    a {
+      align-items: center;
+      border-radius: 16px;
+      display: flex;
+      height: 32px;
+      justify-content: center;
+      text-decoration: none;
+      width: 32px;
+
+      &>i {
+        color: $white;
+        font-size: 14px;
+      }
+
+      &.wechat {
+        background-color: nth($colors, 1);
+      }
+
+      &.weibo {
+        background-color: nth($colors, 2);
+      }
+
+      &.qzone {
+        background-color: nth($colors, 3);
+      }
+    }
+  }
+
+  canvas {
+    box-shadow: 0 0 10px;
+    left: -50px;
+    position: absolute;
+    top: 32px;
+  }
+}
