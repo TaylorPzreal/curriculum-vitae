@@ -1,12 +1,13 @@
-import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange, AfterViewInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
+// import 'https://res.wx.qq.com/open/js/jweixin-1.2.0.js';
 
 @Component({
   selector: 'hm-share',
   templateUrl: './share.component.html',
   styleUrls: ['./share.component.scss']
 })
-export class ShareComponent implements OnChanges {
+export class ShareComponent implements OnChanges, AfterViewInit {
   private siteName: string = 'HoneyMorning'; // Website name
   private title: string; // header title
   private url: string;
@@ -14,30 +15,103 @@ export class ShareComponent implements OnChanges {
   private desc: string = 'Share'; // default share reason
   @Input() private sharePic: string; // picture url
   @Input() private shareDesc: string; // desc, summary
+  // @Input() private shareTitle: string;
 
   constructor(
     private titleService: Title,
     private metaService: Meta
   ) {
-    this.title = this.titleService.getTitle();
     this.url = location.href;
+  }
+
+  public ngAfterViewInit() {
 
     // This is used for wechat share.
     this.metaService.addTags([
-      { content: 'article', property: 'og:type' },
       { content: this.title, property: 'og:title'},
       { content: this.siteName, property: 'og:site_name' }
     ]);
+
+    // 注入权限验证配置
+    window['wx'].config({
+      debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+      appId: 'wx4f0b7157d9ac218e', // 必填，公众号的唯一标识
+      timestamp: new Date().valueOf(), // 必填，生成签名的时间戳
+      nonceStr: 'hm' + new Date().valueOf(), // 必填，生成签名的随机串
+      signature: '', // 必填，签名，见附录1
+      jsApiList: ['onMenuShareTimeline', 'onMenuShareQQ', 'onMenuShareQZone', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+
+    // share to 朋友圈
+    window['wx'].onMenuShareTimeline({
+      title: this.title,
+      link: this.url,
+      imgUrl: this.sharePic,
+      success: () => {
+        console.warn('Success share to wechat');
+      },
+      cancel: () => {
+        console.warn('Cancel share to wechat');
+      }
+    });
+
+    // share to Friend
+    window['wx'].onMenuShareAppMessage({
+      title: this.title, // 分享标题
+      desc: this.summary, // 分享描述
+      link: this.url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      imgUrl: this.sharePic, // 分享图标
+      type: 'link', // 分享类型,music、video或link，不填默认为link
+      // dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+      success: () => {
+          // 用户确认分享后执行的回调函数
+      },
+      cancel: () => {
+          // 用户取消分享后执行的回调函数
+      }
+    });
+
+    // share to QQ
+    window['wx'].onMenuShareQQ({
+      title: this.title, // 分享标题
+      desc: this.desc, // 分享描述
+      link: this.url, // 分享链接
+      imgUrl: this.sharePic, // 分享图标
+      success: () => {
+         // 用户确认分享后执行的回调函数
+      },
+      cancel: () => {
+         // 用户取消分享后执行的回调函数
+      }
+    });
+
+    // share to QZone
+    window['wx'].onMenuShareQZone({
+      title: this.title, // 分享标题
+      desc: this.summary, // 分享描述
+      link: this.url, // 分享链接
+      imgUrl: this.sharePic, // 分享图标
+      success: () => {
+         // 用户确认分享后执行的回调函数
+      },
+      cancel: () => {
+          // 用户取消分享后执行的回调函数
+      }
+    });
   }
 
   public ngOnChanges(changes: {
     [propKey: string]: SimpleChange
   }) {
+    this.title = this.titleService.getTitle();
+    this.metaService.addTag({ content: 'article', property: 'og:type' }); // 延迟初始化title
+
     if (changes['shareDesc'].currentValue) {
       this.metaService.addTag({
         content: changes['shareDesc'].currentValue,
         property: 'og:description'
-      }, );
+      });
+      this.summary = changes['shareDesc'].currentValue;
     }
     if (changes['sharePic'].currentValue) {
       this.metaService.addTag({
