@@ -1,13 +1,15 @@
-import { Component, Input, OnChanges, SimpleChange, AfterViewInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange, OnInit, AfterViewInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
+import { ShareService } from './share.service';
 // import 'https://res.wx.qq.com/open/js/jweixin-1.2.0.js';
 
 @Component({
   selector: 'hm-share',
   templateUrl: './share.component.html',
-  styleUrls: ['./share.component.scss']
+  styleUrls: ['./share.component.scss'],
+  providers: [ShareService]
 })
-export class ShareComponent implements OnChanges, AfterViewInit {
+export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   private siteName: string = 'HoneyMorning'; // Website name
   private title: string; // header title
   private url: string;
@@ -19,9 +21,20 @@ export class ShareComponent implements OnChanges, AfterViewInit {
 
   constructor(
     private titleService: Title,
-    private metaService: Meta
+    private metaService: Meta,
+    private shareService: ShareService
   ) {
     this.url = location.href;
+  }
+
+  public ngOnInit() {
+    this.shareService.generateWechatSignature().subscribe((data: any) => {
+      if (2000 === data.code) {
+        // console.warn(data);
+        // response signature, timestamp, noncestr
+        this.initWechat(data.data.signature, data.data.timestamp, data.data.noncestr);
+      }
+    });
   }
 
   public ngAfterViewInit() {
@@ -31,17 +44,63 @@ export class ShareComponent implements OnChanges, AfterViewInit {
       { content: this.title, property: 'og:title'},
       { content: this.siteName, property: 'og:site_name' }
     ]);
+  }
 
+  public ngOnChanges(changes: {
+    [propKey: string]: SimpleChange
+  }) {
+    this.title = this.titleService.getTitle();
+    this.metaService.addTag({ content: 'article', property: 'og:type' }); // 延迟初始化title
+
+    if (changes['shareDesc'].currentValue) {
+      this.metaService.addTag({
+        content: changes['shareDesc'].currentValue,
+        property: 'og:description'
+      });
+      this.summary = changes['shareDesc'].currentValue;
+    }
+    if (changes['sharePic'].currentValue) {
+      this.metaService.addTag({
+        content: changes['sharePic'].currentValue,
+        property: 'og:image'
+      });
+    }
+  }
+
+  /**
+   * 初始化 Wechat js-sdk conf
+   *
+   * @private
+   * @param {string} signature
+   * @param {number} timestamp
+   * @param {string} nonceStr
+   * @memberof ShareComponent
+   */
+  private initWechat(signature: string, timestamp: number, nonceStr: string) {
+    // console.warn(signature, timestamp, nonceStr);
     // 注入权限验证配置
     window['wx'].config({
       debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
       appId: 'wx4f0b7157d9ac218e', // 必填，公众号的唯一标识
-      timestamp: new Date().valueOf(), // 必填，生成签名的时间戳
-      nonceStr: 'hm' + new Date().valueOf(), // 必填，生成签名的随机串
-      signature: '', // 必填，签名，见附录1
+      timestamp, // 必填，生成签名的时间戳
+      nonceStr, // 必填，生成签名的随机串
+      signature, // 必填，签名，见附录1
       jsApiList: ['onMenuShareTimeline', 'onMenuShareQQ', 'onMenuShareQZone', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
 
+    window['wx'].ready(() => {
+      // console.warn('wechat ready');
+      this.initWechatApiList();
+    });
+  }
+
+  /**
+   * init wechat share api list.
+   *
+   * @private
+   * @memberof ShareComponent
+   */
+  private initWechatApiList() {
     // share to 朋友圈
     window['wx'].onMenuShareTimeline({
       title: this.title,
@@ -99,28 +158,6 @@ export class ShareComponent implements OnChanges, AfterViewInit {
       }
     });
   }
-
-  public ngOnChanges(changes: {
-    [propKey: string]: SimpleChange
-  }) {
-    this.title = this.titleService.getTitle();
-    this.metaService.addTag({ content: 'article', property: 'og:type' }); // 延迟初始化title
-
-    if (changes['shareDesc'].currentValue) {
-      this.metaService.addTag({
-        content: changes['shareDesc'].currentValue,
-        property: 'og:description'
-      });
-      this.summary = changes['shareDesc'].currentValue;
-    }
-    if (changes['sharePic'].currentValue) {
-      this.metaService.addTag({
-        content: changes['sharePic'].currentValue,
-        property: 'og:image'
-      });
-    }
-  }
-
 
   /**
    * Share to Weibo

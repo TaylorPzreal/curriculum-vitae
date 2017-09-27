@@ -52,4 +52,13 @@ import { ShareModule } from 'path/to/tool/share';
 App Key：4056035540
 App Sercet：6a906ed33c018bc3919441af203aa713
 
-## 二、Share to QZone
+## 二、Share to Wechat
+
+### Steps
+
+- Get access_token [http://admin.wechat.com/wiki/index.php?title=Access_token](http://admin.wechat.com/wiki/index.php?title=Access_token)
+- Get jsapi_ticket [https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115)
+- generate
+- IP 白名单 [http://ip.qq.com/](http://ip.qq.com/)
+
+### server conf
