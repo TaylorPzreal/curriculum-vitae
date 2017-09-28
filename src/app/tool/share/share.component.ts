@@ -19,11 +19,6 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   @Input() private shareDesc: string; // desc, summary
   // @Input() private shareTitle: string;
 
-  // wechat conf
-  private signature: string;
-  private timestamp: number;
-  private nonceStr: string;
-
   constructor(
     private titleService: Title,
     private metaService: Meta,
@@ -33,16 +28,7 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   }
 
   public ngOnInit() {
-    this.shareService.generateWechatSignature().subscribe((data: any) => {
-      if (2000 === data.code) {
-        // console.warn(data);
-        // response signature, timestamp, noncestr
-        this.signature = data.data.signature;
-        this.timestamp = data.data.timestamp;
-        this.nonceStr = data.data.noncestr;
-        // this.initWechat(data.data.signature, data.data.timestamp, data.data.noncestr);
-      }
-    });
+    // do
   }
 
   public ngAfterViewInit() {
@@ -57,6 +43,7 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   public ngOnChanges(changes: {
     [propKey: string]: SimpleChange
   }) {
+    // 延迟获取title
     this.title = this.titleService.getTitle();
     this.metaService.addTag({ content: 'article', property: 'og:type' }); // 延迟初始化title
 
@@ -68,7 +55,8 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
       this.summary = changes['shareDesc'].currentValue;
 
       // test
-      this.initWechat(this.signature, this.timestamp, this.nonceStr);
+      // this.initWechat(this.signature, this.timestamp, this.nonceStr);
+      this.generateWechatSignature();
     }
     if (changes['sharePic'].currentValue) {
       this.metaService.addTag({
@@ -79,7 +67,22 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   }
 
   /**
-   * 初始化 Wechat js-sdk conf
+   * 1. Get Wechat signature
+   *
+   * @private
+   * @memberof ShareComponent
+   */
+  private generateWechatSignature() {
+    this.shareService.generateWechatSignature().subscribe((data: any) => {
+      if (2000 === data.code) {
+        // response signature, timestamp, noncestr
+        this.initWechat(data.data.signature, data.data.timestamp, data.data.noncestr);
+      }
+    });
+  }
+
+  /**
+   * 2. 初始化 Wechat js-sdk conf
    *
    * @private
    * @param {string} signature
@@ -106,7 +109,7 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   }
 
   /**
-   * init wechat share api list.
+   * 3. init wechat share api list.
    *
    * @private
    * @memberof ShareComponent
