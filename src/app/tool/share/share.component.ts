@@ -19,6 +19,11 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   @Input() private shareDesc: string; // desc, summary
   // @Input() private shareTitle: string;
 
+  // wechat conf
+  private signature: string;
+  private timestamp: number;
+  private nonceStr: string;
+
   constructor(
     private titleService: Title,
     private metaService: Meta,
@@ -32,7 +37,10 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
       if (2000 === data.code) {
         // console.warn(data);
         // response signature, timestamp, noncestr
-        this.initWechat(data.data.signature, data.data.timestamp, data.data.noncestr);
+        this.signature = data.data.signature;
+        this.timestamp = data.data.timestamp;
+        this.nonceStr = data.data.noncestr;
+        // this.initWechat(data.data.signature, data.data.timestamp, data.data.noncestr);
       }
     });
   }
@@ -58,6 +66,9 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
         property: 'og:description'
       });
       this.summary = changes['shareDesc'].currentValue;
+
+      // test
+      this.initWechat(this.signature, this.timestamp, this.nonceStr);
     }
     if (changes['sharePic'].currentValue) {
       this.metaService.addTag({
