@@ -101,6 +101,14 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
    * @memberof ShareComponent
    */
   private initWechatApiList() {
+    window['wx'].checkJsApi({
+      jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+      success: (res: any) => {
+          // 以键值对的形式返回，可用的api值true，不可用为false
+          // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+          console.warn(res);
+      }
+    });
     // share to 朋友圈
     window['wx'].onMenuShareTimeline({
       title: this.title,

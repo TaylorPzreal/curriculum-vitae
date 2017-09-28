@@ -15,6 +15,6 @@ export class ShareService {
    */
   public generateWechatSignature(): Observable<any> {
     const method = 'wechat/generate/signature';
-    return this.appService.POST(method, {url: encodeURIComponent(location.href.split('#')[0])});
+    return this.appService.POST(method, {url: location.href});
   }
 }
