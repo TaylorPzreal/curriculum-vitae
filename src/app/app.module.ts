@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppService } from './app.service';
 import { AppInterceptor } from './app.interceptor';
 
-import { MdSnackBarModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material';
 import { SnackBar } from './tool/snackbar';
 
 import { HmPipeModule } from './tool/pipe';
@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MdSnackBarModule,
+    MatSnackBarModule,
     HmPipeModule,
     ToastModule.forRoot(),
     AppRoutingModule
