@@ -31,6 +31,7 @@ $border-color: #eee;
     justify-content: center;
     position: absolute;
     top: -2rem;
+    transition: top .2s ease-out;
     width: 86px;
 
     i {
@@ -57,6 +58,13 @@ $border-color: #eee;
     &.bg-origin {
       background: nth($item-bgs, 4);
       box-shadow: nth($item-shadows, 4);
+    }
+  }
+
+  &:hover {
+    & .statistic-header {
+      top: -2.5rem;
+      transition: top .3s ease;
     }
   }
 
