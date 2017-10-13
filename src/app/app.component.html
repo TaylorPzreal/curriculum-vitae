@@ -18,6 +18,9 @@
           <a routerLink="/blog" routerLinkActive="active">Blog</a>
         </li>
         <li class="nav-item">
+          <a routerLink="/study" routerLinkActive="active">Study</a>
+        </li>
+        <li class="nav-item">
           <a routerLink="/chat" routerLinkActive="active">Chat</a>
         </li>
         <li class="nav-item">
@@ -50,7 +53,7 @@
              {{account.name}}
            </a>
           <div class="dropdown-menu" aria-labelledby="userDropdownMenuLink">
-            <a class="dropdown-item" routeLink="/account/profile"><i class="fa fa-grav" aria-hidden="true"></i> My profile</a>
+            <a class="dropdown-item" routerLink="/account/profile"><i class="fa fa-grav" aria-hidden="true"></i> My profile</a>
             <a class="dropdown-item" href="javascript: void(0)" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
           </div>
         </li>

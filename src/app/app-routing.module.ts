@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: 'chat', loadChildren: './func/chat/chat.module#ChatModule' },
   { path: 'game', loadChildren: './func/game/game.module#GameModule' },
   { path: 'game3d', loadChildren: './func/game-3d/game-3d.module#Game3DModule' },
+  { path: 'study', loadChildren: './func/study/study.module#StudyModule' },
+  { path: 'account', loadChildren: './func/account/account.module#AccountModule' },
   { path: '404', loadChildren: './func/page-not-found/page-not-found.module#PageNotFoundModule'},
   { path: '', loadChildren: './func/home/home.module#HomeModule', pathMatch: 'full' },
   { path: '**', redirectTo: '404' }
