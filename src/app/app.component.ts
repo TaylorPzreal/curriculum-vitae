@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
         this.account = account;
       }
     });
+
+    this.initWebsite();
   }
 
     /**
@@ -54,6 +56,14 @@ export class AppComponent implements OnInit {
         }
       }, (error: any) => {
         console.error(error);
+      });
+    }
+
+    private initWebsite(): void {
+      this.appService.initWebsite().subscribe((data: any) => {
+        if (2000 === data.code) {
+          console.warn('init success');
+        }
       });
     }
 
