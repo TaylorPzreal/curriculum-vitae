@@ -29,17 +29,6 @@ export class AppService {
   }
 
   /**
-   * 登出
-   *
-   * @return {Observable<any>}
-   * @memberof AppService
-   */
-  public logout(): Observable<any> {
-    const url = this.baseURL + '/auth/logout';
-    return this.http.get(url);
-  }
-
-  /**
    * 生成请求的URL, 自动去掉value为null和undefined的参数
    * 目前主要用于 GET 请求
    *
@@ -125,5 +114,27 @@ export class AppService {
         withCredentials: true
       });
     }
+  }
+
+  /**
+   * 登出
+   *
+   * @return {Observable<any>}
+   * @memberof AppService
+   */
+  public logout(): Observable<any> {
+    const url = this.baseURL + '/auth/logout';
+    return this.http.get(url);
+  }
+
+  /**
+   * Init website infomation
+   *
+   * @returns {Observable<any>}
+   * @memberof AppService
+   */
+  public initWebsite(): Observable<any> {
+    const method = '/home/initWebsite';
+    return this.GET(method);
   }
 }
