@@ -19,11 +19,7 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   @Input() private shareDesc: string; // desc, summary
   // @Input() private shareTitle: string;
 
-  constructor(
-    private titleService: Title,
-    private metaService: Meta,
-    private shareService: ShareService
-  ) {
+  constructor(private titleService: Title, private metaService: Meta, private shareService: ShareService) {
     this.url = location.href;
   }
 
@@ -32,17 +28,11 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
   }
 
   public ngAfterViewInit() {
-
     // This is used for wechat share.
-    this.metaService.addTags([
-      { content: this.title, property: 'og:title'},
-      { content: this.siteName, property: 'og:site_name' }
-    ]);
+    this.metaService.addTags([{ content: this.title, property: 'og:title' }, { content: this.siteName, property: 'og:site_name' }]);
   }
 
-  public ngOnChanges(changes: {
-    [propKey: string]: SimpleChange
-  }) {
+  public ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
     // 延迟获取title
     this.title = this.titleService.getTitle();
     this.metaService.addTag({ content: 'article', property: 'og:type' }); // 延迟初始化title
@@ -63,6 +53,89 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
         content: changes['sharePic'].currentValue,
         property: 'og:image'
       });
+    }
+  }
+
+  /**
+   * 分享到QZone
+   *
+   * @public
+   * @memberof ShareComponent
+   */
+  public shareToQZone() {
+    const p = {
+      url: this.url.replace(location.protocol + '//', ''),
+      showcount: '1' /*是否显示分享总数,显示：'1'，不显示：'0' */,
+      desc: this.desc /*默认分享理由(可选)*/,
+      summary: this.summary /*分享摘要(可选)*/,
+      title: this.title /*分享标题(可选)*/,
+      site: this.siteName /*分享来源 如：腾讯网(可选)*/,
+      pics: this.sharePic /*分享图片的路径(可选)*/,
+      style: '201',
+      width: 113,
+      height: 39
+    };
+
+    const s = [];
+    for (const i in p) {
+      if (p.hasOwnProperty(i)) {
+        s.push(i + '=' + encodeURIComponent(p[i] || ''));
+      }
+    }
+    window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?' + s.join('&'), '_blank');
+  }
+
+  /**
+   * Share to Weibo
+   *
+   * @public
+   * @memberof ShareComponent
+   */
+  public shareToWeibo() {
+    window['sharetitle'] = this.title;
+    window['shareUrl'] = this.url;
+
+    const p = this.sharePic;
+    const code = 'utf-8';
+    this.doShareToWeibo(screen, document, encodeURIComponent, this.siteName, this.url, p, this.title, this.summary, code);
+  }
+
+  private doShareToWeibo(s: Screen, d: Document, e: any, r: string, l: string, pics: string, t: string, z: string, c: string) {
+    const f = 'http://v.t.sina.com.cn/share/share.php?';
+    let u = d.location.href;
+    // tslint:disable-next-line:max-line-length
+    const p = [
+      'url=',
+      e(u),
+      '&title=',
+      e(t || d.title),
+      '&appkey=4056035540',
+      '&source=',
+      e(r),
+      '&sourceUrl=',
+      e(l),
+      '&content=',
+      c || 'utf-8',
+      '&pic=',
+      e(pics || '')
+    ].join('');
+
+    function a() {
+      // tslint:disable-next-line:max-line-length
+      if (
+        !window.open(
+          [f, p].join(''),
+          'mb',
+          ['toolbar=0,status=0,resizable=1,width=620,height=450,left=', (s.width - 620) / 2, ',top=', (s.height - 450) / 2].join('')
+        )
+      ) {
+        u = [f, p].join('');
+      }
+    }
+    if (/Firefox/.test(navigator.userAgent)) {
+      setTimeout(a, 0);
+    } else {
+      a();
     }
   }
 
@@ -118,9 +191,9 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
     window['wx'].checkJsApi({
       jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
       success: (res: any) => {
-          // 以键值对的形式返回，可用的api值true，不可用为false
-          // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-          console.warn(res);
+        // 以键值对的形式返回，可用的api值true，不可用为false
+        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+        console.warn(res);
       }
     });
     // share to 朋友圈
@@ -145,10 +218,10 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
       type: 'link', // 分享类型,music、video或link，不填默认为link
       // dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
       success: () => {
-          // 用户确认分享后执行的回调函数
+        // 用户确认分享后执行的回调函数
       },
       cancel: () => {
-          // 用户取消分享后执行的回调函数
+        // 用户取消分享后执行的回调函数
       }
     });
 
@@ -159,10 +232,10 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
       link: this.url, // 分享链接
       imgUrl: this.sharePic, // 分享图标
       success: () => {
-         // 用户确认分享后执行的回调函数
+        // 用户确认分享后执行的回调函数
       },
       cancel: () => {
-         // 用户取消分享后执行的回调函数
+        // 用户取消分享后执行的回调函数
       }
     });
 
@@ -173,74 +246,11 @@ export class ShareComponent implements OnChanges, AfterViewInit, OnInit {
       link: this.url, // 分享链接
       imgUrl: this.sharePic, // 分享图标
       success: () => {
-         // 用户确认分享后执行的回调函数
+        // 用户确认分享后执行的回调函数
       },
       cancel: () => {
-          // 用户取消分享后执行的回调函数
+        // 用户取消分享后执行的回调函数
       }
     });
-  }
-
-  /**
-   * Share to Weibo
-   *
-   * @private
-   * @memberof ShareComponent
-   */
-  private shareToWeibo() {
-    window['sharetitle'] = this.title;
-    window['shareUrl'] = this.url;
-
-    const p = this.sharePic;
-    const code = 'utf-8';
-    this.doShareToWeibo(screen, document, encodeURIComponent, this.siteName, this.url, p, this.title, this.summary, code);
-  }
-
-  private doShareToWeibo(s: Screen, d: Document, e: any, r: string, l: string, pics: string, t: string, z: string, c: string) {
-    const f = 'http://v.t.sina.com.cn/share/share.php?';
-    let u = d.location.href;
-    // tslint:disable-next-line:max-line-length
-    const p = ['url=', e(u), '&title=', e(t || d.title), '&appkey=4056035540', '&source=', e(r), '&sourceUrl=', e(l), '&content=', c || 'utf-8', '&pic=', e(pics || '')].join('');
-
-    function a() {
-      // tslint:disable-next-line:max-line-length
-      if (!window.open([f, p].join(''), 'mb', ['toolbar=0,status=0,resizable=1,width=620,height=450,left=', (s.width - 620) / 2, ',top=', (s.height - 450) / 2].join(''))) {
-        u = [f, p].join('');
-      }
-    }
-    if (/Firefox/.test(navigator.userAgent)) {
-      setTimeout(a, 0);
-    } else {
-      a();
-    }
-  }
-
-  /**
-   * 分享到QZone
-   *
-   * @private
-   * @memberof ShareComponent
-   */
-  private shareToQZone() {
-    const p = {
-      url: this.url.replace(location.protocol + '//', ''),
-      showcount: '1', /*是否显示分享总数,显示：'1'，不显示：'0' */
-      desc: this.desc, /*默认分享理由(可选)*/
-      summary: this.summary, /*分享摘要(可选)*/
-      title: this.title, /*分享标题(可选)*/
-      site: this.siteName, /*分享来源 如：腾讯网(可选)*/
-      pics: this.sharePic, /*分享图片的路径(可选)*/
-      style: '201',
-      width: 113,
-      height: 39
-    };
-
-    const s = [];
-    for (const i in p) {
-      if (p.hasOwnProperty(i)) {
-        s.push(i + '=' + encodeURIComponent(p[i] || ''));
-      }
-    }
-    window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?' + s.join('&'), '_blank');
   }
 }

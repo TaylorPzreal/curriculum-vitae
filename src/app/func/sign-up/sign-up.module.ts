@@ -6,6 +6,8 @@ import { MatCheckboxModule, MatInputModule, MatButtonModule } from '@angular/mat
 import { GeetestModule } from '../../tool/geetest';
 
 import { SignUpComponent } from './sign-up.component';
+import { ForbiddenValidatorDirective } from './forbidden-name.directive';
+import { ValidateEmailValidatorDirective } from './validate-email.directive';
 
 export const routes: Routes = [
   {path: '', component: SignUpComponent}
@@ -22,7 +24,9 @@ export const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    SignUpComponent
+    SignUpComponent,
+    ForbiddenValidatorDirective,
+    ValidateEmailValidatorDirective
   ]
 })
 export class SignUpModule { }

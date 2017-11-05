@@ -1,3 +1,5 @@
+declare var require: any;
+
 import { Directive, ElementRef, Renderer2, HostListener, Input } from '@angular/core';
 const QRCode = require('qrcode');
 

@@ -6,4 +6,6 @@ export class Blog {
   public ctime: Date;
   public detail: string;
   public tag: string;
+  public summary?: string;
+  public coverImage?: string;
 }

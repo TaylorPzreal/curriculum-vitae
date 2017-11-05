@@ -53,7 +53,7 @@ export class AppService {
     }
 
     if (options && options.params) {
-      Object.keys(options.params).forEach((key, i) => {
+      Object.keys(options.params).forEach((key: string, i: number) => {
         if (options.params[key] !== null && options.params[key] !== undefined) {
           url += `${i === 0 ? '?' : '&'}${key}=${options.params[key]}`;
         }
