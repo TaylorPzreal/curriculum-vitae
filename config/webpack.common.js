@@ -183,7 +183,11 @@ module.exports = {
     ),
 
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor', 'manifest'],
+      name: 'vendor'
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['manifest'],
       // minChunks: 2
     }),
 
@@ -218,6 +222,11 @@ module.exports = {
     // manifest.json
     new ManifestPlugin({
       fileName: 'cv-manifest.json'
+    }),
+
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require(helpers.root('manifest.json'))
     }),
 
     new ParallelUglifyPlugin({
