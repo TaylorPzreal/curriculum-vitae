@@ -226,7 +226,7 @@ module.exports = {
 
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require(helpers.root('manifest.json'))
+      manifest: require(helpers.root('dist/vendor-manifest.json'))
     }),
 
     new ParallelUglifyPlugin({
