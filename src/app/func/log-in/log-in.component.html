@@ -8,30 +8,30 @@
             <h3 class="text-center font-22"><strong>Welcome To HoneyMorning</strong></h3>
           </div>
 
-          <md-form-field class="full-width font-16">
-            <input type="text" mdInput placeholder="Email" formControlName="email" [(ngModel)]="user.email" required>
-            <md-error *ngIf="formErrors.email">
+          <mat-form-field class="full-width font-16">
+            <input type="text" matInput placeholder="Email" formControlName="email" [(ngModel)]="user.email" required>
+            <mat-error *ngIf="formErrors.email">
               {{formErrors.email}}
-            </md-error>
-          </md-form-field>
+            </mat-error>
+          </mat-form-field>
 
-          <md-form-field class="full-width font-16">
-            <input type="password" mdInput placeholder="Password" formControlName="password" [(ngModel)]="user.password" required>
-            <md-error *ngIf="formErrors.password">
+          <mat-form-field class="full-width font-16">
+            <input type="password" matInput placeholder="Password" formControlName="password" [(ngModel)]="user.password" required>
+            <mat-error *ngIf="formErrors.password">
               {{formErrors.password}}
-            </md-error>
-          </md-form-field>
+            </mat-error>
+          </mat-form-field>
 
           <div class="form-group">
             <hm-geetest></hm-geetest>
           </div>
 
           <div class="form-group text-left">
-            <md-checkbox>Remember me!</md-checkbox>
+            <mat-checkbox>Remember me!</mat-checkbox>
           </div>
 
           <div class="form-group">
-            <button type="submit" md-raised-button color="primary" [disabled]="!userForm.valid" class="font-14 full-width">Log in</button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="!userForm.valid" class="font-14 full-width">Log in</button>
           </div>
         </form>
         <div class="card-block">

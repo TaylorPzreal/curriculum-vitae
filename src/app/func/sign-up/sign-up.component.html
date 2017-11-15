@@ -6,29 +6,29 @@
           <h3 class="font-24"><strong>Join HoneyMorning today.</strong></h3>
         </div>
 
-        <md-form-field class="full-width font-16">
-          <input type="text" mdInput placeholder="Username" formControlName="name" [(ngModel)]="user.name" required>
-          <md-error *ngIf="formErrors.name">
+        <mat-form-field class="full-width font-16">
+          <input type="text" matInput placeholder="Username" formControlName="name" [(ngModel)]="user.name" required>
+          <mat-error *ngIf="formErrors.name">
             {{formErrors.name}}
-          </md-error>
-        </md-form-field>
+          </mat-error>
+        </mat-form-field>
 
-        <md-form-field class="full-width font-16">
-          <input type="email" mdInput placeholder="Email" formControlName="email" [(ngModel)]="user.email" required>
-          <md-error *ngIf="formErrors.email">
+        <mat-form-field class="full-width font-16">
+          <input type="email" matInput placeholder="Email" formControlName="email" [(ngModel)]="user.email" required>
+          <mat-error *ngIf="formErrors.email">
             {{formErrors.email}}
-          </md-error>
-        </md-form-field>
+          </mat-error>
+        </mat-form-field>
 
-        <md-form-field class="full-width font-16">
-          <input type="password" mdInput placeholder="Password" formControlName="password" [(ngModel)]="user.password" required>
-          <md-error *ngIf="formErrors.password">
+        <mat-form-field class="full-width font-16">
+          <input type="password" matInput placeholder="Password" formControlName="password" [(ngModel)]="user.password" required>
+          <mat-error *ngIf="formErrors.password">
             {{formErrors.password}}
-          </md-error>
-        </md-form-field>
+          </mat-error>
+        </mat-form-field>
 
         <div class="form-group">
-          <md-checkbox>Agree HoneyMorning's Privacy Policy!</md-checkbox>
+          <mat-checkbox>Agree HoneyMorning's Privacy Policy!</mat-checkbox>
         </div>
 
         <div class="form-group">
@@ -36,7 +36,7 @@
         </div>
 
         <div class="form-group text-center">
-          <button type="submit" class="full-width" md-raised-button color="primary" [disabled]="!userForm.valid">Sign up</button>
+          <button type="submit" class="full-width" mat-raised-button color="primary" [disabled]="!userForm.valid">Sign up</button>
         </div>
       </form>
     </div>
