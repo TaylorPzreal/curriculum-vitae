@@ -17,9 +17,9 @@
 // You can import js, ts, css, sass, ...
 
 // import 'hammerjs';
-// import 'jquery';
-// import 'popper.js';
-// import 'bootstrap';
+import 'jquery';
+import 'popper.js';
+import 'bootstrap';
 // import 'ng2-toastr';
 // require('highlight.js');
 // import 'katex';
@@ -28,3 +28,5 @@
 // import 'normalize.css';
 import 'bootstrap/scss/bootstrap.scss';
 import 'ng2-toastr/bundles/ng2-toastr.min.css';
+import 'font-awesome/scss/font-awesome.scss';
+import 'animate.css';

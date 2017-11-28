@@ -14,8 +14,6 @@ const vendors = [
 '@angular/animations',
 'rxjs',
 'hammerjs',
-'jquery',
-'bootstrap',
 'ng2-toastr',
 ];
 
