@@ -22,7 +22,7 @@ export class LoginService {
   public login(param: LogIn): Observable<any> {
     const method = 'auth/login';
     const pData = {
-      username: param.email,
+      email: param.email,
       password: window.btoa(param.password)
     };
     return this.appService.POST(method, pData);

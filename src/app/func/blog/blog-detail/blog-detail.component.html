@@ -23,7 +23,7 @@
         </header>
         <div class="">
           <h3 class="title"><strong>{{blog.title}}</strong></h3>
-          <div class="col-12 content" [innerHtml]="blog.detail"></div>
+          <div class="col-12 content" [innerHtml]="blog.detail | trustHTML"></div>
         </div>
       </div>
     </div>
