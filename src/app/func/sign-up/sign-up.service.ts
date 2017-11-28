@@ -15,7 +15,7 @@ export class SignUpService {
  * @memberof SignUpService
  */
   public signUp(param: SignUp): Observable<any> {
-   const method = '/signup/add';
+   const method = '/auth/signup';
    const pData: SignUp = {
     name: param.name,
     email: param.email,
