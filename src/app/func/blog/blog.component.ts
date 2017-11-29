@@ -45,9 +45,9 @@ export class BlogComponent implements OnInit {
   public createStory(): void {
     // 判断是否登录
     const cookie = document.cookie;
-    if (cookie && /isLogin=true/.test(cookie) && localStorage.getItem('user')) {
+    if (cookie && /isLogin=true/.test(cookie) && localStorage.getItem('account')) {
       // navigate to blog edit.
-      this.router.navigate(['edit']);
+      this.router.navigate(['/blog/edit']);
     } else {
       this.toastr.warning('You need login first!', 'Warning');
     }

@@ -7,6 +7,18 @@
             <label for="title" class="font-18">Title</label>
             <input type="text" id="title" name="title" class="form-control form-control-sm" [(ngModel)]="blog.title" placeholder="Enter Title" required>
           </div>
+
+          <div class="form-group">
+            <label for="coverImage" class="font-18">Cover image</label>
+            <ngx-cropper [config]="ngxCropperConfig" (returnData)="onReturnData($event)"></ngx-cropper>
+
+            <div *ngIf="blog.coverImage">
+              <figure>
+                <img [src]="blog.coverImage" alt="Cover image">
+              </figure>
+            </div>
+          </div>
+
           <div class="form-group">
             <!--Rich Text  -->
             <!--<quill [setDetail]="blog.detail" [editorConfig]="editorConfig" (returnDetail)="getDetailReturn($event)"></quill>-->

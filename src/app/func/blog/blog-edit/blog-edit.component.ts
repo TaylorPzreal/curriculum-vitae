@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
+import { NgxCropperOption } from 'ngx-cropper';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Blog } from './blog.model';
 import { User } from '../../../user.model';
@@ -24,7 +25,7 @@ import { Editor } from '../../../tool/editor';
 export class BlogEditComponent implements OnInit {
   public blog: Blog;
   // public editorConfig: {};
-  public ngxCropperConfig: object;
+  public ngxCropperConfig: NgxCropperOption;
   public editorConf: object;
 
   public blogTags = [
@@ -58,12 +59,12 @@ export class BlogEditComponent implements OnInit {
 
     this.toastr.setRootViewContainerRef(vRef);
 
-    const userTmp = JSON.parse(localStorage.getItem('user'));
+    const userTmp = JSON.parse(localStorage.getItem('account'));
     if (userTmp) {
       this.user = userTmp;
     } else {
        this.toastr.warning('Please login first');
-       this.router.navigate(['/blogs']);
+       this.router.navigate(['/blog']);
        return;
     }
 
@@ -85,21 +86,15 @@ export class BlogEditComponent implements OnInit {
       logo: this.user.logo
     };
 
-    // this.ngxCropperConfig = {
-    //   url: `${this.appService.baseURL}/uc/uploadPicture`, // image server url
-    //   maxsize: 512000, // image max size, default 500k = 512000bit
-    //   title: '调整案例图片的位置和尺寸', // edit modal title, this is default
-    //   uploadBtnName: '选择图片', // default Upload Image
-    //   uploadBtnClass: null, // default bootstrap styles, btn btn-primary
-    //   cancelBtnName: '取消', // default Cancel
-    //   cancelBtnClass: null, // default bootstrap styles, btn btn-default
-    //   applyBtnName: '应用', // default Apply
-    //   applyBtnClass: null, // default bootstrap styles, btn btn-primary
-    //   fdName: 'upload', // default 'file', this is  Content-Disposition: form-data; name="file"; filename="fire.jpg"
-    //   aspectRatio: 43 / 30// default 1 / 1, for example: 16 / 9, 4 / 3 ...
-    // };
+    this.ngxCropperConfig = {
+      url: `${this.appService.baseURL}/upload/coverimage`, // image server url
+      maxsize: 512000, // image max size, default 500k = 512000bit
+      title: 'Apply your image size and position', // edit modal title, this is default
+      uploadBtnName: 'Select image', // default Upload Image
+      fdName: 'upload', // default 'file', this is  Content-Disposition: form-data; name="file"; filename="fire.jpg"
+      viewMode: 1
+    };
     this.editorConf = (new Editor(this.appService)).config;
-
   }
 
   public ngOnInit(): void {
@@ -142,6 +137,12 @@ export class BlogEditComponent implements OnInit {
    */
   public getDetailReturn(event: string) {
     this.editorData = JSON.parse(event);
+  }
+
+  public onReturnData(data: any) {
+    if (data && data.code === 2000) {
+      this.blog.coverImage = data.data;
+    }
   }
 
   /**
