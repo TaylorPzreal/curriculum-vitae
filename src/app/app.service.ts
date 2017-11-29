@@ -17,12 +17,12 @@ export class AppService {
 
   constructor(private http?: HttpClient) {}
 
-/**
- * Service message commands
- *
- * @param {User} account
- * @memberof AppService
- */
+  /**
+   * Service message commands
+   *
+   * @param {User} account
+   * @memberof AppService
+   */
   public announceAccount(account: User) {
     localStorage.setItem('account', JSON.stringify(account)); // store
     this.accountSource.next(account);
