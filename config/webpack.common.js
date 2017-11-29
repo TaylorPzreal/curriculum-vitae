@@ -3,12 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const os = require('os');
 const helpers = require('./helpers');
 const path = require('path');
 
 const PHASER_DIR = helpers.root('/node_modules/phaser-ce');
-
 
 // 定义环境变量
 const DEVELOPMENT = process.env.NODE_ENV === 'development';
@@ -21,7 +21,7 @@ const SERVER = {
 
 module.exports = {
   cache: true,
-  devtool: DEVELOPMENT ? 'cheap-module-eval-source-map' : 'source-map',
+  devtool: DEVELOPMENT ? 'eval-source-map' : 'source-map',
 
   entry: {
     'app': './src/main.ts',
@@ -31,7 +31,7 @@ module.exports = {
 
   output: {
     path: helpers.root('dist'),
-    publicPath: DEVELOPMENT ? `http://${SERVER.host}:${SERVER.port}/` : '/dist/',
+    publicPath: DEVELOPMENT ? `http://${SERVER.host}:${SERVER.port}/` : '',
     filename: DEVELOPMENT ? '[name].js' : '[name].[chunkhash].js',
     chunkFilename: DEVELOPMENT ? '[id].chunk.js' : '[id].[chunkhash].chunk.js'
   },
@@ -45,13 +45,21 @@ module.exports = {
     }
   },
 
+  externals: {
+    'CKEDITOR': {
+      commonjs: 'CKEDITOR',
+      amd: 'CKEDITOR',
+      root: 'CKEDITOR'
+    }
+  },
+
   module: {
     rules: [{ // configuration of Phaser
       test: /pixi\.js/,
       loader: 'expose-loader?PIXI'
     }, {
       test: /phaser-split\.js$/,
-      loader: 'expose-loader?Phaser' 
+      loader: 'expose-loader?Phaser'
     }, {
       test: /p2\.js/,
       loader: 'expose-loader?p2'
@@ -71,7 +79,7 @@ module.exports = {
         options: {
           configFileName: helpers.root('src/tsconfig.json')
         }
-      }, 'angular-router-loader', 'angular2-template-loader']
+      }, 'angular-router-loader?debug=false', 'angular2-template-loader']
     }, {
       test: /\.html$/,
       loader: 'html-loader',
@@ -81,14 +89,14 @@ module.exports = {
     }, {
       test: /\.(png|jpe?g|gif|ico|svg)$/,
       use: DEVELOPMENT ?
-        'url-loader?limit=50000&name=src/assets/images/[name].[hash].[ext]' : 'url-loader?limit=50000&name=src/assets/images/[name].[hash].[ext]&publicPath=/dist/',
-      include: [helpers.root('src/assets/images'), helpers.root('node_modules/katex/dist/images')]
+        'url-loader?limit=50000&name=src/assets/images/[name].[hash].[ext]' : 'url-loader?limit=50000&name=src/assets/images/[name].[hash].[ext]&publicPath=/',
+      include: [helpers.root('src/assets/images')]
     }, {
       test: /\.(ttf|eot|woff|woff2|svg)([\w\?=\.]*)?$/,
       use: DEVELOPMENT ?
-        'file-loader?name=fonts/[name].[hash].[ext]' : 'file-loader?name=fonts/[name].[hash].[ext]&publicPath=/dist/',
+        'file-loader?name=fonts/[name].[hash].[ext]' : 'file-loader?name=fonts/[name].[hash].[ext]&publicPath=/',
       include: [
-        // helpers.root('fonts'),
+        helpers.root('src/assets/font'),
         helpers.root('node_modules/font-awesome/fonts'),
         helpers.root('node_modules/bootstrap/dist/fonts')
       ]
@@ -134,7 +142,10 @@ module.exports = {
       })
     }, {
       test: /\.css$/,
-      exclude: helpers.root('src', 'app'),
+      exclude: [
+        helpers.root('src', 'app'),
+        helpers.root('src/assets/css')
+      ],
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: [{
@@ -157,7 +168,9 @@ module.exports = {
       })
     }, {
       test: /\.css$/,
-      include: helpers.root('src', 'app'),
+      include: [
+        helpers.root('src', 'app'),
+      ],
       use: [
         'raw-loader'
       ]
@@ -182,6 +195,34 @@ module.exports = {
       helpers.root('./src'), {}
     ),
 
+    new CopyWebpackPlugin([{
+      from: helpers.root('/src/assets/images'),
+      to: helpers.root('/dist/assets/images'),
+      toType: 'dir'
+    }, {
+      from: helpers.root('/src/assets/lib'),
+      to: helpers.root('/dist/assets/lib'),
+      toType: 'dir'
+    }, {
+      from: helpers.root('/src/assets/localdb'),
+      to: helpers.root('/dist/assets/localdb'),
+      toType: 'dir'
+    }, {
+      from: helpers.root('/dll'),
+      to: helpers.root('/dist/dll'),
+      toType: 'dir'
+    }, {
+      from: helpers.root('/src/assets/css'),
+      to: helpers.root('/dist/src/assets/css'),
+      toType: 'dir'
+    }], {
+      ignore: [
+        '*.scss',
+        '**/font/*'
+      ]
+    }),
+
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor'
     }),
@@ -205,7 +246,19 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunksSortMode: 'dependency'
+      // chunksSortMode: 'dependency'
+      chunksSortMode: function(chunk1, chunk2) {
+        const orders = ['manifest', 'vendor', 'polyfills', 'app'];
+        var order1 = orders.indexOf(chunk1.names[0]);
+        var order2 = orders.indexOf(chunk2.names[0]);
+        if (order1 > order2) {
+          return 1;
+        } else if (order1 < order2) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
     }),
 
     new webpack.LoaderOptionsPlugin({

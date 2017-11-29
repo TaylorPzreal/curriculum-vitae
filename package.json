@@ -72,7 +72,7 @@
     "circular-dependency-plugin": "^4.2.1",
     "codelyzer": "^4.0.1",
     "compression-webpack-plugin": "^1.0.1",
-    "copy-webpack-plugin": "^4.2.0",
+    "copy-webpack-plugin": "^4.2.3",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "enhanced-resolve": "^3.4.1",
