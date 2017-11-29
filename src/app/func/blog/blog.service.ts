@@ -16,8 +16,8 @@ export class BlogService {
    * @memberof BlogService
    */
   public queryList(page: number): Observable<any> {
-    const url = `${this.appService.baseURL}/blog/querySelf/${page}`;
-    return this.http.get(url);
+    const method = '/blog';
+    return this.appService.GET(method, { params: {page: +page}});
   }
 
   /**

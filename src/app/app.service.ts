@@ -78,42 +78,53 @@ export class AppService {
   }
 
   /**
-   *  通用POST请求
+   * General DELETE
+   *
+   * @param {string} method
+   * @param {{}} [params]
+   * @returns {Observable<any>}
+   * @memberof AppService
+   */
+  public DELETE(method: string, params?: {}): Observable<any> {
+    return this.http.delete(this.resolveParamUrl(method, params));
+  }
+
+  /**
+   * General PUT
+   *
+   * @param {string} method
+   * @param {object} body
+   * @returns {Observable<any>}
+   * @memberof AppService
+   */
+  public PUT(method: string, body: object): Observable<any> {
+    return this.commonMethod(method, body);
+  }
+
+  /**
+   * General PATCH
+   *
+   * @param {string} method
+   * @param {object} body
+   * @returns {Observable<any>}
+   * @memberof AppService
+   */
+  public PATCH(method: string, body: object): Observable<any> {
+    return this.commonMethod(method, body);
+  }
+
+  /**
+   * 通用POST请求
    * method is like: '/admin/add'
    * body is like: {key: 'test'}
    *
    * @param {string} method
    * @param {object} body
-   * @param {{ isFormSubmit?: boolean }} [options]
    * @returns {Observable<any>}
    * @memberof AppService
    */
-  public POST(method: string, body: object, options?: { isFormSubmit?: boolean }): Observable<any> {
-    if (!/^\//.test(method)) {
-      method = `/${method}`;
-    }
-    // 请求URL
-    const url = `${this.baseURL}${method}`;
-
-    // 从请求体中删除掉value为null,undefined的key
-    Object.keys(body).forEach((key: string) => {
-      if (body[key] === null || body[key] === undefined) {
-        delete body[key];
-      }
-    });
-
-    // 区别表单POST提交 & Common post
-    if (options && options.isFormSubmit && options.isFormSubmit === true) {
-      const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-      return this.http.post(url, $.param(body), {
-        headers,
-        withCredentials: true
-      });
-    } else {
-      return this.http.post(url, body, {
-        withCredentials: true
-      });
-    }
+  public POST(method: string, body: object): Observable<any> {
+    return this.commonMethod(method, body);
   }
 
   /**
@@ -136,5 +147,24 @@ export class AppService {
   public initWebsite(): Observable<any> {
     const method = '/home/initWebsite';
     return this.GET(method);
+  }
+
+  private commonMethod(method: string, body: object): Observable<any> {
+    if (!/^\//.test(method)) {
+      method = `/${method}`;
+    }
+    // 请求URL
+    const url = `${this.baseURL}${method}`;
+
+    // 从请求体中删除掉value为null,undefined的key
+    Object.keys(body).forEach((key: string) => {
+      if (body[key] === null || body[key] === undefined) {
+        delete body[key];
+      }
+    });
+
+    return this.http.post(url, body, {
+      withCredentials: true
+    });
   }
 }

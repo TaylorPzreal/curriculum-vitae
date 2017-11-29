@@ -31,8 +31,8 @@ export class BlogComponent implements OnInit {
 
   public ngOnInit() {
     this.initBlogList();
-    this.initChartOfMonthBlogs();
-    this.initChartTags();
+    // this.initChartOfMonthBlogs();
+    // this.initChartTags();
 
     this.titleService.setTitle('Blog - HoneyMorning');
   }

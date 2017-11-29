@@ -50,12 +50,20 @@ $directions: 'top', 'right', 'bottom', 'left';
 @include container('margin');
 @include container('padding');
 
-@each $size in $numlist {
+$fontsize: 10 12, 14, 16, 18, 20, 22, 24, 28, 30, 32, 36, 48, 64, 72;
+@each $size in $fontsize {
     .font-#{$size} {
-        font-size: #{$size/10}rem;
+        font-size: #{$size / 10}rem;
     }
 }
 
+$text-weight: lighter, normal, bold, bolder;
+@each $w in $text-weight {
+  .text-#{$w} {
+    font-weight: $w;
+  }
+}
+
 .full-height {
-    height: 100%;
+  height: 100%;
 }
