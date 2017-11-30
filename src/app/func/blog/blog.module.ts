@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { BlogComponent } from './blog.component';
 import { ChartComponent } from './chart';
+import { BlogService } from './blog.service';
 
 export const routes: Routes = [
   {path: 'edit', loadChildren: './blog-edit/blog-edit.module#BlogEditModule'},
@@ -21,7 +22,8 @@ export const routes: Routes = [
   declarations: [
     BlogComponent,
     ChartComponent
-  ]
+  ],
+  providers: [BlogService]
 })
 
 export class BlogModule { }

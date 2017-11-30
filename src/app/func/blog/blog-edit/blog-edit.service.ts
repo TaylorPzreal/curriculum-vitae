@@ -9,20 +9,32 @@ import { Blog } from './blog.model';
 export class BlogEditService {
   constructor(private http: HttpClient, private appService: AppService) { }
 
-  public editBlog(blog: any): Observable<any> {
-    const url = `${this.appService.baseURL}/blog/edit`;
-    return this.http.post(url, blog);
+  /**
+   * add new blog
+   *
+   * @param {Blog} blog
+   * @returns {Observable<any>}
+   * @memberof BlogEditService
+   */
+  public addBlog(blog: Blog): Observable<any> {
+     const method = '/blog';
+     return this.appService.POST(method, blog);
   }
 
   /**
-   * GetBlogDetail
+   * update blog
    *
-   * @param {string} id
-   * @returns
+   * @param {Blog} blog
+   * @returns {Observable<any>}
    * @memberof BlogEditService
    */
-  public getBlogDetail(id: string): Observable<any> {
-    const url = `${this.appService.baseURL}/blog/queryByTitleId/${id}`;
-    return this.http.get(url);
+  public updateBlog(blog: Blog): Observable<any> {
+    const method = '/blog';
+    return this.appService.PUT(method, blog);
+  }
+
+  public searchBlogById(md5: string): Observable<any> {
+    const method = `/blog/${md5}`;
+    return this.appService.GET(method);
   }
 }

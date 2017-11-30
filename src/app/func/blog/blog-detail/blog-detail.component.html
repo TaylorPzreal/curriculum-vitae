@@ -14,9 +14,6 @@
                 <strong class="tag">{{blog.tag}}</strong>
               </div>
             </div>
-            <div>
-              <a class="btn btn-lg btn-outline-primary" *ngIf="isEditable" [routerLink]="['edit']" [queryParams]="{id: blogId}">Edit</a>
-            </div>
           </div>
 
           <hm-share shareDesc="{{blog.summary}}" sharePic="{{blog.coverImage}}"></hm-share>

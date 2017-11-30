@@ -15,9 +15,21 @@ export class BlogService {
    * @returns
    * @memberof BlogService
    */
-  public queryList(page: number): Observable<any> {
-    const method = '/blog';
-    return this.appService.GET(method, { params: {page: +page}});
+  public queryList(page: number = 1): Observable<any> {
+    const method = `/blogs/${+page}`;
+    return this.appService.GET(method);
+  }
+
+  /**
+   * get blog detail
+   *
+   * @param {string} md5
+   * @returns {Observable<any>}
+   * @memberof BlogService
+   */
+  public findOneBlogById(md5: string): Observable<any> {
+    const method = `/blog/${md5}`;
+    return this.appService.GET(method);
   }
 
   /**

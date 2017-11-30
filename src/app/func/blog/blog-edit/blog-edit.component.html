@@ -10,7 +10,7 @@
 
           <div class="form-group">
             <label for="coverImage" class="font-18">Cover image</label>
-            <ngx-cropper [config]="ngxCropperConfig" (returnData)="onReturnData($event)"></ngx-cropper>
+            <!-- <ngx-cropper [config]="ngxCropperConfig" (returnData)="onReturnData($event)"></ngx-cropper> -->
 
             <div *ngIf="blog.coverImage">
               <figure>
@@ -27,7 +27,7 @@
           </div>
 
           <div class="form-group">
-            <textarea class="form-control full-width" name="desc" rows="4" [(ngModel)]="blog.desc" placeholder="please input description. Max 255 char." required></textarea>
+            <textarea class="form-control full-width" name="summary" rows="4" [(ngModel)]="blog.summary" placeholder="please input description. Max 255 char." required></textarea>
           </div>
 
           <div class="form-group">

@@ -9,3 +9,4 @@ yarn-error.log
 /dist
 /.cache
 /stats.json
+package-lock.json

@@ -14,6 +14,7 @@ interface IEditorData {
 
 import { AppService } from '../../../app.service';
 import { BlogEditService } from './blog-edit.service';
+import { BlogService } from '../blog.service';
 import { Editor } from '../../../tool/editor';
 
 @Component({
@@ -24,7 +25,6 @@ import { Editor } from '../../../tool/editor';
 })
 export class BlogEditComponent implements OnInit {
   public blog: Blog;
-  // public editorConfig: {};
   public ngxCropperConfig: NgxCropperOption;
   public editorConf: object;
 
@@ -53,7 +53,8 @@ export class BlogEditComponent implements OnInit {
     private blogEditService: BlogEditService,
     private router: Router,
     private titleService: Title,
-    private appService: AppService
+    private appService: AppService,
+    private blogService: BlogService
   ) {
     this.titleService.setTitle('EditBlog - HoneyMorning');
 
@@ -78,7 +79,7 @@ export class BlogEditComponent implements OnInit {
       id: this.blogId,
       title: null,
       detail: null,
-      desc: null,
+      summary: null,
       coverImage: null,
       tag: 'Please select a tag.',
       author: this.user.name,
@@ -113,30 +114,20 @@ export class BlogEditComponent implements OnInit {
     this.blog.detail = this.editorData.detail;
     this.blog.coverImage = this.editorData.coverImage;
 
-    this.blogEditService.editBlog(this.blog).subscribe(
-      (result: any) => {
-        if (2000 === result.code) {
-          this.toastr.success('New add success', 'Success');
-          this.router.navigate(['/blogs']);
-        } else if (2001 === result.code) {
-          this.toastr.success('Update success', 'Success');
-          this.router.navigate(['/blogv', this.blogId]);
-        }
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
-
-  /**
-   * get quill editor's innerHtml
-   *
-   * @param {string} event htmlstring
-   * @memberof BlogEditComponent
-   */
-  public getDetailReturn(event: string) {
-    this.editorData = JSON.parse(event);
+    // this.blogEditService.editBlog(this.blog).subscribe(
+    //   (result: any) => {
+    //     if (2000 === result.code) {
+    //       this.toastr.success('New add success', 'Success');
+    //       this.router.navigate(['/blogs']);
+    //     } else if (2001 === result.code) {
+    //       this.toastr.success('Update success', 'Success');
+    //       this.router.navigate(['/blogv', this.blogId]);
+    //     }
+    //   },
+    //   (error: any) => {
+    //     console.error(error);
+    //   }
+    // );
   }
 
   public onReturnData(data: any) {
@@ -153,12 +144,11 @@ export class BlogEditComponent implements OnInit {
    * @memberof BlogEditComponent
    */
   private getBlogById(id: string) {
-    // get from server
-    this.blogEditService.getBlogDetail(id).subscribe((result: any) => {
+    this.blogService.findOneBlogById(id).subscribe((result: any) => {
       if (2000 === result.code) {
         this.blog.title = result.data.title;
         this.blog.detail = result.data.detail;
-        this.blog.desc = result.data.desc;
+        this.blog.summary = result.data.summary;
         this.blog.coverImage = result.data.coverImage;
         this.blog.tag = result.data.tag;
       }

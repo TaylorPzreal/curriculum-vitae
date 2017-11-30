@@ -10,8 +10,7 @@ import { Blog } from './blog.model';
 
 @Component({
   templateUrl: './blog.component.html',
-  styleUrls: ['blog.component.scss'],
-  providers: [BlogService]
+  styleUrls: ['blog.component.scss']
 })
 export class BlogComponent implements OnInit {
   public blogs: Blog[];
@@ -45,7 +44,7 @@ export class BlogComponent implements OnInit {
   public createStory(): void {
     // 判断是否登录
     const cookie = document.cookie;
-    if (cookie && /isLogin=true/.test(cookie) && localStorage.getItem('account')) {
+    if (localStorage.getItem('account')) {
       // navigate to blog edit.
       this.router.navigate(['/blog/edit']);
     } else {
