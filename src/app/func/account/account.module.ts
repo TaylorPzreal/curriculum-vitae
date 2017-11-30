@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { HmPipeModule } from '../../tool/pipe';
 
 import { AccountComponent } from './account.component';
 import { ProfileComponent } from './profile';
@@ -20,7 +21,7 @@ const ROUTES: Routes = [
 
 @NgModule({
   declarations: [AccountComponent, ProfileComponent],
-  imports: [CommonModule, RouterModule.forChild(ROUTES)],
+  imports: [CommonModule, HmPipeModule, RouterModule.forChild(ROUTES)],
   exports: [],
   providers: []
 })
