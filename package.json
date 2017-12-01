@@ -7,6 +7,8 @@
   "author": "TaylorPzreal <taylorpzreal@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "tslint": "tslint -c ./tslint.json './src/app/**/*.ts'",
     "dll": "rimraf dll && webpack --config config/webpack.dll.js --profile",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js --colors --profile --hot",
     "startopen": "npm run start -- --open",
@@ -15,6 +17,10 @@
     "e2e": "node_modules/protractor/bin/webdriver-manager update && node_modules/protractor/bin/protractor ./protractor.conf.js",
     "upgrade:angular": "npm update @angular/{animations,common,compiler,core,forms,http,platform-browser,platform-browser-dynamic,router,cli,compiler-cli,platform-server} @ngtools/webpack"
   },
+  "pre-commit": [
+    "precommit-msg",
+    "tslint"
+  ],
   "dependencies": {
     "@angular/animations": "^5.0.3",
     "@angular/common": "^5.0.3",
@@ -97,6 +103,7 @@
     "os": "^0.1.1",
     "postcss-loader": "^2.0.9",
     "postcss-url": "^7.3.0",
+    "pre-commit": "^1.2.2",
     "precss": "^2.0.0",
     "protractor": "^5.2.0",
     "raw-loader": "^0.5.1",
