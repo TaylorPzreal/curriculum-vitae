@@ -1,5 +1,53 @@
 <section>
-  Account
+  <div class="">
+    <div class="account-header">
+      <header class="container">
+        <figure>
+          <img [src]="account.logo | ImgPathPre | trustURL" alt="Logo">
+        </figure>
+
+        <div>
+          <h3>{{account.name}}</h3>
+          <p>{{account.bio}}</p>
+        </div>
+      </header>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center account-box">
+        <div class="col-lg-3 col-md-4 col-sm-12">
+          <figure>
+            <img src="../../../assets/images/awesome/wallhaven-18224.jpg" alt="">
+
+            <figcaption>
+              <h3>My blogs</h3>
+
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12">
+          <figure>
+              <img src="../../../assets/images/awesome/wallhaven-18224.jpg" alt="">
+
+            <figcaption>
+              <h3>My collections</h3>
+
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12">
+          <figure>
+              <img src="../../../assets/images/awesome/wallhaven-18224.jpg" alt="">
+
+            <figcaption>
+              <h3>My messages</h3>
+
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <router-outlet></router-outlet>
 </section>

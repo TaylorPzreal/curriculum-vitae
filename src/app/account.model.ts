@@ -1,4 +1,4 @@
-export class User {
+export class Account {
   public id: number;
   public name: string;
   public bio: string;

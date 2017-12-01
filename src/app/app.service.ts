@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { User } from './user.model';
+import { Account } from './account.model';
 
 @Injectable()
 export class AppService {
@@ -10,7 +10,7 @@ export class AppService {
   public baseURL: string = 'http://localhost:3000/v1';
 
   // Observable sources
-  private accountSource = new Subject<User>();
+  private accountSource = new Subject<Account>();
   // Observable streams
   // tslint:disable-next-line:member-ordering
   public accountAnnounced = this.accountSource.asObservable();
@@ -20,10 +20,10 @@ export class AppService {
   /**
    * Service message commands
    *
-   * @param {User} account
+   * @param {Account} account
    * @memberof AppService
    */
-  public announceAccount(account: User) {
+  public announceAccount(account: Account) {
     localStorage.setItem('account', JSON.stringify(account)); // store
     this.accountSource.next(account);
   }

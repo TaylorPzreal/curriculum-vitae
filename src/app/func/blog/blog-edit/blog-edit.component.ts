@@ -6,11 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { NgxCropperOption } from 'ngx-cropper';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Blog } from './blog.model';
-import { User } from '../../../user.model';
-interface IEditorData {
-  detail: string;
-  coverImage: string;
-}
+import { Account } from '../../../account.model';
 
 import { AppService } from '../../../app.service';
 import { BlogEditService } from './blog-edit.service';
@@ -42,9 +38,8 @@ export class BlogEditComponent implements OnInit {
     { id: 10, name: 'Community' }
   ];
 
-  private user: User;
+  private user: Account;
   private blogId: string;
-  private editorData: IEditorData; // detail , coverImage
 
   constructor(
     private route: ActivatedRoute,
@@ -111,9 +106,6 @@ export class BlogEditComponent implements OnInit {
    * @memberof BlogEditComponent
    */
   public publishStory() {
-    this.blog.detail = this.editorData.detail;
-    this.blog.coverImage = this.editorData.coverImage;
-
     // this.blogEditService.editBlog(this.blog).subscribe(
     //   (result: any) => {
     //     if (2000 === result.code) {

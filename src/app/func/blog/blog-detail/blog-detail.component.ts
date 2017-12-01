@@ -4,7 +4,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { BlogService } from '../blog.service';
 import { Blog } from './blog.model';
-import { User } from '../../../user.model';
 
 @Component({
   selector: 'blog-detail',
@@ -14,6 +13,7 @@ import { User } from '../../../user.model';
 
 export class BlogDetailComponent implements OnInit {
   public blog: Blog;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,

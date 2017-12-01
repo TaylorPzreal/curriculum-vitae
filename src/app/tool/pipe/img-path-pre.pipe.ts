@@ -1,9 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { AppService } from '../../app.service';
 
-@Pipe({name: 'ImgPathPre'})
+@Pipe({ name: 'ImgPathPre' })
 export class ImgPathPrePipe implements PipeTransform {
-
   /**
    * Usage
    * img src="{{logoPath | ImgPathPre}}"
@@ -17,7 +16,7 @@ export class ImgPathPrePipe implements PipeTransform {
     let prePath: string = '';
 
     // 判断 是否是本地图片，不是本地图片需要添加host
-    if (!/^src\/assets\/(.)*/.test(value)) {
+    if (!/^src\/assets\/(.)*/.test(value) && !/^http(.)+/.test(value)) {
       prePath += `${new AppService().baseURL || host}/`;
     }
 
