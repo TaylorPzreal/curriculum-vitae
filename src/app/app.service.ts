@@ -6,8 +6,8 @@ import { Account } from './account.model';
 
 @Injectable()
 export class AppService {
-  // public baseURL: string = 'https://www.honeymorning.com/api';
-  public baseURL: string = 'http://localhost:3000/v1';
+  public baseURL: string = 'https://www.honeymorning.com/api/v1';
+  // public baseURL: string = 'http://127.0.0.1:3000/v1';
 
   // Observable sources
   private accountSource = new Subject<Account>();

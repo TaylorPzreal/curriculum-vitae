@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient  } from '@angular/common/http';
-// import { Observable } from 'rxjs/Observable';
+import { AppService } from '../../app.service';
 
 @Injectable()
 export class HomeService {
-  constructor(private http: HttpClient) {}
+  constructor(private appService: AppService) {}
+
+  public wsService(): WebSocket {
+    const url = `ws://${this.appService.baseURL.replace(/https?\:\/\//, '')}/home`;
+    return new WebSocket(url);
+  }
 }
