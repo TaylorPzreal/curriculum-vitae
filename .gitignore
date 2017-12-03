@@ -10,3 +10,4 @@ yarn-error.log
 /.cache
 /stats.json
 package-lock.json
+deploy.sh
