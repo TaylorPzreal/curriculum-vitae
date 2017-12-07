@@ -12,10 +12,10 @@ const postcssUrl = require('postcss-url');
 const cssnano = require('cssnano');
 const customProperties = require('postcss-custom-properties');
 
-const { NoEmitOnErrorsPlugin, EnvironmentPlugin, HashedModuleIdsPlugin } = require('webpack');
+const { NoEmitOnErrorsPlugin, EnvironmentPlugin, HashedModuleIdsPlugin, ProvidePlugin } = require('webpack');
 const { BaseHrefWebpackPlugin, SuppressExtractedTextChunksWebpackPlugin } = require('@angular/cli/plugins/webpack');
 const { CommonsChunkPlugin, ModuleConcatenationPlugin } = require('webpack').optimize;
-const { LicenseWebpackPlugin } = require('license-webpack-plugin');
+// const { LicenseWebpackPlugin } = require('license-webpack-plugin');
 const { PurifyPlugin } = require('@angular-devkit/build-optimizer');
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
 
@@ -82,6 +82,7 @@ module.exports = {
   entry: {
     main: ['./src/main.ts'],
     polyfills: ['./src/polyfills.ts'],
+    vendor: ['./src/vendor.ts']
     // styles: ['./src/styles.css']
   },
   output: {
@@ -137,7 +138,7 @@ module.exports = {
         ]
       },
       {
-        exclude: [path.join(process.cwd(), 'src/styles.css')],
+        include: [path.join(process.cwd(), 'src/app')],
         test: /\.css$/,
         use: [
           'exports-loader?module.exports.toString()',
@@ -159,7 +160,7 @@ module.exports = {
         ]
       },
       {
-        exclude: [path.join(process.cwd(), 'src/styles.css')],
+        include: [path.join(process.cwd(), 'src/app')],
         test: /\.scss$|\.sass$/,
         use: [
           'exports-loader?module.exports.toString()',
@@ -189,64 +190,7 @@ module.exports = {
         ]
       },
       {
-        exclude: [path.join(process.cwd(), 'src/styles.css')],
-        test: /\.less$/,
-        use: [
-          'exports-loader?module.exports.toString()',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: false,
-              importLoaders: 1
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: postcssPlugins,
-              sourceMap: false
-            }
-          },
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: false
-            }
-          }
-        ]
-      },
-      {
-        exclude: [path.join(process.cwd(), 'src/styles.css')],
-        test: /\.styl$/,
-        use: [
-          'exports-loader?module.exports.toString()',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: false,
-              importLoaders: 1
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: postcssPlugins,
-              sourceMap: false
-            }
-          },
-          {
-            loader: 'stylus-loader',
-            options: {
-              sourceMap: false,
-              paths: []
-            }
-          }
-        ]
-      },
-      {
-        include: [path.join(process.cwd(), 'src/styles.css')],
+        exclude: [path.join(process.cwd(), 'src/app')],
         test: /\.css$/,
         loaders: ExtractTextPlugin.extract({
           use: [
@@ -270,7 +214,7 @@ module.exports = {
         })
       },
       {
-        include: [path.join(process.cwd(), 'src/styles.css')],
+        exclude: [path.join(process.cwd(), 'src/app')],
         test: /\.scss$|\.sass$/,
         loaders: ExtractTextPlugin.extract({
           use: [
@@ -295,67 +239,6 @@ module.exports = {
                 sourceMap: false,
                 precision: 8,
                 includePaths: []
-              }
-            }
-          ],
-          publicPath: ''
-        })
-      },
-      {
-        include: [path.join(process.cwd(), 'src/styles.css')],
-        test: /\.less$/,
-        loaders: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-                importLoaders: 1
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                plugins: postcssPlugins,
-                sourceMap: false
-              }
-            },
-            {
-              loader: 'less-loader',
-              options: {
-                sourceMap: false
-              }
-            }
-          ],
-          publicPath: ''
-        })
-      },
-      {
-        include: [path.join(process.cwd(), 'src/styles.css')],
-        test: /\.styl$/,
-        loaders: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-                importLoaders: 1
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                plugins: postcssPlugins,
-                sourceMap: false
-              }
-            },
-            {
-              loader: 'stylus-loader',
-              options: {
-                sourceMap: false,
-                paths: []
               }
             }
           ],
@@ -408,6 +291,13 @@ module.exports = {
     new CircularDependencyPlugin({
       exclude: /(\\|\/)node_modules(\\|\/)/,
       failOnError: false
+    }),
+    new ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jquery': 'jquery',
+      Popper: ['popper.js', 'default'],
+      'window.Popper': ['popper.js', 'default']
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -462,21 +352,21 @@ module.exports = {
       hashDigestLength: 4
     }),
     new ModuleConcatenationPlugin({}),
-    new LicenseWebpackPlugin({
-      licenseFilenames: ['LICENSE', 'LICENSE.md', 'LICENSE.txt', 'license', 'license.md', 'license.txt'],
-      perChunkOutput: false,
-      outputTemplate: '/home/taylorpzreal/Workspace/ng-api-front/node_modules/license-webpack-plugin/output.template.ejs',
-      outputFilename: '3rdpartylicenses.txt',
-      suppressErrors: true,
-      includePackagesWithoutLicense: false,
-      abortOnUnacceptableLicense: false,
-      addBanner: false,
-      bannerTemplate: '/*! 3rd party license information is available at <%- filename %> */',
-      includedChunks: [],
-      excludedChunks: [],
-      additionalPackages: [],
-      pattern: /^(MIT|ISC|BSD.*)$/
-    }),
+    // new LicenseWebpackPlugin({
+    //   licenseFilenames: ['LICENSE', 'LICENSE.md', 'LICENSE.txt', 'license', 'license.md', 'license.txt'],
+    //   perChunkOutput: false,
+    //   outputTemplate: '/home/taylorpzreal/Workspace/ng-api-front/node_modules/license-webpack-plugin/output.template.ejs',
+    //   outputFilename: '3rdpartylicenses.txt',
+    //   suppressErrors: true,
+    //   includePackagesWithoutLicense: false,
+    //   abortOnUnacceptableLicense: false,
+    //   addBanner: false,
+    //   bannerTemplate: '/*! 3rd party license information is available at <%- filename %> */',
+    //   includedChunks: [],
+    //   excludedChunks: [],
+    //   additionalPackages: [],
+    //   pattern: /^(MIT|ISC|BSD.*)$/
+    // }),
     new PurifyPlugin(),
     new UglifyJsPlugin({
       test: /\.js$/i,
