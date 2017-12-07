@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { NgxCropperOption } from 'ngx-cropper';
+// import { NgxCropperOption } from 'ngx-cropper';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Blog } from './blog.model';
 import { Account } from '../../../account.model';
@@ -21,7 +21,7 @@ import { Editor } from '../../../tool/editor';
 })
 export class BlogEditComponent implements OnInit {
   public blog: Blog;
-  public ngxCropperConfig: NgxCropperOption;
+  public ngxCropperConfig: {};
   public editorConf: object;
 
   public blogTags = [
