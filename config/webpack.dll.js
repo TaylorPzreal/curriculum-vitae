@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const helpers = require('./helpers');
 
 const vendors = [
@@ -31,6 +32,31 @@ module.exports = {
       path: helpers.root('dll/vendor-manifest.json'),
       name: '[name]_[chunkhash]',
       context: __dirname
-    })
+    }),
+    new UglifyJsPlugin({
+      test: /\.js$/i,
+      extractComments: false,
+      sourceMap: false,
+      cache: false,
+      parallel: false,
+      uglifyOptions: {
+        output: {
+          ascii_only: true,
+          comments: false,
+          webkit: true
+        },
+        ecma: 5,
+        warnings: false,
+        ie8: false,
+        mangle: {
+          safari10: true
+        },
+        compress: {
+          comparisons: false,
+          pure_getters: true,
+          passes: 3
+        }
+      }
+    }),
   ]
 }

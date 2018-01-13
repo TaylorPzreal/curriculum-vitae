@@ -11,3 +11,4 @@ yarn-error.log
 /stats.json
 package-lock.json
 deploy.sh
+yarn.lock
